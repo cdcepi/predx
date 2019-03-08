@@ -1,0 +1,191 @@
+location,target,type,unit,value
+California-Alameda,Ae. aegypti,binary,present,0.5
+California-Alameda,Ae. albopictus,binary,present,0.5
+California-Butte,Ae. aegypti,binary,present,0.5
+California-Butte,Ae. albopictus,binary,present,0.5
+California-Colusa,Ae. aegypti,binary,present,0.5
+California-Colusa,Ae. albopictus,binary,present,0.5
+California-Contra Costa,Ae. aegypti,binary,present,0.5
+California-Contra Costa,Ae. albopictus,binary,present,0.5
+California-Fresno,Ae. aegypti,binary,present,0.5
+California-Fresno,Ae. albopictus,binary,present,0.5
+California-Glenn,Ae. aegypti,binary,present,0.5
+California-Glenn,Ae. albopictus,binary,present,0.5
+California-Imperial,Ae. aegypti,binary,present,0.5
+California-Imperial,Ae. albopictus,binary,present,0.5
+California-Inyo,Ae. aegypti,binary,present,0.5
+California-Inyo,Ae. albopictus,binary,present,0.5
+California-Kern,Ae. aegypti,binary,present,0.5
+California-Kern,Ae. albopictus,binary,present,0.5
+California-Kings,Ae. aegypti,binary,present,0.5
+California-Kings,Ae. albopictus,binary,present,0.5
+California-Lake,Ae. aegypti,binary,present,0.5
+California-Lake,Ae. albopictus,binary,present,0.5
+California-Los Angeles,Ae. aegypti,binary,present,0.5
+California-Los Angeles,Ae. albopictus,binary,present,0.5
+California-Madera,Ae. aegypti,binary,present,0.5
+California-Madera,Ae. albopictus,binary,present,0.5
+California-Marin,Ae. aegypti,binary,present,0.5
+California-Marin,Ae. albopictus,binary,present,0.5
+California-Merced,Ae. aegypti,binary,present,0.5
+California-Merced,Ae. albopictus,binary,present,0.5
+California-Mono,Ae. aegypti,binary,present,0.5
+California-Mono,Ae. albopictus,binary,present,0.5
+California-Monterey,Ae. aegypti,binary,present,0.5
+California-Monterey,Ae. albopictus,binary,present,0.5
+California-Napa,Ae. aegypti,binary,present,0.5
+California-Napa,Ae. albopictus,binary,present,0.5
+California-Orange,Ae. aegypti,binary,present,0.5
+California-Orange,Ae. albopictus,binary,present,0.5
+California-Placer,Ae. aegypti,binary,present,0.5
+California-Placer,Ae. albopictus,binary,present,0.5
+California-Riverside,Ae. aegypti,binary,present,0.5
+California-Riverside,Ae. albopictus,binary,present,0.5
+California-Sacramento,Ae. aegypti,binary,present,0.5
+California-Sacramento,Ae. albopictus,binary,present,0.5
+California-San Benito,Ae. aegypti,binary,present,0.5
+California-San Benito,Ae. albopictus,binary,present,0.5
+California-San Bernardino,Ae. aegypti,binary,present,0.5
+California-San Bernardino,Ae. albopictus,binary,present,0.5
+California-San Diego,Ae. aegypti,binary,present,0.5
+California-San Diego,Ae. albopictus,binary,present,0.5
+California-San Francisco,Ae. aegypti,binary,present,0.5
+California-San Francisco,Ae. albopictus,binary,present,0.5
+California-San Joaquin,Ae. aegypti,binary,present,0.5
+California-San Joaquin,Ae. albopictus,binary,present,0.5
+California-San Luis Obispo,Ae. aegypti,binary,present,0.5
+California-San Luis Obispo,Ae. albopictus,binary,present,0.5
+California-San Mateo,Ae. aegypti,binary,present,0.5
+California-San Mateo,Ae. albopictus,binary,present,0.5
+California-Santa Barbara,Ae. aegypti,binary,present,0.5
+California-Santa Barbara,Ae. albopictus,binary,present,0.5
+California-Santa Clara,Ae. aegypti,binary,present,0.5
+California-Santa Clara,Ae. albopictus,binary,present,0.5
+California-Santa Cruz,Ae. aegypti,binary,present,0.5
+California-Santa Cruz,Ae. albopictus,binary,present,0.5
+California-Shasta,Ae. aegypti,binary,present,0.5
+California-Shasta,Ae. albopictus,binary,present,0.5
+California-Solano,Ae. aegypti,binary,present,0.5
+California-Solano,Ae. albopictus,binary,present,0.5
+California-Sonoma,Ae. aegypti,binary,present,0.5
+California-Sonoma,Ae. albopictus,binary,present,0.5
+California-Stanislaus,Ae. aegypti,binary,present,0.5
+California-Stanislaus,Ae. albopictus,binary,present,0.5
+California-Sutter,Ae. aegypti,binary,present,0.5
+California-Sutter,Ae. albopictus,binary,present,0.5
+California-Tulare,Ae. aegypti,binary,present,0.5
+California-Tulare,Ae. albopictus,binary,present,0.5
+California-Ventura,Ae. aegypti,binary,present,0.5
+California-Ventura,Ae. albopictus,binary,present,0.5
+California-Yolo,Ae. aegypti,binary,present,0.5
+California-Yolo,Ae. albopictus,binary,present,0.5
+California-Yuba,Ae. aegypti,binary,present,0.5
+California-Yuba,Ae. albopictus,binary,present,0.5
+Connecticut-Fairfield,Ae. aegypti,binary,present,0.5
+Connecticut-Fairfield,Ae. albopictus,binary,present,0.5
+Connecticut-New Haven,Ae. aegypti,binary,present,0.5
+Connecticut-New Haven,Ae. albopictus,binary,present,0.5
+Florida-Calhoun,Ae. aegypti,binary,present,0.5
+Florida-Calhoun,Ae. albopictus,binary,present,0.5
+Florida-Collier,Ae. aegypti,binary,present,0.5
+Florida-Collier,Ae. albopictus,binary,present,0.5
+Florida-Escambia,Ae. aegypti,binary,present,0.5
+Florida-Escambia,Ae. albopictus,binary,present,0.5
+Florida-Gadsden,Ae. aegypti,binary,present,0.5
+Florida-Gadsden,Ae. albopictus,binary,present,0.5
+Florida-Hillsborough,Ae. aegypti,binary,present,0.5
+Florida-Hillsborough,Ae. albopictus,binary,present,0.5
+Florida-Holmes,Ae. aegypti,binary,present,0.5
+Florida-Holmes,Ae. albopictus,binary,present,0.5
+Florida-Jackson,Ae. aegypti,binary,present,0.5
+Florida-Jackson,Ae. albopictus,binary,present,0.5
+Florida-Jefferson,Ae. aegypti,binary,present,0.5
+Florida-Jefferson,Ae. albopictus,binary,present,0.5
+Florida-Lee,Ae. aegypti,binary,present,0.5
+Florida-Lee,Ae. albopictus,binary,present,0.5
+Florida-Liberty,Ae. aegypti,binary,present,0.5
+Florida-Liberty,Ae. albopictus,binary,present,0.5
+Florida-Madison,Ae. aegypti,binary,present,0.5
+Florida-Madison,Ae. albopictus,binary,present,0.5
+Florida-Manatee,Ae. aegypti,binary,present,0.5
+Florida-Manatee,Ae. albopictus,binary,present,0.5
+Florida-Martin,Ae. aegypti,binary,present,0.5
+Florida-Martin,Ae. albopictus,binary,present,0.5
+Florida-Miami-Dade,Ae. aegypti,binary,present,0.5
+Florida-Miami-Dade,Ae. albopictus,binary,present,0.5
+Florida-Okaloosa,Ae. aegypti,binary,present,0.5
+Florida-Okaloosa,Ae. albopictus,binary,present,0.5
+Florida-Osceola,Ae. aegypti,binary,present,0.5
+Florida-Osceola,Ae. albopictus,binary,present,0.5
+Florida-Pasco,Ae. aegypti,binary,present,0.5
+Florida-Pasco,Ae. albopictus,binary,present,0.5
+Florida-Pinellas,Ae. aegypti,binary,present,0.5
+Florida-Pinellas,Ae. albopictus,binary,present,0.5
+Florida-Polk,Ae. aegypti,binary,present,0.5
+Florida-Polk,Ae. albopictus,binary,present,0.5
+Florida-Santa Rosa,Ae. aegypti,binary,present,0.5
+Florida-Santa Rosa,Ae. albopictus,binary,present,0.5
+Florida-St. Johns,Ae. aegypti,binary,present,0.5
+Florida-St. Johns,Ae. albopictus,binary,present,0.5
+Florida-Taylor,Ae. aegypti,binary,present,0.5
+Florida-Taylor,Ae. albopictus,binary,present,0.5
+Florida-Wakulla,Ae. aegypti,binary,present,0.5
+Florida-Wakulla,Ae. albopictus,binary,present,0.5
+Florida-Walton,Ae. aegypti,binary,present,0.5
+Florida-Walton,Ae. albopictus,binary,present,0.5
+Florida-Washington,Ae. aegypti,binary,present,0.5
+Florida-Washington,Ae. albopictus,binary,present,0.5
+New Jersey-Cumberland,Ae. aegypti,binary,present,0.5
+New Jersey-Cumberland,Ae. albopictus,binary,present,0.5
+New Jersey-Essex,Ae. aegypti,binary,present,0.5
+New Jersey-Essex,Ae. albopictus,binary,present,0.5
+New Jersey-Mercer,Ae. aegypti,binary,present,0.5
+New Jersey-Mercer,Ae. albopictus,binary,present,0.5
+New Jersey-Monmouth,Ae. aegypti,binary,present,0.5
+New Jersey-Monmouth,Ae. albopictus,binary,present,0.5
+New Jersey-Morris,Ae. aegypti,binary,present,0.5
+New Jersey-Morris,Ae. albopictus,binary,present,0.5
+New Jersey-Salem,Ae. aegypti,binary,present,0.5
+New Jersey-Salem,Ae. albopictus,binary,present,0.5
+New Jersey-Sussex,Ae. aegypti,binary,present,0.5
+New Jersey-Sussex,Ae. albopictus,binary,present,0.5
+New Jersey-Warren,Ae. aegypti,binary,present,0.5
+New Jersey-Warren,Ae. albopictus,binary,present,0.5
+New York-Bronx,Ae. aegypti,binary,present,0.5
+New York-Bronx,Ae. albopictus,binary,present,0.5
+New York-Kings,Ae. aegypti,binary,present,0.5
+New York-Kings,Ae. albopictus,binary,present,0.5
+New York-Nassau,Ae. aegypti,binary,present,0.5
+New York-Nassau,Ae. albopictus,binary,present,0.5
+New York-New York,Ae. aegypti,binary,present,0.5
+New York-New York,Ae. albopictus,binary,present,0.5
+New York-Queens,Ae. aegypti,binary,present,0.5
+New York-Queens,Ae. albopictus,binary,present,0.5
+New York-Richmond,Ae. aegypti,binary,present,0.5
+New York-Richmond,Ae. albopictus,binary,present,0.5
+New York-Rockland,Ae. aegypti,binary,present,0.5
+New York-Rockland,Ae. albopictus,binary,present,0.5
+New York-Westchester,Ae. aegypti,binary,present,0.5
+New York-Westchester,Ae. albopictus,binary,present,0.5
+North Carolina-Forsyth,Ae. aegypti,binary,present,0.5
+North Carolina-Forsyth,Ae. albopictus,binary,present,0.5
+North Carolina-New Hanover,Ae. aegypti,binary,present,0.5
+North Carolina-New Hanover,Ae. albopictus,binary,present,0.5
+North Carolina-Pitt,Ae. aegypti,binary,present,0.5
+North Carolina-Pitt,Ae. albopictus,binary,present,0.5
+North Carolina-Transylvania,Ae. aegypti,binary,present,0.5
+North Carolina-Transylvania,Ae. albopictus,binary,present,0.5
+North Carolina-Wake,Ae. aegypti,binary,present,0.5
+North Carolina-Wake,Ae. albopictus,binary,present,0.5
+Texas-Cameron,Ae. aegypti,binary,present,0.5
+Texas-Cameron,Ae. albopictus,binary,present,0.5
+Texas-Hidalgo,Ae. aegypti,binary,present,0.5
+Texas-Hidalgo,Ae. albopictus,binary,present,0.5
+Texas-Tarrant,Ae. aegypti,binary,present,0.5
+Texas-Tarrant,Ae. albopictus,binary,present,0.5
+Wisconsin-Dane,Ae. aegypti,binary,present,0.5
+Wisconsin-Dane,Ae. albopictus,binary,present,0.5
+Wisconsin-Milwaukee,Ae. aegypti,binary,present,0.5
+Wisconsin-Milwaukee,Ae. albopictus,binary,present,0.5
+Wisconsin-Waukesha,Ae. aegypti,binary,present,0.5
+Wisconsin-Waukesha,Ae. albopictus,binary,present,0.5

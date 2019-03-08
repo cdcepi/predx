@@ -1,0 +1,117 @@
+---
+title: "Aedes Vignette"
+author: "Michael Johansson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Aedes Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(predx)
+```
+
+This package contains tools for working with prediction data. Much of the functionality is still in development, but forecast validation has already been implemented for the Aedes Forecasting Challenge.
+
+## Import Aedes Forecasting Challenge forecast
+
+First, the forecaster should create their forecast in the CSV format specified for the Aedes Forecast Challenge by the CDC Epidemic Prediction Initiative (provided as a template at [predict.cdc.gov](https://predict.cdc.gov)). Forecasts matching this template can be imported using the `import_aedes_csv` function. This function imports the CSV and converts it to a special, embedded "`predx_df`" data frame (a `tbl_df`, "tibble" object) with a row for every individual prediction (defined by target, location, and prediction type), a column `predx_class` that defines the class of each prediction, and a column `predx` that is a list of predx objects. In the process of importation, all predictions are validated (e.g.probabilities can't be negative). If conversion fails, (hopefully useful) errors messages are returned in the `predx` column.
+
+This function ingests a CSV file, converts the columns to those needed to create a `predx` object, and creates a `predx_df` object (throwing error messages if conversion fails).
+
+If the forecast will be stored in a different format, it may be helpful to include additional variables in the `predx_df` (e.g. submission date, month forecasted). These can be included as additional columns by providing a list to the optional argument `add_vars` as shown below. 
+
+```{r}
+fcast <- import_aedes_csv('aedes_null_forecast.csv', 
+  add_vars=list(due_date='2019-03-31', month='April', team='null'))
+class(fcast)
+fcast
+```
+
+## Verify expected predictions are included
+
+The `verify_expected` function can be used to check that expected targets are included in the `predx_df`. For the Aedes challenge, this includes Binary forecasts for two targets and 95 counties. These are specified in a list returned from `aedes_expected` below (note that it is a 2-level list to allow for additional combination).
+```
+list(
+  list(
+    target = c("Ae. aegypti", "Ae. albopictus"),
+    location =
+      c("California-Alameda", "California-Butte", "California-Colusa",
+      "California-Contra Costa", "California-Fresno", "California-Glenn",
+      "California-Imperial", "California-Inyo", "California-Kern",
+      "California-Kings", "California-Lake", "California-Los Angeles",
+      "California-Madera", "California-Marin", "California-Merced",
+      "California-Mono", "California-Monterey", "California-Napa",
+      "California-Orange", "California-Placer", "California-Riverside",
+      "California-Sacramento", "California-San Benito", "California-San Bernardino",
+      "California-San Diego", "California-San Francisco", "California-San Joaquin",
+      "California-San Luis Obispo", "California-San Mateo", "California-Santa Barbara",
+      "California-Santa Clara", "California-Santa Cruz", "California-Shasta",
+      "California-Solano", "California-Sonoma", "California-Stanislaus",
+      "California-Sutter", "California-Tulare", "California-Ventura",
+      "California-Yolo", "California-Yuba", "Connecticut-Fairfield",
+      "Connecticut-New Haven", "Florida-Calhoun", "Florida-Collier",
+      "Florida-Escambia", "Florida-Gadsden", "Florida-Hillsborough",
+      "Florida-Holmes", "Florida-Jackson", "Florida-Jefferson", "Florida-Lee",
+      "Florida-Liberty", "Florida-Madison", "Florida-Manatee", "Florida-Martin",
+      "Florida-Miami-Dade", "Florida-Okaloosa", "Florida-Osceola",
+      "Florida-Pasco", "Florida-Pinellas", "Florida-Polk", "Florida-Santa Rosa",
+      "Florida-St. Johns", "Florida-Taylor", "Florida-Wakulla", "Florida-Walton",
+      "Florida-Washington", "New Jersey-Cumberland", "New Jersey-Essex",
+      "New Jersey-Mercer", "New Jersey-Monmouth", "New Jersey-Morris",
+      "New Jersey-Salem", "New Jersey-Sussex", "New Jersey-Warren",
+      "New York-Bronx", "New York-Kings", "New York-Nassau", "New York-New York",
+      "New York-Queens", "New York-Richmond", "New York-Rockland",
+      "New York-Westchester", "North Carolina-Forsyth", "North Carolina-New Hanover",
+      "North Carolina-Pitt", "North Carolina-Transylvania", "North Carolina-Wake",
+      "Texas-Cameron", "Texas-Hidalgo", "Texas-Tarrant", "Wisconsin-Dane",
+      "Wisconsin-Milwaukee", "Wisconsin-Waukesha"),
+    predx_class = "Binary"
+  )
+)
+```
+
+This specific expected list, `aedes_expected`, is included in the `predx` package. Other verification lists can be made in this format and all can be used with the function `verify_expected` to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument `return_df = TRUE`.
+
+```{r}
+verify_expected(fcast, aedes_expected())
+```
+
+## Export as `predx` JSON (reduced size) or `predx` CSV
+
+To save space and facilitate sharing, transfer, and storage of `predx_df` objects, they can be exported as JSON objects using the function `export_json`. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the first two predictions in `fcast` below.
+
+```{r}
+export_json(fcast[1:2, ])
+json_tempfile = tempfile()
+export_json(fcast, filename = json_tempfile, overwrite = T)
+```
+
+Alternatively, `predx_df` objects can be exported as predx CSV files. This CSV formats differs slightly from the Aedes Forecasting Challenge template because it may contains additional columns (e.g. predx_class) and it does not contain the required column 'value'. The similar function, `export_aedes_csv` adds the value column so that the CSV can be uploaded to the Epidemic Prediction Initiative website (the extra columns are kept, but not interpreted by the website). 
+
+It may be helpful to generate forecasts in the `predx_df` format. Any forecasts generated in that format can be exported to the Aedes Forecasting Challenge submission format using `export_aedes_csv` (provided they include the required columns "type" and "unit" and have been verified using `verify_expected`).
+
+```{r}
+export_csv(fcast[1:2, ])
+export_aedes_csv(fcast[1:2, ])
+csv_tempfile <- tempfile()
+export_aedes_csv(fcast, filename = csv_tempfile, overwrite = T)
+```
+
+## Import `predx` JSON or `predx` CSV
+
+In addition to importing CSV files in the Aedes Forecasting Challenge format (as described at the beginning of this vignette), `predx` can be used to import `predx` JSON or `predx` CSV files.
+
+```{r}
+fcast <- import_json(json_tempfile)
+head(fcast)
+fcast_csv <- import_csv(csv_tempfile)
+head(fcast_csv)
+```
+

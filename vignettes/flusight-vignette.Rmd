@@ -1,0 +1,95 @@
+---
+title: "FluSight Vignette"
+author: "Michael Johansson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Flusight vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(predx)
+```
+
+## Import FluSight forecast
+
+The `import_flusight_csv` function uses several helper functions to convert FluSight-specific formatted CSV forecasts. The file name should contain the MMWR epidemiological week assigned to the forecast (e.g. "EW42") followed by a dash ("-"), the team name (e.g. "Hist_Avg") followed by a dash ("-"), and the submission date as an ISO data (YYYY-MM-DD, e.g. "2018-10-29").
+
+This import process creates a special, embedded "`predx_df`" data frame (a `tbl_df`, "tibble" object) with a row for every individual prediction (defined by target, location, and prediction type), a column `predx_class` that defines the class of each prediction, and a column `predx` that is a list of predx objects. In the process of importation, all predictions are validated (e.g. binned predictions must sum to 1.0) or (hopefully useful) errors messages are returned in the `predx` column.
+
+```{r}
+fcast <- import_flusight_csv('EW42-Hist-Avg-2018-10-29.csv')
+class(fcast)
+fcast
+```
+
+## Verify expected predictions are included
+
+The `verify_expected` function can be used to check that expected targets are included in the `predx_df`. For example, the national-level FluSight forecasts include forecasts for seven targets and 11 locations. The percentage forecasts (e.g. "Season peak percentage", "1 wk ahead") are classified as `BinLwr` predictions and the week targets ("Season onset", "Season peak week") are classifed as `BinCat` predictions. This set can be specified in a list with one list for each combination of required characteristics. For example, the target "Season peak percentage", should have a prediction for each location, and each predx class as specified in `flusight_ilinet_expected()[[1]]`, below.
+
+```
+list(
+  list(
+    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
+    location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+      "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+      "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = c("Point", "BinLwr")
+  ),
+  list(
+    target = c("Season onset", "Season peak week"),
+    location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+      "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+      "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = c("Point", "BinCat")
+  )
+)
+```
+
+This specific expected list, available with `flusight_ilinet_expected`, is included in the predx package along with `flusight_state_ilinet_expected` (for state ILINet forecasts) and `flusight_hospitalization_expected` (for hospitalization forecasts). Other verification lists can be made in this format and all can be used with the function `verify_expected` to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument `return_df = TRUE`.
+
+```{r}
+verify_expected(fcast, flusight_ilinet_expected())
+```
+
+## Export as predx JSON (reduced size), predx CSV, or FluSight CSV
+
+To save space and facilitate sharing, transfer, and storage of `predx_df` objects, they can be exported as JSON objects using the function `export_json`. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the first two predictions in `fcast` below.
+
+```{r}
+export_json(fcast[1:2, ])
+json_tempfile = tempfile()
+export_json(fcast, filename = json_tempfile, overwrite = T)
+```
+
+Alternatively, `predx_df` objects can be exported as predx CSV files or FluSight-formatted CSV files (those used for submissions on the FluSight website). These CSV formats differ in several ways: 
+
+1. The `predx` CSV contains additional columns for MMWR epidemic week, team, and submission date. In the FluSight CSV these are included in the file name only. 
+2. The `predx` CSV includes point predictions as individual rows whereas the FluSight CSV includes them in an additional column. 
+3. The FluSight CSV will allow upload on the EPI webpage.
+
+These differences are the results of making `predx` JSON and CSV formats more generic than the specific FluSight implementation.
+
+```{r}
+csv_tempfile <- tempfile()
+export_csv(fcast, filename = csv_tempfile, overwrite = T)
+export_flusight_csv(fcast[1:2, ])
+```
+
+## Import predx JSON or predx CSV
+
+In addition to importing CSV files in the FluSight format (as described at the beginning of this vignette), `predx` can be used to import `predx` JSON or `predx` CSV files.
+
+```{r}
+fcast <- import_json(json_tempfile)
+head(fcast)
+fcast_csv <- import_csv(csv_tempfile)
+head(fcast_csv)
+```
+

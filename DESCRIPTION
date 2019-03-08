@@ -1,0 +1,44 @@
+Package: predx
+Title: Tools for working with predictions
+Version: 0.0.0.9000
+Authors@R: person("Michael", "Johansson", email = "mjohansson@cdc.gov", role = c("aut", "cre"))
+Description: This package facilitates working with predictions. It includes robust, specific, and validated prediction classes (prediction distribution types), tools for converting and efficiently storing prediction data (CSV <-> R <-> JSON), and basic tools for analyzing predictions.
+Depends: R (>= 3.5.0)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
+Imports:
+  dplyr,
+  tidyr,
+  stringr,
+  jsonlite
+Collate: 
+    'get_predx.R'
+    'BinCat.R'
+    'BinLwr.R'
+    'check_single_value.R'
+    'check_probs_lt1.R'
+    'check_probs_gt0.R'
+    'check_no_NAs.R'
+    'Binary.R'
+    'Point.R'
+    'aedes.R'
+    'check_bins_ascend.R'
+    'check_probs_bins_length_match.R'
+    'check_probs_sum_to_one.R'
+    'check_uniform_bin_size.R'
+    'conversion_errors.R'
+    'export_csv.R'
+    'export_json.R'
+    'flusight.R'
+    'to_predx.R'
+    'import_csv.R'
+    'import_json.R'
+    'predx_df.R'
+    'verify_expected.R'
+VignetteBuilder: knitr

@@ -1,0 +1,35 @@
+#' Title
+#'
+#' @param json_file
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' import_json("vignettes/fcast_demo.json")
+import_json <- function(file) {
+  x <- jsonlite::fromJSON(file, flatten = T)
+
+  # identify and convert predx columns from import
+  these_predx_cols <- names(x)[stringr::str_detect(names(x), 'predx\\.')]
+  these_predx_cols <- stringr::str_remove(these_predx_cols, 'predx\\.')
+  names(x) <- stringr::str_remove(names(x), 'predx\\.')
+
+  # convert to predx_df
+  x <- dplyr::as_tibble(x)
+  x <- tidyr::nest(x, these_predx_cols, .key='predx')
+  x$predx <- lapply(x$predx,
+        function(x) {
+          lapply(x, { function(this_col) this_col[[1]] } )
+          })
+  x$predx <- to_predx(x$predx, x$predx_class)
+
+  if (any(check_conversion_errors(x$predx))) {
+    print("Conversion errors found. Check predx column for errors.")
+    return(x)
+  } else {
+    validate_predx_df(x)
+    return(x)
+  }
+}
+
