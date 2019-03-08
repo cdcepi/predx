@@ -23,8 +23,10 @@ The `import_flusight_csv` function uses several helper functions to convert FluS
 
 This import process creates a special, embedded "`predx_df`" data frame (a `tbl_df`, "tibble" object) with a row for every individual prediction (defined by target, location, and prediction type), a column `predx_class` that defines the class of each prediction, and a column `predx` that is a list of predx objects. In the process of importation, all predictions are validated (e.g. binned predictions must sum to 1.0) or (hopefully useful) errors messages are returned in the `predx` column.
 
+For this example, we use a submission with only national-level forecasts.
+
 ```{r}
-fcast <- import_flusight_csv('EW42-Hist-Avg-2018-10-29.csv')
+fcast <- import_flusight_csv('EW42-Hist-Avg-2018-10-29-National.csv')
 class(fcast)
 fcast
 ```
@@ -54,8 +56,23 @@ list(
 
 This specific expected list, available with `flusight_ilinet_expected`, is included in the predx package along with `flusight_state_ilinet_expected` (for state ILINet forecasts) and `flusight_hospitalization_expected` (for hospitalization forecasts). Other verification lists can be made in this format and all can be used with the function `verify_expected` to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument `return_df = TRUE`.
 
+For this example, we limit the expected forecasts to the national level.
+
 ```{r}
-verify_expected(fcast, flusight_ilinet_expected())
+national_expected <- list(
+    list(
+      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
+      location = c("US National"),
+      predx_class = c("Point", "BinLwr")
+    ),
+    list(
+      target = c("Season onset", "Season peak week"),
+      location = c("US National"),
+      predx_class = c("Point", "BinCat")
+    )
+  )
+
+verify_expected(fcast, national_expected)
 ```
 
 ## Export as predx JSON (reduced size), predx CSV, or FluSight CSV

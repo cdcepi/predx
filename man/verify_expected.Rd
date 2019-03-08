@@ -42,7 +42,7 @@ predx_demo <- predx_df(list(
 
 expected_demo <- list(
   list(
-    location = c('Mercury', 'Venus'),
+    location = c('Mercury', 'Venus', 'Earth'),
     target = 'habitability',
     predx_class = 'Binary')
   )

@@ -32,5 +32,5 @@ recode_flusight_bin_end_notincl(x)
 These functions are used to convert original FluSight-formatted csv and JSON files to `predx_df` objects.
 }
 \examples{
-x = import_flusight_csv('vignettes/EW42-Hist-Avg-2018-10-29.csv')
+x = import_flusight_csv('vignettes/EW42-Hist-Avg-2018-10-29-National.csv')
 }

@@ -8,7 +8,7 @@
 #' @export
 #' @importFrom magrittr '%>%'
 #' @examples
-#' x = import_flusight_csv('vignettes/EW42-Hist-Avg-2018-10-29.csv')
+#' x = import_flusight_csv('vignettes/EW42-Hist-Avg-2018-10-29-National.csv')
 #' @name flusight
 
 #' @export
