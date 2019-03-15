@@ -1,4 +1,4 @@
-context("Verify probability specifications")
+context("Verification of probability specifications")
 
 test_that("check_probs_gt0 detects negatives", {
   expect_equal(check_probs_gt0(seq(-1, 1, by = 0.5)),
