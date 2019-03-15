@@ -4,7 +4,6 @@
 #'
 #' @return
 #' @export
-#' @include get_predx.R
 #'
 #' @examples
 setClass('BinCat', #S4 class
@@ -56,9 +55,6 @@ lapply_BinCat <- function(x) {
 is.BinCat <- function(x) {
   class(x) == 'BinCat'
 }
-
-#setMethod("get_predx", "BinCat",
-#  function(x, ...) { x@predx })
 
 setMethod("as.list", "BinCat",
   function(x, ...) { list(cat=x@predx$cat, prob=x@predx$prob) })

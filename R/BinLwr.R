@@ -4,7 +4,6 @@
 #'
 #' @return
 #' @export
-#' @include get_predx.R
 #'
 #' @examples
 setClass('BinLwr', #S4 class
@@ -58,9 +57,6 @@ lapply_BinLwr <- function(x) {
 is.BinLwr <- function(x) {
   class(x) == 'BinLwr'
 }
-
-#setMethod("get_predx", "BinLwr",
-#  function(x, ...) { x@predx })
 
 setMethod("as.list", "BinLwr",
   function(x, ...) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })

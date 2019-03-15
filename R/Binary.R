@@ -2,7 +2,7 @@
 #'
 #' This predx class is used to capture binary probabilistic predictions. It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1. In JSON and CSV representations, this probability is named 'prob'.
 #'
-#' @slot pred Contains a single numeric probability (0 <= p <= 1).
+#' @slot predx Contains a single numeric probability (0 <= p <= 1).
 #'
 #' @return
 #' @export
@@ -41,13 +41,6 @@ lapply_Binary <- function(x) {
 is.Binary <- function(object) {
   class(object) == 'Binary'
 }
-
-#as.Binary <- function(predictions) {
-#  lapply(predictions, Binary)
-#}
-
-#setMethod("get_predx", "Binary",
-#  function(x, ...) { x@predx })
 
 setMethod("as.list", "Binary",
   function(x, ...) { list(prob = x@predx) })
