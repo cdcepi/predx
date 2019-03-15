@@ -28,6 +28,3 @@ is.predx <- function(x) {
   sapply(x, function(x) class(x)[1] %in% c('Point', 'Binary', 'BinCat', 'BinLwr'))
 }
 
-get_predx_cols <- function() {
-  c('point', 'prob', 'cat', 'lwr')
-}

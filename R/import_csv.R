@@ -5,7 +5,7 @@
 #'
 #' @return `predx` tibble
 #' @export
-#' @include to_predx.R
+#' @include get_predx_colnames.R to_predx.R
 #'
 #' @examples
 #' import_csv('vignettes/fcast_demo.csv')
@@ -15,8 +15,7 @@ import_csv <- function(file=NULL) {
   } else {
     x <- read.csv(file, stringsAsFactors=F)
   }
-  all_predx_cols <- get_predx_cols()
-  these_predx_cols <- all_predx_cols[all_predx_cols %in% names(x)]
+  these_predx_cols <- get_predx_colnames(x$predx_class)
 
   x <- tidyr::nest(x, !! these_predx_cols, .key='predx')
   x <- dplyr::mutate(x, predx = to_predx(predx, predx_class))
