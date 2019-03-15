@@ -6,7 +6,7 @@
 #' @include to_predx.R
 #'
 #' @examples
-#' predx_df(list(
+#' as.predx_df(list(
 #'  location = c('Mercury', 'Venus', 'Earth'),
 #'  target = 'habitability',
 #'  predx = list(Binary(0), Binary(0), Binary(1))
@@ -34,21 +34,14 @@ validate_predx_df <- function(x, return=F) {
   }
 }
 
-predx_df <- function(x) {
-  if (is.list(x)) x <- dplyr::as_tibble(x)
-  if (!('predx_class' %in% names(x))) x$predx_class <- sapply(x$predx, class)
-  validate_predx_df(x)
-  return(x)
-}
-
 is.predx_df <- function(x) {
   validate_predx_df(x, return=T)
 }
 
 as.predx_df <- function(x) {
-  if (is.predx_df(x)) return(x)
-  x <- try(predx_df(x))
-  if ('try-error' %in% class(x)) stop("x cannot be interpreted as a predx_df object")
+  if (is.list(x)) x <- dplyr::as_tibble(x)
+  if (!('predx_class' %in% names(x))) x$predx_class <- sapply(x$predx, class)
+  validate_predx_df(x)
   return(x)
 }
 

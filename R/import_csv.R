@@ -25,5 +25,5 @@ import_csv <- function(file=NULL) {
     return(x)
   }
 
-  predx_df(x)
+  as.predx_df(x)
 }

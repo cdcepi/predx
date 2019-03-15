@@ -11,7 +11,7 @@ validate_predx_df(x, return = F)
 Title
 }
 \examples{
-predx_df(list(
+as.predx_df(list(
  location = c('Mercury', 'Venus', 'Earth'),
  target = 'habitability',
  predx = list(Binary(0), Binary(0), Binary(1))
