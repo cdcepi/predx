@@ -1,6 +1,6 @@
 context("BinLwr")
 
-test_that("BinLwr accepts a matrix or data frame", {
+test_that("Creates BinLwr from matrix or data frame", {
   test_df <- data.frame(
     lwr = seq(0, 0.9, by=0.1),
     prob = rep(0.1, 10))
@@ -8,14 +8,11 @@ test_that("BinLwr accepts a matrix or data frame", {
   expect_is(BinLwr(as.matrix(test_df)), "BinLwr")
 })
 
-test_that("BinLwr detects sum != 1", {
+test_that("BinLwr rejects invalid objects", {
   test_df_badsum <- data.frame(
     lwr = seq(0, 0.9, by=0.1),
     prob = runif(10))
   expect_error(BinLwr(test_df_badsum))
-})
-
-test_that("BinLwr requires 0 <= prob <= 1", {
   test_df_probgt1 <- data.frame(
     lwr = seq(0, 0.9, by=0.1),
     prob = c(1.1, 0, 0, 0, 0, 0, 0, 0, 0, 0))
@@ -24,9 +21,6 @@ test_that("BinLwr requires 0 <= prob <= 1", {
     lwr = seq(0, 0.9, by=0.1),
     prob = c(-0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0))
   expect_error(BinLwr(test_df_negprob))
-})
-
-test_that("BinLwr detects problems with bins", {
   test_df_repbins <- data.frame(
     lwr = c(0.1, seq(0, 0.8, by=0.1)),
     prob = rep(0.1, 10))
@@ -36,3 +30,19 @@ test_that("BinLwr detects problems with bins", {
     prob = rep(0.1, 10))
   expect_error(BinLwr(test_df_badbindiff))
 })
+
+test_that("BinLwr data frame objects convert to predx", {
+  test_df <- data.frame(
+    lwr = seq(0, 0.9, by=0.1),
+    prob = rep(0.1, 10))
+  expect_silent(to_predx(list(test_df, test_df), rep('BinLwr', 2)))
+})
+
+test_that("Generics function", {
+  this_pred <- BinLwr(data.frame(
+    lwr = seq(0, 0.9, by=0.1),
+    prob = rep(0.1, 10)))
+  expect_equal(names(as.list(this_pred)), c('lwr', 'prob'))
+  expect_equal(dim(as.data.frame(this_pred)), c(10, 2))
+})
+
