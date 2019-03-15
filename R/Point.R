@@ -1,12 +1,13 @@
-#' Title
+#' Point predictions
 #'
-#' @slot predx numeric.
+#' This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named 'point'.
+#'
+#' @slot predx Contains a single numeric point prediction.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' @include get_predx.R
 #'
 setClass('Point', #S4 class
   slots = c(predx = 'numeric')
@@ -14,7 +15,10 @@ setClass('Point', #S4 class
 
 setValidity('Point', function(object) {
   ### structure checks
-  collect_tests <- check_no_NAs(object@predx)
+  collect_tests <- c(
+    check_no_NAs(object@predx),
+    if (is.numeric(object@predx)) TRUE else "requires a numeric value"
+    )
   ### content checks
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
@@ -38,9 +42,6 @@ is.Point <- function(object) {
   class(object) == 'Point'
 }
 
-#setMethod("get_predx", "Point",
-#  function(x, ...) { x@predx })
-
 setMethod("as.list", "Point",
   function(x, ...) { list(point = x@predx) })
 
@@ -50,7 +51,7 @@ setMethod("as.data.frame", "Point",
 # methods
 setMethod("quantile", "Point", function(x) { NA })
 
-setMethod("median", "Point", function(x) { NA })
+setMethod("median", "Point", function(x) { x@predx })
 
 
 

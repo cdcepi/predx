@@ -3,13 +3,16 @@
 \docType{class}
 \name{Point-class}
 \alias{Point-class}
-\title{Title}
+\title{Point predictions}
 \description{
-Title
+This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named 'point'.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{numeric.}
+\item{\code{predx}}{Contains a single numeric point prediction.}
 }}
 
+\examples{
+
+}

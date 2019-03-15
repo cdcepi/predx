@@ -1,27 +1,23 @@
-context("Binary")
+context("Point")
 
-test_that("Binary accepts probabilities", {
-  expect_is(Binary(0.9), "Binary")
-  expect_is(Binary(0), "Binary")
-  expect_is(Binary(1), "Binary")
+test_that("Creates Point object", {
+  expect_is(Point(0.9), "Point")
+  expect_is(Point(-1000), "Point")
 })
 
-test_that("Binary rejects non probabilities", {
-  expect_silent(Binary(0.9))
-  expect_error(Binary("0.9"))
-  expect_error(Binary(NA))
-  expect_error(Binary(-0.5))
-  expect_error(Binary(1.1))
-  expect_error(Binary(c(0.3, 0.7)))
+test_that("Point rejects invalid point predictions", {
+  expect_error(Point("9"))
+  expect_error(Point(NA))
+  expect_error(Point(c(15, 25)))
 })
 
-test_that("Binary data frame objects convert to predx", {
-  expect_silent(to_predx(list(data.frame(prob=0.1),
-    data.frame(prob=0.5)), rep('Binary', 2)))
+test_that("Point data frame objects convert to predx", {
+  expect_silent(to_predx(list(data.frame(point=10),
+    data.frame(point=15)), rep('Point', 2)))
 })
 
 test_that("Generics function", {
-  this_binary <- Binary(0.5)
-  expect_equal(as.list(this_binary), list(prob = 0.5))
-  expect_equal(as.data.frame(this_binary), data.frame(prob = 0.5))
+  this_pred <- Point(5)
+  expect_equal(as.list(this_pred), list(point = 5))
+  expect_equal(as.data.frame(this_pred), data.frame(point = 5))
 })

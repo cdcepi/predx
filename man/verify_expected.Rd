@@ -4,7 +4,7 @@
 \alias{verify_expected}
 \title{Verify inclusion of expected predictions}
 \usage{
-verify_expected(x, expected_list, return_df = F,
+verify_expected(x, expected_list, return_df = FALSE,
   print_ouput = !return_df)
 }
 \arguments{
@@ -15,7 +15,7 @@ verify_expected(x, expected_list, return_df = F,
 \item{print_output}{if \code{TRUE} (default) prints results}
 }
 \value{
-If any predictions in \code{expected_list} are not found or if additional predictions are found, the function will print the missing and/or additional rows (\code{print_out = TRUE}) or return a data.frame with a status designation for each missing and/or additional row (\code{return_df = TRUE}).
+If any predictions in \code{expected_list} are not found or if additional predictions are found, the function will print the missing and/or additional rows (\code{print_out = TRUE}) or return a data frame with a status designation for each missing and/or additional row (\code{return_df = TRUE}).
 }
 \description{
 Function to check a set of predictions for a set of expected predictions

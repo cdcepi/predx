@@ -10,6 +10,6 @@ This predx class is used to capture binary probabilistic predictions. It contain
 \section{Slots}{
 
 \describe{
-\item{\code{pred}}{Contains a single numeric probability (0 <= p <= 1).}
+\item{\code{predx}}{Contains a single numeric probability (0 <= p <= 1).}
 }}
 
