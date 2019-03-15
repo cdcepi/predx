@@ -38,8 +38,8 @@ is.Point <- function(object) {
   class(object) == 'Point'
 }
 
-setMethod("get_predx", "Point",
-  function(x, ...) { x@predx })
+#setMethod("get_predx", "Point",
+#  function(x, ...) { x@predx })
 
 setMethod("as.list", "Point",
   function(x, ...) { list(point = x@predx) })

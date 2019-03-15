@@ -57,8 +57,8 @@ is.BinCat <- function(x) {
   class(x) == 'BinCat'
 }
 
-setMethod("get_predx", "BinCat",
-  function(x, ...) { x@predx })
+#setMethod("get_predx", "BinCat",
+#  function(x, ...) { x@predx })
 
 setMethod("as.list", "BinCat",
   function(x, ...) { list(cat=x@predx$cat, prob=x@predx$prob) })

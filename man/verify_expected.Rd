@@ -37,7 +37,7 @@ Different sets in the first level list (e.g.
 predx_demo <- predx_df(list(
  location = c('Mercury', 'Venus', 'Earth'),
  target = 'habitability',
- predx = as.Binary(c(1e-4, 1e-4, 1))
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
 ))
 
 expected_demo <- list(

@@ -6,6 +6,6 @@
 #' @export
 #'
 #' @examples
-setGeneric("get_predx", function(x, ...) {
-  standardGeneric("get_predx")
-})
+#setGeneric("get_predx", function(x, ...) {
+#  standardGeneric("get_predx")
+#})

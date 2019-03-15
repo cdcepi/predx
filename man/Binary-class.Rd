@@ -3,13 +3,13 @@
 \docType{class}
 \name{Binary-class}
 \alias{Binary-class}
-\title{Title}
+\title{Binary predictions}
 \description{
-Title
+This predx class is used to capture binary probabilistic predictions. It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1. In JSON and CSV representations, this probability is named 'prob'.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{pred}}{numeric.}
+\item{\code{pred}}{Contains a single numeric probability (0 <= p <= 1).}
 }}
 

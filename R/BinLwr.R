@@ -59,8 +59,8 @@ is.BinLwr <- function(x) {
   class(x) == 'BinLwr'
 }
 
-setMethod("get_predx", "BinLwr",
-  function(x, ...) { x@predx })
+#setMethod("get_predx", "BinLwr",
+#  function(x, ...) { x@predx })
 
 setMethod("as.list", "BinLwr",
   function(x, ...) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })

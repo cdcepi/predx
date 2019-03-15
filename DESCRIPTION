@@ -36,6 +36,7 @@ Collate:
     'export_csv.R'
     'export_json.R'
     'flusight.R'
+    'get_predx_colnames.R'
     'to_predx.R'
     'import_csv.R'
     'import_json.R'

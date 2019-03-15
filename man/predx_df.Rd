@@ -14,6 +14,6 @@ Title
 predx_df(list(
  location = c('Mercury', 'Venus', 'Earth'),
  target = 'habitability',
- predx = as.Binary(c(0, 0, 1))
+ predx = list(Binary(0), Binary(0), Binary(1))
 ))
 }
