@@ -24,7 +24,6 @@ Collate:
     'check_probs_lt1.R'
     'check_probs_gt0.R'
     'check_no_NAs.R'
-    'get_predx.R'
     'Binary.R'
     'Point.R'
     'aedes.R'

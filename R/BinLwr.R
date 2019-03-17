@@ -1,6 +1,12 @@
-#' Title
+#' BinLwr class: Binned predictions with sequential numeric bins
 #'
-#' @slot predx matrix.
+#' This predx class is used to capture binned probabilistic predictions with sequential numeric bins.
+#'
+#' Specifically, bins are equally spaced and specified by an inclusive lower bound (\code{lwr}). If the bin width is 0.1, \code{lwr} could be 0, 0.1, 0.2, etc. in which case the bins are 0 <= x < 0.1, 0.1 <= x < 0.2, etc. The non-inclusive upper bound of the final bin is assumed to be the maximum value of \code{lwr} plus the uniform bin width. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+#'
+#' \code{lwr} and \code{prob} must be paired when a BinLwr object is created, but do not need to be in the order of \code{lwr}. The BinLwr object will order them.
+#'
+#' @slot predx numeric matrix with two columns: \code{lwr} and \code{prob}.
 #'
 #' @return
 #' @export
@@ -35,6 +41,8 @@ setValidity('BinLwr', function(object) {
   else collect_tests[collect_tests != TRUE]
 })
 
+#' @export
+#' @rdname BinLwr-class
 BinLwr <- function(x) {
   if (is.list(x)) x <- cbind(lwr=x$lwr, prob=x$prob)
   if (is.character(x)) x <- apply(x, 2, as.numeric)
@@ -54,13 +62,19 @@ lapply_BinLwr <- function(x) {
   }
 }
 
+#' @export
+#' @rdname BinLwr-class
 is.BinLwr <- function(x) {
   class(x) == 'BinLwr'
 }
 
+#' @export
+#' @rdname BinLwr-class
 setMethod("as.list", "BinLwr",
   function(x, ...) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })
 
+#' @export
+#' @rdname BinLwr-class
 setMethod("as.data.frame", "BinLwr",
   function(x, ...) { as.data.frame(x@predx) })
 

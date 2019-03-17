@@ -1,6 +1,10 @@
-#' An S4 class to represent a categorical probability distribution.
+#' BinCat class: Binned predictions with categorical bins
 #'
-#' @slot predx data.frame with two columns: cat (character) and prob (numeric).
+#' This predx class is used to capture binned probabilistic predictions with bins specified by strings.
+#'
+#' BinCat is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+#'
+#' @slot predx data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).
 #'
 #' @return
 #' @export
@@ -25,6 +29,7 @@ setValidity('BinCat', function(object) {
   ### content checks
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
+      if (!any(duplicated(object@predx$cat))) TRUE else "duplicated 'cat', all must be unique",
       check_probs_gt0(object@predx$prob),
       check_probs_lt1(object@predx$prob),
       check_probs_sum_to_one(object@predx$prob)
@@ -34,6 +39,8 @@ setValidity('BinCat', function(object) {
   else collect_tests[collect_tests != TRUE]
 })
 
+#' @export
+#' @rdname BinCat-class
 BinCat <- function(x) {
   if (is.matrix(x)) x <- as.data.frame(x)
   new("BinCat", predx = x)
@@ -52,13 +59,19 @@ lapply_BinCat <- function(x) {
 #  }
 }
 
+#' @export
+#' @rdname BinCat-class
 is.BinCat <- function(x) {
   class(x) == 'BinCat'
 }
 
+#' @export
+#' @rdname BinCat-class
 setMethod("as.list", "BinCat",
   function(x, ...) { list(cat=x@predx$cat, prob=x@predx$prob) })
 
+#' @export
+#' @rdname BinCat-class
 setMethod("as.data.frame", "BinCat",
   function(x, ...) { x@predx })
 

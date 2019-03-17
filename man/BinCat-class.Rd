@@ -3,13 +3,30 @@
 \docType{class}
 \name{BinCat-class}
 \alias{BinCat-class}
-\title{An S4 class to represent a categorical probability distribution.}
+\alias{BinCat}
+\alias{is.BinCat}
+\alias{as.list,BinCat-method}
+\alias{as.data.frame,BinCat-method}
+\title{BinCat class: Binned predictions with categorical bins}
+\usage{
+BinCat(x)
+
+is.BinCat(x)
+
+\S4method{as.list}{BinCat}(x, ...)
+
+\S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
+  ...)
+}
 \description{
-An S4 class to represent a categorical probability distribution.
+This predx class is used to capture binned probabilistic predictions with bins specified by strings.
+}
+\details{
+BinCat is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{data.frame with two columns: cat (character) and prob (numeric).}
+\item{\code{predx}}{data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).}
 }}
 

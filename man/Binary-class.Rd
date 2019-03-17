@@ -3,9 +3,23 @@
 \docType{class}
 \name{Binary-class}
 \alias{Binary-class}
-\title{Binary predictions}
+\alias{Binary}
+\alias{is.Binary}
+\alias{as.list,Binary-method}
+\alias{as.data.frame,Binary-method}
+\title{Binary class: Binary predictions}
+\usage{
+Binary(x)
+
+is.Binary(object)
+
+\S4method{as.list}{Binary}(x, ...)
+
+\S4method{as.data.frame}{Binary}(x, row.names = NULL, optional = FALSE,
+  ...)
+}
 \description{
-This predx class is used to capture binary probabilistic predictions. It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1. In JSON and CSV representations, this probability is named 'prob'.
+This predx class is used to capture binary probabilistic predictions. It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1. In JSON and CSV representations, this probability is named \code{prob}.
 }
 \section{Slots}{
 

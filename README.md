@@ -18,4 +18,4 @@ vignette('flusight-vignette')
 vignette('aedes-vignette')
 ```
 
-If you find bugs, please open an [issue in this respository](https://github.com/cdcepi/predx/issues).
+If you find bugs, please open an [issue](https://github.com/cdcepi/predx/issues).

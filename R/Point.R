@@ -1,6 +1,6 @@
-#' Point predictions
+#' Point class: Point predictions
 #'
-#' This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named 'point'.
+#' This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named \code{point}.
 #'
 #' @slot predx Contains a single numeric point prediction.
 #'
@@ -29,6 +29,8 @@ setValidity('Point', function(object) {
   else collect_tests[collect_tests != TRUE]
 })
 
+#' @export
+#' @rdname Point-class
 Point <- function(x) {
   new("Point", predx = x)
 }
@@ -38,13 +40,19 @@ lapply_Point <- function(x) {
     error=function(e) identity(e)))
 }
 
+#' @export
+#' @rdname Point-class
 is.Point <- function(object) {
   class(object) == 'Point'
 }
 
+#' @export
+#' @rdname Point-class
 setMethod("as.list", "Point",
   function(x, ...) { list(point = x@predx) })
 
+#' @export
+#' @rdname Point-class
 setMethod("as.data.frame", "Point",
   function(x, ...) { data.frame(point = x@predx) })
 

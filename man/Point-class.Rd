@@ -3,9 +3,23 @@
 \docType{class}
 \name{Point-class}
 \alias{Point-class}
-\title{Point predictions}
+\alias{Point}
+\alias{is.Point}
+\alias{as.list,Point-method}
+\alias{as.data.frame,Point-method}
+\title{Point class: Point predictions}
+\usage{
+Point(x)
+
+is.Point(object)
+
+\S4method{as.list}{Point}(x, ...)
+
+\S4method{as.data.frame}{Point}(x, row.names = NULL, optional = FALSE,
+  ...)
+}
 \description{
-This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named 'point'.
+This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named \code{point}.
 }
 \section{Slots}{
 
