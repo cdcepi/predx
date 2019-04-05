@@ -44,26 +44,26 @@
 #' verify_expected(predx_demo, expected_demo2)
 
 verify_expected <- function(x, expected_list, return_df = FALSE,
-    print_ouput = !return_df) {
+    print_output = !return_df) {
   if (!is.predx_df(x)) stop("x is not a predx_df")
   if (!is.list(expected_list)) stop("expected_list is not a list")
 
   all_exp <- dplyr::bind_rows(lapply(expected_list, expand.grid, stringsAsFactors=F))
   # check missing predictions
   missing_predx <- dplyr::setdiff(all_exp, x[ , names(all_exp)])
-  if (nrow(missing_predx) > 0 & print_ouput) {
+  if (nrow(missing_predx) > 0 & print_output) {
     print('The following predictions are missing:')
     print(dplyr::as_tibble(missing_predx))
   }
 
   # check additional predictions found
   additional_predx <- dplyr::setdiff(x[ , names(all_exp)], all_exp)
-  if (nrow(additional_predx) > 0 & print_ouput) {
+  if (nrow(additional_predx) > 0 & print_output) {
     print('The following additional predictions were found:')
     print(dplyr::as_tibble(additional_predx))
   }
 
-  if (nrow(missing_predx) == 0 & print_ouput) cat("All expected predictions found.\n")
+  if (nrow(missing_predx) == 0 & print_output) cat("All expected predictions found.\n")
   if (return_df) {
     return(dplyr::bind_rows(
       dplyr::mutate(missing_predx, status = 'missing'),
