@@ -1,8 +1,12 @@
 #' Point class: Point predictions
 #'
-#' This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named \code{point}.
+#' A predx class to capture point predictions.
 #'
-#' @slot predx Contains a single numeric point prediction.
+#' \code{Point} objects contain a single numeric point prediction with no other restrictions.
+#'
+#' In JSON and CSV representations, this value is named \code{point}.
+#'
+#' @slot predx A single numeric point prediction.
 #'
 #' @return
 #' @export

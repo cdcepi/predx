@@ -5,7 +5,7 @@
 \title{Verify inclusion of expected predictions}
 \usage{
 verify_expected(x, expected_list, return_df = FALSE,
-  print_ouput = !return_df)
+  print_output = !return_df)
 }
 \arguments{
 \item{x}{predx_df}

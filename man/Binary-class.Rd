@@ -19,11 +19,16 @@ is.Binary(object)
   ...)
 }
 \description{
-This predx class is used to capture binary probabilistic predictions. It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1. In JSON and CSV representations, this probability is named \code{prob}.
+A predx class to capture binary probabilistic predictions.
+}
+\details{
+It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1.
+
+In JSON and CSV representations, this probability is named \code{prob}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{Contains a single numeric probability (0 <= p <= 1).}
+\item{\code{predx}}{A single numeric probability.}
 }}
 

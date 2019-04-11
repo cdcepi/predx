@@ -7,6 +7,7 @@
 \alias{is.BinCat}
 \alias{as.list,BinCat-method}
 \alias{as.data.frame,BinCat-method}
+\alias{get_cats}
 \title{BinCat class: Binned predictions with categorical bins}
 \usage{
 BinCat(x)
@@ -17,16 +18,20 @@ is.BinCat(x)
 
 \S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
   ...)
+
+get_cats(x)
 }
 \description{
-This predx class is used to capture binned probabilistic predictions with bins specified by strings.
+A predx class to capture binned probabilistic predictions with categorical bins specified by strings.
 }
 \details{
-BinCat is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+\code{BinCat} is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+
+In JSON and CSV representations, the bins are named \code{cat} and the probabilities are named \code{prob}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).}
+\item{\code{predx}}{A data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).}
 }}
 

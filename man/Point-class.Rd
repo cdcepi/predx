@@ -19,12 +19,17 @@ is.Point(object)
   ...)
 }
 \description{
-This predx class is used to capture point predictions. It contains a single numeric point predictions with no other restrictions. In JSON and CSV representations, this value is named \code{point}.
+A predx class to capture point predictions.
+}
+\details{
+\code{Point} objects contain a single numeric point prediction with no other restrictions.
+
+In JSON and CSV representations, this value is named \code{point}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{Contains a single numeric point prediction.}
+\item{\code{predx}}{A single numeric point prediction.}
 }}
 
 \examples{

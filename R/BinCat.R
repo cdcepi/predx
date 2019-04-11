@@ -1,10 +1,12 @@
 #' BinCat class: Binned predictions with categorical bins
 #'
-#' This predx class is used to capture binned probabilistic predictions with bins specified by strings.
+#' A predx class to capture binned probabilistic predictions with categorical bins specified by strings.
 #'
-#' BinCat is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+#' \code{BinCat} is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
 #'
-#' @slot predx data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).
+#' In JSON and CSV representations, the bins are named \code{cat} and the probabilities are named \code{prob}.
+#'
+#' @slot predx A data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).
 #'
 #' @return
 #' @export

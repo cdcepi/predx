@@ -19,16 +19,18 @@ is.BinLwr(x)
   ...)
 }
 \description{
-This predx class is used to capture binned probabilistic predictions with sequential numeric bins.
+A predx class to capture binned probabilistic predictions with sequential numeric bins specified by the (inclusive) lower bound of each bin.
 }
 \details{
-Specifically, bins are equally spaced and specified by an inclusive lower bound (\code{lwr}). If the bin width is 0.1, \code{lwr} could be 0, 0.1, 0.2, etc. in which case the bins are 0 <= x < 0.1, 0.1 <= x < 0.2, etc. The non-inclusive upper bound of the final bin is assumed to be the maximum value of \code{lwr} plus the uniform bin width. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
+Bins are equally spaced and specified by an inclusive lower bound (\code{lwr}). If the bin width is 0.1, \code{lwr} could be 0, 0.1, 0.2, etc. in which case the bins are 0 <= x < 0.1, 0.1 <= x < 0.2, etc. The non-inclusive upper bound of the final bin is assumed to be the maximum value of \code{lwr} plus the uniform bin width. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
 
 \code{lwr} and \code{prob} must be paired when a BinLwr object is created, but do not need to be in the order of \code{lwr}. The BinLwr object will order them.
+
+In JSON and CSV representations, the bins are named \code{lwr} and the probabilities are named \code{prob}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{predx}}{numeric matrix with two columns: \code{lwr} and \code{prob}.}
+\item{\code{predx}}{A numeric matrix with two columns: \code{lwr} and \code{prob}.}
 }}
 
