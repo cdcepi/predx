@@ -35,7 +35,7 @@ import_aedes_csv <- function(file, add_vars=NULL) {
 #' @export
 #' @name aedes
 export_aedes_csv <- function(x, filename = NULL, overwrite = F) {
-  x$value <- sapply(x$predx, get_predx)
+  x$value <- sapply(x$predx, function(x) x@predx)
   export_csv(x, filename, overwrite)
 }
 
