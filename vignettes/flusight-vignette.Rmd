@@ -110,3 +110,23 @@ fcast_csv <- import_csv(csv_tempfile)
 head(fcast_csv)
 ```
 
+## Use with the FluSight package
+
+The `FluSight` package [https://github.com/jarad/FluSight]() includes numerous functions to work with forecasts, such as scoring and visualization. `predx` FluSight forecast can be converted to the format used by the `FluSight` package using `to_flusight_pkg_format`.
+
+```{r}
+fcast_flusight <- to_flusight_pkg_format(fcast)
+head(fcast_flusight)
+```
+
+This can then be used for scoring. Note that in this example, `fcast` only contains national level forecasts.
+
+```{r}
+library(FluSight)
+truth_1819 <- FluSight::create_truth(year = 2018)
+truth_1819 <- dplyr::filter(truth_1819, location == 'US National')
+FluSight::score_entry(fcast_flusight, truth_1819)
+```
+
+
+

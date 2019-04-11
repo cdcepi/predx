@@ -4,6 +4,7 @@
 \alias{flusight}
 \alias{import_flusight_csv}
 \alias{export_flusight_csv}
+\alias{to_flusight_pkg_format}
 \alias{prep_flusight}
 \alias{flusight_ilinet_expected}
 \alias{flusight_state_ilinet_expected}
@@ -14,6 +15,8 @@
 import_flusight_csv(file)
 
 export_flusight_csv(x, dir = NULL, overwrite = F)
+
+to_flusight_pkg_format(x)
 
 prep_flusight(x)
 

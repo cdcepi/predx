@@ -66,24 +66,18 @@ export_flusight_csv <- function(x, dir=NULL, overwrite=F) {
   }
 }
 
-# import_flusight_json <- function(json_file,
-#     team = NA, dueDate = NA, submissionDate = NA) {
-# x = transmute(fromJSON(json_file),
-# #    team = team,
-# #    dueDate = dueDate,
-# #    submissionDate = submissionDate,
-#     location = location,
-#     target = target,
-#     unit = unit,
-#     point = point,
-#     distrType = "BinLwr",
-#     pred = purrr::map(
-#       bins,
-#       function(x) {
-#         BinLwr(cbind(lwr = x$start, prob = x$value))
-#       })
-#     )
-# }
+#' @export
+#' @rdname flusight
+to_flusight_pkg_format <- function(x) {
+  mmwr_week <- as.numeric(x$mmwr_week[1])
+  x <- export_flusight_csv(x) %>%
+    dplyr::mutate(
+      bin_start_incl = ifelse(stringr::str_detect(bin_start_incl, '^\\d+$'),
+        paste0(bin_start_incl, '.0'), bin_start_incl),
+      forecast_week = mmwr_week
+    )
+  return(x)
+}
 
 #' @rdname flusight
 prep_flusight <- function(x) {
