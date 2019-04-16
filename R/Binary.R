@@ -1,8 +1,8 @@
 #' Binary class: Binary predictions
 #'
-#' A predx class to capture binary probabilistic predictions.
+#' A \code{predx} class for binary probabilistic predictions.
 #'
-#' It contains a single numeric probability that is greater than or equal to 0 and less than or equal to 1.
+#' A single numeric probability that is greater than or equal to 0 and less than or equal to 1.
 #'
 #' In JSON and CSV representations, this probability is named \code{prob}.
 #'
@@ -10,7 +10,6 @@
 #'
 #' @return
 #' @export
-#' @include check_no_NAs.R check_probs_gt0.R check_probs_lt1.R check_single_value.R
 #'
 #' @examples
 setClass('Binary', #S4 class

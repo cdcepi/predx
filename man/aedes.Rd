@@ -14,12 +14,16 @@ export_aedes_csv(x, filename = NULL, overwrite = F)
 aedes_expected()
 }
 \arguments{
-\item{file}{a csv file formatted for the EPI Aedes Forecasting Challenge}
+\item{file}{A csv file formatted for the EPI Aedes Forecasting Challenge.}
+}
+\value{
+A \code{predx} data frame.
 }
 \description{
-These functions are used to convert Epidemic Prediction Initiative (EPI) Aedes Forecasting Challenge-formatted csv and JSON files to `predx_df` objects.
+These functions are used to convert an Epidemic Prediction Initiative Aedes Forecasting Challenge-formatted csv file to a \code{predx} data frame.
 }
 \examples{
-x = import_aedes_csv('vignettes/aedes_null_forecast.csv',
-  add_vars=list(due_date='2019-03-31', team='null'))
+csv_tempfile <- tempfile()
+write.csv(aedesdemo, csv_tempfile, row.names=F)
+import_aedes_csv(csv_tempfile)
 }

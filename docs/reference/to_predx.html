@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper functions for working with lists of predx objects (e.g. a predx column containing a variety of predx classes) — to_predx • predx</title>
+<title>Helper function for creating lists of <code>predx</code> objects (e.g. a column in a data frame containing a variety of <code>predx</code> objects) — to_predx • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Helper functions for working with lists of predx objects (e.g. a predx column containing a variety of predx classes) — to_predx" />
+<meta property="og:title" content="Helper function for creating lists of <code>predx</code> objects (e.g. a column in a data frame containing a variety of <code>predx</code> objects) — to_predx" />
 
-<meta property="og:description" content="`to_predx` returns a list of predx objects." />
+<meta property="og:description" content="This function converts a list of data frames (with appropriate columns as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,14 +109,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper functions for working with lists of predx objects (e.g. a predx column containing a variety of predx classes)</h1>
+    <h1>Helper function for creating lists of <code>predx</code> objects (e.g. a column in a data frame containing a variety of <code>predx</code> objects)</h1>
     
     <div class="hidden name"><code>to_predx.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>`to_predx` returns a list of predx objects.</p>
+    <p>This function converts a list of data frames (with appropriate columns as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail.</p>
     
     </div>
 
@@ -127,23 +127,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>list of data.frames (see Note)</p></td>
+      <td><p>A list of data.frames.</p></td>
     </tr>
     <tr>
       <th>class</th>
-      <td><p>character vector of predx class names</p></td>
+      <td><p>A character vector of <code>predx</code> class names</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list of predx objects with error messages for failed conversions.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function converts a list of data.frames (with appropriate columns as
-required for each predx class) and a vector of predx class names. It
-returns a list of predx objects with (hopefully helpful) errors should any conversions fail.</p>
+    <p>A list of <code>predx</code> objects with error messages for failed conversions.</p>
     
 
   </div>
@@ -153,8 +147,6 @@ returns a list of predx objects with (hopefully helpful) errors should any conve
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

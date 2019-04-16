@@ -1,7 +1,6 @@
-#' Title
+#' Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns
 #'
-#'
-#' @return
+#' @return Error message or TRUE.
 #' @export
 #' @include to_predx.R
 #'

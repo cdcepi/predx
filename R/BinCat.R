@@ -1,6 +1,6 @@
 #' BinCat class: Binned predictions with categorical bins
 #'
-#' A predx class to capture binned probabilistic predictions with categorical bins specified by strings.
+#' A \code{predx} class for binned probabilistic predictions with categorical bins specified by strings.
 #'
 #' \code{BinCat} is flexible as it can be used for any binned predictions. Individual probabilities (\code{prob}) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.
 #'

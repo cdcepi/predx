@@ -2,16 +2,26 @@
 % Please edit documentation in R/import_json.R
 \name{import_json}
 \alias{import_json}
-\title{Title}
+\title{Import a \code{predx}-formatted JSON file as a \code{predx} data frame}
 \usage{
 import_json(file)
 }
 \arguments{
 \item{json_file}{}
 }
+\value{
+A \code{predx} data frame.
+}
 \description{
-Title
+Import a \code{predx}-formatted JSON file as a \code{predx} data frame
 }
 \examples{
-import_json("vignettes/fcast_demo.json")
+predx_demo <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+))
+json_tempfile <- tempfile()
+export_json(predx_demo, json_tempfile)
+import_json(json_tempfile)
 }

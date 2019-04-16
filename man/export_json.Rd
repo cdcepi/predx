@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_json.R
 \name{export_json}
 \alias{export_json}
-\title{Title}
+\title{Export a \code{predx} data frame as a \code{predx}-formatted JSON file}
 \usage{
 export_json(x, filename = NA, overwrite = F)
 }
@@ -11,11 +11,21 @@ export_json(x, filename = NA, overwrite = F)
 
 \item{overwrite}{boolean. Overwrite the file if it already exists.}
 
-\item{forecast}{predx_df.}
+\item{forecast}{A \code{predx} data frame.}
+}
+\value{
+Silently saves a \code{predx}-formatted JSON if \code{filename} is specified. Otherwise returns a string in the format of the \code{predx} JSON.
 }
 \description{
-Title
+Export a \code{predx} data frame as a \code{predx}-formatted JSON file
 }
 \examples{
-export_json(x, 'inst/data/flusight.json')
+predx_demo <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+))
+json_tempfile <- tempfile()
+export_json(predx_demo, json_tempfile)
+import_json(json_tempfile)
 }

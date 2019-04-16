@@ -19,7 +19,7 @@ is.Point(object)
   ...)
 }
 \description{
-A predx class to capture point predictions.
+A \code{predx} class for point predictions.
 }
 \details{
 \code{Point} objects contain a single numeric point prediction with no other restrictions.

@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Tools for working with Aedes challenge forecasts — aedes" />
 
-<meta property="og:description" content="These functions are used to convert Epidemic Prediction Initiative (EPI) Aedes Forecasting Challenge-formatted csv and JSON files to `predx_df` objects." />
+<meta property="og:description" content="These functions are used to convert an Epidemic Prediction Initiative Aedes Forecasting Challenge-formatted csv file to a predx data frame." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,7 +116,7 @@
 
     <div class="ref-description">
     
-    <p>These functions are used to convert Epidemic Prediction Initiative (EPI) Aedes Forecasting Challenge-formatted csv and JSON files to `predx_df` objects.</p>
+    <p>These functions are used to convert an Epidemic Prediction Initiative Aedes Forecasting Challenge-formatted csv file to a <code>predx</code> data frame.</p>
     
     </div>
 
@@ -131,20 +131,40 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>a csv file formatted for the EPI Aedes Forecasting Challenge</p></td>
+      <td><p>A csv file formatted for the EPI Aedes Forecasting Challenge.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>predx</code> data frame.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'>import_aedes_csv</span>(<span class='st'>'vignettes/aedes_null_forecast.csv'</span>,
-  <span class='kw'>add_vars</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>due_date</span><span class='kw'>=</span><span class='st'>'2019-03-31'</span>, <span class='kw'>team</span><span class='kw'>=</span><span class='st'>'null'</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'vignettes/aedes_null_forecast.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>csv_tempfile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>()
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/write.table'>write.csv</a></span>(<span class='no'>aedesdemo</span>, <span class='no'>csv_tempfile</span>, <span class='kw'>row.names</span><span class='kw'>=</span><span class='no'>F</span>)
+<span class='fu'>import_aedes_csv</span>(<span class='no'>csv_tempfile</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 190 x 9</span><span>
+#&gt;    location      target    type   unit  due_date month team  predx_class predx  
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'> 1</span><span> California-A~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 2</span><span> California-A~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 3</span><span> California-B~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 4</span><span> California-B~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 5</span><span> California-C~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 6</span><span> California-C~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 7</span><span> California-C~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 8</span><span> California-C~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'> 9</span><span> California-F~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'>10</span><span> California-F~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      </span><span style='color: #555555;'>&lt;S4: B</span><span>~
+#&gt; </span><span style='color: #555555;'># ... with 180 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

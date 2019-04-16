@@ -5,7 +5,7 @@
 #'
 #' @param x predx_df
 #' @param expected_list list of lists (see Note)
-#' @param return_df if \code{TRUE} (default is \{FALSE}) will return a list of missing predictions
+#' @param return_df if \code{TRUE} (default is \code{FALSE}) will return a list of missing predictions
 #' @param print_output if \code{TRUE} (default) prints results
 #'
 #' @note \code{expected_list} is a two-level list of sets of expected predictions.
@@ -21,55 +21,55 @@
 #'
 #' @examples
 #' predx_demo <- as.predx_df(list(
-#'  location = c('Mercury', 'Venus', 'Earth'),
-#'  target = 'habitability',
-#'  predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+#'   location = c("Mercury", "Venus", "Earth"),
+#'   target = "habitability",
+#'   predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
 #' ))
 #'
 #' expected_demo <- list(
 #'   list(
-#'     location = c('Mercury', 'Venus', 'Earth'),
-#'     target = 'habitability',
-#'     predx_class = 'Binary')
+#'     location = c("Mercury", "Venus", "Earth"),
+#'     target = "habitability",
+#'     predx_class = "Binary"
 #'   )
+#' )
+#'
 #'
 #' expected_demo2 <- list(
 #'   list(
-#'     location = c('Mercury', 'Mars'),
-#'     target = 'habitability',
-#'     predx_class = 'Binary')
+#'     location = c("Mercury", "Mars"),
+#'     target = "habitability",
+#'     predx_class = "Binary"
 #'   )
+#' )
 #'
 #' verify_expected(predx_demo, expected_demo)
 #' verify_expected(predx_demo, expected_demo2)
-
 verify_expected <- function(x, expected_list, return_df = FALSE,
-    print_output = !return_df) {
+                            print_output = !return_df) {
   if (!is.predx_df(x)) stop("x is not a predx_df")
   if (!is.list(expected_list)) stop("expected_list is not a list")
 
-  all_exp <- dplyr::bind_rows(lapply(expected_list, expand.grid, stringsAsFactors=F))
+  all_exp <- dplyr::bind_rows(lapply(expected_list, expand.grid, stringsAsFactors = F))
   # check missing predictions
-  missing_predx <- dplyr::setdiff(all_exp, x[ , names(all_exp)])
+  missing_predx <- dplyr::setdiff(all_exp, x[, names(all_exp)])
   if (nrow(missing_predx) > 0 & print_output) {
-    print('The following predictions are missing:')
+    print("The following predictions are missing:")
     print(dplyr::as_tibble(missing_predx))
   }
 
   # check additional predictions found
-  additional_predx <- dplyr::setdiff(x[ , names(all_exp)], all_exp)
+  additional_predx <- dplyr::setdiff(x[, names(all_exp)], all_exp)
   if (nrow(additional_predx) > 0 & print_output) {
-    print('The following additional predictions were found:')
+    print("The following additional predictions were found:")
     print(dplyr::as_tibble(additional_predx))
   }
 
   if (nrow(missing_predx) == 0 & print_output) cat("All expected predictions found.\n")
   if (return_df) {
     return(dplyr::bind_rows(
-      dplyr::mutate(missing_predx, status = 'missing'),
-      dplyr::mutate(additional_predx, status = 'additional')
-      ))
+      dplyr::mutate(missing_predx, status = "missing"),
+      dplyr::mutate(additional_predx, status = "additional")
+    ))
   }
 }
-
-

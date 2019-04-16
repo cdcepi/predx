@@ -7,10 +7,12 @@
 check_probs_bins_length_match(probs, bins)
 }
 \arguments{
-\item{bins}{}
+\item{probs}{Probability vector.}
+
+\item{bins}{Bin vector.}
 }
 \value{
-TRUE or error message
+TRUE or error message.
 }
 \description{
 Check that number of forecast bins matches number of probabilties.

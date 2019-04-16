@@ -1,7 +1,7 @@
 #' Check that all probabilities are positive
 #'
 #' @param probs vector of probabilities for a single forecast
-#' @export
+#'
 #' @return TRUE or error message
 #'
 check_single_value <- function(x) {

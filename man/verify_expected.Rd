@@ -12,6 +12,8 @@ verify_expected(x, expected_list, return_df = FALSE,
 
 \item{expected_list}{list of lists (see Note)}
 
+\item{return_df}{if \code{TRUE} (default is \code{FALSE}) will return a list of missing predictions}
+
 \item{print_output}{if \code{TRUE} (default) prints results}
 }
 \value{
@@ -31,24 +33,27 @@ predx types.
 }
 \examples{
 predx_demo <- as.predx_df(list(
- location = c('Mercury', 'Venus', 'Earth'),
- target = 'habitability',
- predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+  location = c("Mercury", "Venus", "Earth"),
+  target = "habitability",
+  predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
 ))
 
 expected_demo <- list(
   list(
-    location = c('Mercury', 'Venus', 'Earth'),
-    target = 'habitability',
-    predx_class = 'Binary')
+    location = c("Mercury", "Venus", "Earth"),
+    target = "habitability",
+    predx_class = "Binary"
   )
+)
+
 
 expected_demo2 <- list(
   list(
-    location = c('Mercury', 'Mars'),
-    target = 'habitability',
-    predx_class = 'Binary')
+    location = c("Mercury", "Mars"),
+    target = "habitability",
+    predx_class = "Binary"
   )
+)
 
 verify_expected(predx_demo, expected_demo)
 verify_expected(predx_demo, expected_demo2)

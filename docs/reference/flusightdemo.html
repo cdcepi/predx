@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BinLwr class: Binned predictions with sequential numeric bins — BinLwr-class • predx</title>
+<title>Example FluSight forecast — flusightdemo • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="BinLwr class: Binned predictions with sequential numeric bins — BinLwr-class" />
+<meta property="og:title" content="Example FluSight forecast — flusightdemo" />
 
-<meta property="og:description" content="A predx class for binned probabilistic predictions with sequential numeric bins specified by the (inclusive) lower bound of each bin." />
+<meta property="og:description" content="National-level forecasts for the &quot;Hist-Avg&quot; forecast from Epidemiological Week 42 in 2018" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,40 +109,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>BinLwr class: Binned predictions with sequential numeric bins</h1>
+    <h1>Example FluSight forecast</h1>
     
-    <div class="hidden name"><code>BinLwr-class.Rd</code></div>
+    <div class="hidden name"><code>flusightdemo.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A <code>predx</code> class for binned probabilistic predictions with sequential numeric bins specified by the (inclusive) lower bound of each bin.</p>
+    <p>National-level forecasts for the "Hist-Avg" forecast from Epidemiological Week 42 in 2018</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>BinLwr</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.BinLwr</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for BinLwr</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for BinLwr</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>flusightdemo</span>)</pre>
         
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Bins are equally spaced and specified by an inclusive lower bound (<code>lwr</code>). If the bin width is 0.1, <code>lwr</code> could be 0, 0.1, 0.2, etc. in which case the bins are 0 &lt;= x &lt; 0.1, 0.1 &lt;= x &lt; 0.2, etc. The non-inclusive upper bound of the final bin is assumed to be the maximum value of <code>lwr</code> plus the uniform bin width. Individual probabilities (<code>prob</code>) must be greater than or equal to 0 and less than or equal to 1 and the vector of probabilities must sum to 1.</p>
-<p><code>lwr</code> and <code>prob</code> must be paired when a BinLwr object is created, but do not need to be in the order of <code>lwr</code>. The BinLwr object will order them.</p>
-<p>In JSON and CSV representations, the bins are named <code>lwr</code> and the probabilities are named <code>prob</code>.</p>
+    <p>A data frame input from the original submission CSV.</p>
     
-    <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    
-    <dl class='dl-horizontal'>
-<dt><code>predx</code></dt><dd><p>A numeric matrix with two columns: <code>lwr</code> and <code>prob</code>.</p></dd>
-</dl>
+    <p>https://github.com/cdcepi/FluSight-forecasts/tree/master/2018-2019/Hist-Avg</p>
     
 
   </div>
@@ -150,9 +136,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#details">Details</a></li>
+      <li><a href="#format">Format</a></li>
 
-      <li><a href="#slots">Slots</a></li>
+      <li><a href="#source">Source</a></li>
           </ul>
 
   </div>

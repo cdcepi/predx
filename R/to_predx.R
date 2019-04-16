@@ -1,15 +1,11 @@
-#' Helper functions for working with lists of predx objects (e.g. a predx column containing a variety of predx classes)
+#' Helper function for creating lists of \code{predx} objects (e.g. a column in a data frame containing a variety of \code{predx} objects)
 #'
-#' `to_predx` returns a list of predx objects.
+#' This function converts a list of data frames (with appropriate columns as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail.
 #'
-#' This function converts a list of data.frames (with appropriate columns as
-#' required for each predx class) and a vector of predx class names. It
-#' returns a list of predx objects with (hopefully helpful) errors should any conversions fail.
+#' @param x A list of data.frames.
+#' @param class A character vector of \code{predx} class names
 #'
-#' @param x list of data.frames (see Note)
-#' @param class character vector of predx class names
-#'
-#' @return list of predx objects with error messages for failed conversions.
+#' @return A list of \code{predx} objects with error messages for failed conversions.
 #' @export
 #'
 #' @examples

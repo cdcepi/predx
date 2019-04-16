@@ -29,11 +29,16 @@ flusight_hospitalization_expected()
 recode_flusight_bin_end_notincl(x)
 }
 \arguments{
-\item{file}{a csv file formatted for the FluSight forecasting challenge}
+\item{file}{A csv file formatted for the FluSight forecasting challenge.}
+}
+\value{
+A \code{predx} data frame.
 }
 \description{
-These functions are used to convert original FluSight-formatted csv and JSON files to `predx_df` objects.
+These functions are used to convert an original FluSight-formatted csv file to \code{predx} data frame.
 }
 \examples{
-x = import_flusight_csv('vignettes/EW42-Hist-Avg-2018-10-29-National.csv')
+csv_tempfile <- tempfile('EW42-Hist-Avg-2018-10-29', fileext='.csv')
+write.csv(flusightdemo, csv_tempfile, row.names=F)
+import_flusight_csv(csv_tempfile)
 }

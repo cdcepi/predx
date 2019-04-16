@@ -1,12 +1,19 @@
-#' Title
+#' Import a \code{predx}-formatted JSON file as a \code{predx} data frame
 #'
 #' @param json_file
 #'
-#' @return
+#' @return A \code{predx} data frame.
 #' @export
 #'
 #' @examples
-#' import_json("vignettes/fcast_demo.json")
+#' predx_demo <- as.predx_df(list(
+#'  location = c('Mercury', 'Venus', 'Earth'),
+#'  target = 'habitability',
+#'  predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+#' ))
+#' json_tempfile <- tempfile()
+#' export_json(predx_demo, json_tempfile)
+#' import_json(json_tempfile)
 import_json <- function(file) {
   x <- jsonlite::fromJSON(file, flatten = T)
 

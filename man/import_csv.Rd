@@ -2,19 +2,26 @@
 % Please edit documentation in R/import_csv.R
 \name{import_csv}
 \alias{import_csv}
-\title{Import predx formatted csv}
+\title{Import a \code{predx}-formatted CSV file as a \code{predx} data frame}
 \usage{
 import_csv(file = NULL)
 }
 \arguments{
-\item{file}{A csv file/path *or* a data.frame object. Either should have a `predx_class` column and whatever columns are needed for the incldued classes (e.g. point, bin, prob).}
+\item{file}{A csv file/path *or* a data.frame object. Either should have a \code{predx_class} column and whatever columns are needed for the included classes (e.g. point, bin, prob).}
 }
 \value{
-`predx` tibble
+A \code{predx} data frame.
 }
 \description{
-Import predx formatted csv
+Import a \code{predx}-formatted CSV file as a \code{predx} data frame
 }
 \examples{
-import_csv('vignettes/fcast_demo.csv')
+#' predx_demo <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+))
+csv_tempfile <- tempfile()
+export_csv(predx_demo, csv_tempfile)
+import_csv(csv_tempfile)
 }

@@ -5,7 +5,7 @@
 \alias{validate_predx_df}
 \alias{is.predx_df}
 \alias{as.predx_df}
-\title{Title}
+\title{Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns}
 \usage{
 validate_predx_df(x, return = F)
 
@@ -13,8 +13,11 @@ is.predx_df(x)
 
 as.predx_df(x)
 }
+\value{
+Error message or TRUE.
+}
 \description{
-Title
+Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns
 }
 \examples{
 as.predx_df(list(

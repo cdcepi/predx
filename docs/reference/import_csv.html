@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import predx formatted csv — import_csv • predx</title>
+<title>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Import predx formatted csv — import_csv" />
+<meta property="og:title" content="Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv" />
 
-<meta property="og:description" content="Import predx formatted csv" />
+<meta property="og:description" content="Import a predx-formatted CSV file as a predx data frame" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,14 +109,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import predx formatted csv</h1>
+    <h1>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</h1>
     
     <div class="hidden name"><code>import_csv.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import predx formatted csv</p>
+    <p>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</p>
     
     </div>
 
@@ -127,17 +127,28 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>A csv file/path *or* a data.frame object. Either should have a `predx_class` column and whatever columns are needed for the incldued classes (e.g. point, bin, prob).</p></td>
+      <td><p>A csv file/path *or* a data.frame object. Either should have a <code>predx_class</code> column and whatever columns are needed for the included classes (e.g. point, bin, prob).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>`predx` tibble</p>
+    <p>A <code>predx</code> data frame.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>import_csv</span>(<span class='st'>'vignettes/fcast_demo.csv'</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'vignettes/fcast_demo.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
+    <pre class="examples"><div class='input'>#' predx_demo <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+))
+csv_tempfile <- tempfile()
+export_csv(predx_demo, csv_tempfile)
+import_csv(csv_tempfile)
+</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:2:43: unexpected ','</span>
+#&gt; <span class='error'>1: #' predx_demo &lt;- as.predx_df(list(</span>
+#&gt; <span class='error'>2:  location = c('Mercury', 'Venus', 'Earth'),</span>
+#&gt; <span class='error'>                                             ^</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

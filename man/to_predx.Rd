@@ -2,23 +2,18 @@
 % Please edit documentation in R/to_predx.R
 \name{to_predx}
 \alias{to_predx}
-\title{Helper functions for working with lists of predx objects (e.g. a predx column containing a variety of predx classes)}
+\title{Helper function for creating lists of \code{predx} objects (e.g. a column in a data frame containing a variety of \code{predx} objects)}
 \usage{
 to_predx(x, class)
 }
 \arguments{
-\item{x}{list of data.frames (see Note)}
+\item{x}{A list of data.frames.}
 
-\item{class}{character vector of predx class names}
+\item{class}{A character vector of \code{predx} class names}
 }
 \value{
-list of predx objects with error messages for failed conversions.
+A list of \code{predx} objects with error messages for failed conversions.
 }
 \description{
-`to_predx` returns a list of predx objects.
-}
-\details{
-This function converts a list of data.frames (with appropriate columns as
-required for each predx class) and a vector of predx class names. It
-returns a list of predx objects with (hopefully helpful) errors should any conversions fail.
+This function converts a list of data frames (with appropriate columns as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail.
 }

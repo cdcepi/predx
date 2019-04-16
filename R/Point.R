@@ -1,6 +1,6 @@
 #' Point class: Point predictions
 #'
-#' A predx class to capture point predictions.
+#' A \code{predx} class for point predictions.
 #'
 #' \code{Point} objects contain a single numeric point prediction with no other restrictions.
 #'

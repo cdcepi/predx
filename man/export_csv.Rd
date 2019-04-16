@@ -2,17 +2,30 @@
 % Please edit documentation in R/export_csv.R
 \name{export_csv}
 \alias{export_csv}
-\title{Title}
+\title{Export a \code{predx} data frame as a \code{predx}-formatted CSV file}
 \usage{
 export_csv(x, filename = NULL, overwrite = F)
 }
 \arguments{
+\item{x}{A \code{predx} data frame.}
+
 \item{filename}{Path or file. If NA, data.frame is returned.}
 
 \item{overwrite}{Overwrite the file if it already exists? Default is FALSE.}
-
-\item{forecast}{predx_df object.}
+}
+\value{
+Silently saves a \code{predx}-formatted CSV if \code{filename} is specified. Otherwise returns a flat data frame in the format of the \code{predx} csv (i.e. without embedded \code{predx} objects).
 }
 \description{
-Title
+Export a \code{predx} data frame as a \code{predx}-formatted CSV file
+}
+\examples{
+predx_demo <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
+))
+csv_tempfile <- tempfile()
+export_csv(predx_demo, csv_tempfile)
+import_csv(csv_tempfile)
 }
