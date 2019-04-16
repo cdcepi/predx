@@ -76,7 +76,7 @@
       <h1>FluSight Vignette</h1>
                         <h4 class="author">Michael Johansson</h4>
             
-            <h4 class="date">2019-04-15</h4>
+            <h4 class="date">2019-04-16</h4>
       
       
       <div class="hidden name"><code>flusight-vignette.Rmd</code></div>
@@ -91,7 +91,8 @@
 <p>The <code>import_flusight_csv</code> function uses several helper functions to convert FluSight-specific formatted CSV forecasts. The file name should contain the MMWR epidemiological week assigned to the forecast (e.g. “EW42”) followed by a dash (“-”), the team name (e.g. “Hist_Avg”) followed by a dash (“-”), and the submission date as an ISO data (YYYY-MM-DD, e.g. “2018-10-29”).</p>
 <p>This import process creates a special, embedded “<code>predx_df</code>” data frame (a <code>tbl_df</code>, “tibble” object) with a row for every individual prediction (defined by target, location, and prediction type), a column <code>predx_class</code> that defines the class of each prediction, and a column <code>predx</code> that is a list of predx objects. In the process of importation, all predictions are validated (e.g. binned predictions must sum to 1.0) or (hopefully useful) errors messages are returned in the <code>predx</code> column.</p>
 <p>For this example, we use a submission with only national-level forecasts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">import_flusight_csv</a></span>(<span class="st">'EW42-Hist-Avg-2018-10-29-National.csv'</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)
+fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">import_flusight_csv</a></span>(<span class="st">'EW42-Hist-Avg-2018-10-29-National.csv'</span>)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)
 <span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span>
 fcast

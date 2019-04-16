@@ -76,7 +76,7 @@
       <h1>Aedes Vignette</h1>
                         <h4 class="author">Michael Johansson</h4>
             
-            <h4 class="date">2019-04-15</h4>
+            <h4 class="date">2019-04-16</h4>
       
       
       <div class="hidden name"><code>aedes-vignette.Rmd</code></div>
@@ -92,7 +92,8 @@
 <p>First, the forecaster should create their forecast in the CSV format specified for the Aedes Forecast Challenge by the CDC Epidemic Prediction Initiative (provided as a template at <a href="https://predict.cdc.gov">predict.cdc.gov</a>). Forecasts matching this template can be imported using the <code>import_aedes_csv</code> function. This function imports the CSV and converts it to a special, embedded “<code>predx_df</code>” data frame (a <code>tbl_df</code>, “tibble” object) with a row for every individual prediction (defined by target, location, and prediction type), a column <code>predx_class</code> that defines the class of each prediction, and a column <code>predx</code> that is a list of predx objects. In the process of importation, all predictions are validated (e.g.probabilities can’t be negative). If conversion fails, (hopefully useful) errors messages are returned in the <code>predx</code> column.</p>
 <p>This function ingests a CSV file, converts the columns to those needed to create a <code>predx</code> object, and creates a <code>predx_df</code> object (throwing error messages if conversion fails).</p>
 <p>If the forecast will be stored in a different format, it may be helpful to include additional variables in the <code>predx_df</code> (e.g. submission date, month forecasted). These can be included as additional columns by providing a list to the optional argument <code>add_vars</code> as shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/aedes.html">import_aedes_csv</a></span>(<span class="st">'aedes_null_forecast.csv'</span>, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)
+fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/aedes.html">import_aedes_csv</a></span>(<span class="st">'aedes_null_forecast.csv'</span>, 
   <span class="dt">add_vars=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">due_date=</span><span class="st">'2019-03-31'</span>, <span class="dt">month=</span><span class="st">'April'</span>, <span class="dt">team=</span><span class="st">'null'</span>))
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)
 <span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span>

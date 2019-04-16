@@ -75,16 +75,12 @@
 <div id="predx-an-r-package-for-predictions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#predx-an-r-package-for-predictions" class="anchor"></a><code>predx</code>: An R package for predictions</h3>
-<p><code>predx</code> aims to be a flexible, lightweight framework for working with predictions. The package implements a standardized embedded data frame in R which captures a variety of prediction types. Predictions can be imported from or exported to CSV or JSON files.</p>
-<p>Currently, the package supports basic manipulation and verification of predictions, including those for Epidemic Prediction Initiative challenges. The FluSight and Aedes Vignettes demonstrate how the package can be used for forecasts for these challenges.</p>
+<p><code>predx</code> aims to be a flexible, lightweight framework for working with predictions. The package implements a standardized embedded data frame in R which captures a variety of prediction types. Predictions can be imported from or exported to CSV or JSON files, including a <code>predx</code>-specific JSON format that drastically reduces file sizes. This format can be particularly helpful for transfering large sets of forecasts.</p>
+<p>Currently, the package supports basic manipulation and verification of predictions, including those for Epidemic Prediction Initiative challenges. The <a href="http://cdcepi.github.io/predx/articles/flusight-vignette.html">FluSight Vignette</a> and <a href="http://cdcepi.github.io/predx/articles/aedes-vignette.html">Aedes Vignette</a> demonstrate how the package can be used to validate forecasts for these challenges. Code is also provided to interface with the <a href="https://github.com/jarad/FluSight">FluSight</a> R package for scoring FluSight forecasts (see the <a href="http://cdcepi.github.io/predx/articles/flusight-vignette.html">FluSight Vignette</a>).</p>
 <p>Four <code>predx</code> classes (S4) are now available: <code>Point</code>, <code>Binary</code>, <code>BinLwr</code>, and <code>BinCat</code>. More will be added in the future.</p>
-<p>To get started, load the devtools package and install <code>predx</code> from this repository with the vignettes.</p>
+<p>To get started, load the devtools package and install <code>predx</code> from this repository with the vignettes. The documentation is currently quite sparse, but the vignettes provide a guide to basic functions.</p>
 <pre><code>library(devtools)
 devtools::install_github('cdcepi/predx', build_vignettes = TRUE)</code></pre>
-<p>The documentation is quite sparse except for the <a href="https://github.com/cdcepi/predx/blob/master/vignettes/flusight-vignette.Rmd">FluSight</a> and <a href="https://github.com/cdcepi/predx/blob/master/vignettes/aedes-vignette.Rmd">Aedes</a> vignettes.</p>
-<pre><code>library(predx)
-vignette('flusight-vignette')
-vignette('aedes-vignette')</code></pre>
 <p>If you find bugs, please open an <a href="https://github.com/cdcepi/predx/issues">issue</a>.</p>
 </div>
   </div>
