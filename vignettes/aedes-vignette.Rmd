@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(predx)
 ```
 
 This package contains tools for working with prediction data. Much of the functionality is still in development, but forecast validation has already been implemented for the Aedes Forecasting Challenge.
@@ -28,6 +27,7 @@ This function ingests a CSV file, converts the columns to those needed to create
 If the forecast will be stored in a different format, it may be helpful to include additional variables in the `predx_df` (e.g. submission date, month forecasted). These can be included as additional columns by providing a list to the optional argument `add_vars` as shown below. 
 
 ```{r}
+library(predx)
 fcast <- import_aedes_csv('aedes_null_forecast.csv', 
   add_vars=list(due_date='2019-03-31', month='April', team='null'))
 class(fcast)

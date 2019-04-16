@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(predx)
 ```
 
 ## Import FluSight forecast
@@ -26,6 +25,7 @@ This import process creates a special, embedded "`predx_df`" data frame (a `tbl_
 For this example, we use a submission with only national-level forecasts.
 
 ```{r}
+library(predx)
 fcast <- import_flusight_csv('EW42-Hist-Avg-2018-10-29-National.csv')
 class(fcast)
 fcast
