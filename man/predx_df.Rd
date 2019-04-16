@@ -3,9 +3,15 @@
 \name{predx_df}
 \alias{predx_df}
 \alias{validate_predx_df}
+\alias{is.predx_df}
+\alias{as.predx_df}
 \title{Title}
 \usage{
 validate_predx_df(x, return = F)
+
+is.predx_df(x)
+
+as.predx_df(x)
 }
 \description{
 Title
