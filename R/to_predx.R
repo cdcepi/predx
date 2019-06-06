@@ -16,11 +16,11 @@ to_predx <- function(x, class) {
   predx[class == 'Binary'] <- lapply_Binary(x[class == 'Binary'])
   predx[class == 'BinCat'] <- lapply_BinCat(x[class == 'BinCat'])
   predx[class == 'BinLwr'] <- lapply_BinLwr(x[class == 'BinLwr'])
+  predx[class == 'Sample'] <- lapply_Sample(x[class == 'Sample'])
   return(predx)
 }
 
 #' @export
 is.predx <- function(x) {
-  sapply(x, function(x) class(x)[1] %in% c('Point', 'Binary', 'BinCat', 'BinLwr'))
+  sapply(x, function(x) class(x)[1] %in% c('Point', 'Binary', 'BinCat', 'BinLwr', 'Sample'))
 }
-
