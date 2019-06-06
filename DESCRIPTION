@@ -22,6 +22,7 @@ Collate:
     'BinLwr.R'
     'Binary.R'
     'Point.R'
+    'Sample.R'
     'aedes.R'
     'aedesdemo-data.R'
     'check_bins_ascend.R'
