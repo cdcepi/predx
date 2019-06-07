@@ -2,16 +2,16 @@
 % Please edit documentation in R/check_no_NAs.R
 \name{check_no_NAs}
 \alias{check_no_NAs}
-\title{Title}
+\title{Check for NA entries}
 \usage{
 check_no_NAs(object)
 }
 \arguments{
-\item{bins}{}
+\item{object}{}
 }
 \value{
 TRUE or error message
 }
 \description{
-Title
+Check for NA entries
 }

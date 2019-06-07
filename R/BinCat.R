@@ -84,10 +84,3 @@ setMethod("quantile", "BinCat", function(x) { NA })
 setMethod("median", "BinCat", function(x) { NA })
 
 setMethod("mean", "BinCat", function(x) { NA })
-
-#' @export
-#' @rdname BinCat-class
-get_cats <- function(x) {
-  if (!is.BinCat(x)) stop('function for BinCat objects only')
-  x@predx$cat
-}

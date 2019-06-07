@@ -1,6 +1,6 @@
-#' Title
+#' Check for NA entries
 #'
-#' @param bins
+#' @param object
 #'
 #' @return  TRUE or error message
 #'

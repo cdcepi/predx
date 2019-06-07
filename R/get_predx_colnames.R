@@ -12,7 +12,8 @@ get_predx_colnames <- function(classes) {
     BinCat = c('cat', 'prob'),
     BinLwr = c('lwr', 'prob'),
     Point = c('point'),
-    Sample = 'sample'
+    Sample = 'sample',
+    SampleCat = 'sample'
   )
   these_colnames <- all_colnames[unique(classes)]
   unique(unlist(these_colnames))
