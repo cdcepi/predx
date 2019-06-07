@@ -15,5 +15,5 @@ to_predx(x, class)
 A list of \code{predx} objects with error messages for failed conversions.
 }
 \description{
-This function converts a list of data frames (with appropriate columns as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail.
+This function converts a list of data frames (with appropriate columns and/or attributes as required for each predx class) and a vector of predx class names to a list of predx objects with (hopefully helpful) errors should any conversions fail.
 }
