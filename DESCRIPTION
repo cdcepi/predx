@@ -45,5 +45,6 @@ Collate:
     'import_csv.R'
     'import_json.R'
     'predx_df.R'
+    'transform_predx.R'
     'verify_expected.R'
 VignetteBuilder: knitr
