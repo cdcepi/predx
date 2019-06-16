@@ -21,7 +21,7 @@ validate_predx_df <- function(x, return=F) {
   ### content checks
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
-      if (all(is.predx(x$predx))) TRUE else "non-predx objects found in predx column",
+      if (all(sapply(x$predx, is.predx))) TRUE else "non-predx objects found in predx column",
       if (all(x$predx_class == sapply(x$predx, class))) TRUE
       else "predx_class column does not match predx classes"
     )
@@ -47,4 +47,3 @@ as.predx_df <- function(x) {
   validate_predx_df(x)
   return(x)
 }
-

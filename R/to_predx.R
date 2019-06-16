@@ -23,5 +23,5 @@ to_predx <- function(x, class) {
 
 #' @export
 is.predx <- function(x) {
-  sapply(x, function(x) class(x)[1] %in% c('Point', 'Binary', 'BinCat', 'BinLwr', 'Sample', 'SampleCat'))
+  class(x)[1] %in% c('Point', 'Binary', 'BinCat', 'BinLwr', 'Sample', 'SampleCat')
 }
