@@ -85,6 +85,7 @@ to_flusight_pkg_format <- function(x) {
 
 #' @rdname flusight
 prep_flusight <- function(x) {
+  names(x) <- tolower(names(x))
   # assign appropriate predx classes
   dplyr::mutate(x,
     predx_class = NA,
