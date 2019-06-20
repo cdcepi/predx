@@ -4,7 +4,7 @@
 
 Currently, the package supports basic manipulation and verification of predictions, including those for Epidemic Prediction Initiative challenges. The [FluSight Vignette](http://cdcepi.github.io/predx/articles/flusight-vignette.html) and [Aedes Vignette](http://cdcepi.github.io/predx/articles/aedes-vignette.html) demonstrate how the package can be used to validate forecasts for these challenges. Code is also provided to interface with the [FluSight](https://github.com/jarad/FluSight) R package for scoring FluSight forecasts (see the [FluSight Vignette](http://cdcepi.github.io/predx/articles/flusight-vignette.html)).
 
-Four `predx` classes (S4) are now available: `Point`, `Binary`, `BinLwr`, and `BinCat`. More will be added in the future.
+Six `predx` classes (S4) are now available: `Point`, `Binary`, `BinLwr`, `BinCat`, `Sample`, and `SampleCat`. More will be added in the future, brief descriptions of current and planned classes are available [here](https://github.com/cdcepi/predx/blob/master/predx_classes.md).
 
 To get started, load the devtools package and install `predx` from this repository with the vignettes. The documentation is currently quite sparse, but the vignettes provide a guide to basic functions.
 ```
