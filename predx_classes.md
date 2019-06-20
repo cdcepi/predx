@@ -1,6 +1,6 @@
-## Point forecasts
+## Point predictions
 ### __Point__
-	A numeric point prediction
+	A numeric point prediction.
 	
 	Validity:
   	- Not NA
@@ -49,13 +49,13 @@
 	- Probabilities sum to 1.0
 	
 ### __Sample__
-	Numeric samples from a distribution
+	Numeric samples.
   
 	Validity:
 	- No NAs
 	
 ### __SampleCat__ 
-	String samples from categories
+	Character string samples from categories.
 
 	Two vectors:
   	- __cat__: vector of character strings representing each possible outcome category
@@ -64,4 +64,4 @@
 	Validity:
 	- No NAs in _cat_ or _sample_
 	- No duplications in _cat_
-	- No _sample_ that is not included in _cat_
+	- No _sample_ that is not included in _cat_ (but each _cat_ does not necessarily need to be include in _sample_)
