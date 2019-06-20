@@ -1,27 +1,29 @@
 ## Point forecasts
-- __Point__: A numeric point prediction
+### __Point__
+	A numeric point prediction
 	
 	Validity:
   	- Not NA
 	
 
 ## Continuous distributions
-- __Normal__: mean, sd
-- __Log-normal__: mean, sd
-- __Gamma__: shape, rate
-- __Beta__: a, b
+### __Normal__: mean, sd
+### __Log-normal__: mean, sd
+### __Gamma__: shape, rate
+### __Beta__: a, b
 
 
 ## Discrete distributions
-- __Binary__: prob
-- __Binomial__: p, n
-- __Poisson__: mean
-- __Negative-Binomial__: r, p
-- __Negative-Binomial2__: mean, dispersion
+### __Binary__: prob
+### __Binomial__: p, n
+### __Poisson__: mean
+### __Negative-Binomial__: r, p
+### __Negative-Binomial2__: mean, dispersion
 
 
 ## Empirical distributions
-- __BinLwr__: Binned distribution defined by inclusive lower bounds for each bin.
+### __BinLwr__
+	Binned distribution defined by inclusive lower bounds for each bin.
 
 	A data.frame object with two columns:
 	- __lwr__: inclusive numeric lower bounds for sequential bins (equal intervals)
@@ -34,7 +36,8 @@
 	- Bins are in ascending order
 	- Bin sizes are uniform
 	
-- __BinCat__: Binned distribution with a category for each bin. 
+### __BinCat__
+	Binned distribution with a category for each bin. 
 
 	A data.frame object with two columns:
   	- __cat__: character strings representing each possible outcome category
@@ -45,12 +48,14 @@
 	- Probabilities are positive
 	- Probabilities sum to 1.0
 	
-- __Sample__: Numeric samples from a distribution
+### __Sample__
+	Numeric samples from a distribution
   
 	Validity:
 	- No NAs
 	
-- __SampleCat__: String samples from categories
+### __SampleCat__ 
+	String samples from categories
 
 	Two vectors:
   	- __cat__: vector of character strings representing each possible outcome category
