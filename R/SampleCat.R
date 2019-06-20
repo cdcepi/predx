@@ -26,7 +26,7 @@ setValidity('SampleCat', function(object) {
     if (all.equal(sort(names(object@predx)), c('cat', 'sample'))) TRUE
       else "Should contain components 'cat' and 'sample'",
     if (is.character(object@predx$cat)) TRUE else "requires strings for 'cat'",
-    if (is.character(object@predx$sample)) TRUE else "requires numeric for 'sample'"
+    if (is.character(object@predx$sample)) TRUE else "requires character for 'sample'"
   )
   ### content checks
   if (all(collect_tests == TRUE)) {
