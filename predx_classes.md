@@ -1,5 +1,6 @@
 ## Point forecasts
 - __Point__: A numeric point prediction
+	
 	Validity:
   	- Not NA
 	
