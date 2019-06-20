@@ -24,8 +24,8 @@
 - __BinLwr__: Binned distribution defined by inclusive lower bounds for each bin.
 
 	A data.frame object with two columns:
-	- __lwr__: vector of inclusive lower bounds for sequential bins (numeric, equal intervals)
-  	- __prob__: vector of probabilities assigned to each bin 
+	- __lwr__: inclusive numeric lower bounds for sequential bins (equal intervals)
+  	- __prob__: probabilities assigned to each bin 
 
 	Validity:
 	- No NAs in _lwr_ or _prob_
@@ -37,8 +37,8 @@
 - __BinCat__: Binned distribution with a category for each bin. 
 
 	A data.frame object with two columns:
-  	- __cat__: vector of character strings representing each possible outcome category
-  	- __prob__: vector of probabilities assigned to each bin 
+  	- __cat__: character strings representing each possible outcome category
+  	- __prob__: probabilities assigned to each bin 
 
 	Validity:
 	- No NAs in _lwr_ or _prob_
