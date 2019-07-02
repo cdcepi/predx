@@ -2,6 +2,8 @@
 #'
 #'These functions are used to convert an original FluSight-formatted csv file to \code{predx} data frame.
 #'
+#'Note that if point forecasts (optional in the FluSight challenge) are included but are NAs, they will be removed (NA is not allowed in the Point class).
+#'
 #' @param file A csv file formatted for the FluSight forecasting challenge.
 #'
 #' @return A \code{predx} data frame.
@@ -114,7 +116,8 @@ prep_flusight <- function(x) {
     prob = ifelse(!is.na(prob) & 0.9 <= sum_prob & sum_prob <= 1.1,
       prob / sum_prob, prob)
     ) %>%
-  dplyr::select(-sum_prob, -type, -bin_start_incl, -bin_end_notincl, -value)
+  dplyr::select(-sum_prob, -type, -bin_start_incl, -bin_end_notincl, -value) %>%
+  dplyr::filter(!(predx_class == 'Point' & is.na(point)))
 }
 
 #' @export
