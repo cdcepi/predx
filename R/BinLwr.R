@@ -85,10 +85,11 @@ setMethod("as.data.frame", "BinLwr",
 #' @rdname BinLwr-class
 setMethod("transform_predx", "BinLwr",
   function(x, to_class, ...) {
-    if (to_class == 'BinLwr') {
+    if (to_class == class(x)) {
       return(x)
     } else {
-      warning(paste0('NAs introduced by coercion, BinLwr to ', to_class, ' not available'))
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
+        to_class, ' not available'))
       return(NA)
     }
   })

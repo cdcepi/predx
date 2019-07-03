@@ -1,13 +1,12 @@
 #' Transform a \code{predx} objects to a target predx class.
 #'
 #' @details This function converts a \code{predx} object or list of \code{predx}
-#' objects to a specified \code{predx} class.  Currently, the only supported
-#' transformations are from Sample to BinLwr and from SampleCat to BinCat.
+#' objects to another specified \code{predx} class when possible.
 #'
 #' @param x a \code{predx} object or list of \code{predx} objects
 #' @param to_class character specifying \code{predx} class to convert to, e.g. "BinLwr"
-#' @param cat if class is "BinCat", character vector of categorical bin names
-#' @param lwr if class is "BinLwr", numeric vector of lower bounds for bins
+#' @param cat if to_class is "BinCat", character vector of categorical bin names
+#' @param lwr if to_class is "BinLwr", numeric vector of lower bounds for bins
 #'
 #' @return A \code{predx} object or list of \code{predx} objects, with NAs and warning messages for failed conversions.
 #' @export

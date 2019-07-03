@@ -85,7 +85,8 @@ setMethod("transform_predx", "BinCat",
     if (to_class == class(x)) {
       return(x)
     } else {
-      warning(paste0('NAs introduced by coercion, BinCat to ', to_class, ' not available'))
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
+        to_class, ' not available'))
       return(NA)
     }
   })

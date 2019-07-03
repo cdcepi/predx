@@ -94,7 +94,7 @@ setMethod("transform_predx", "SampleCat",
         stringsAsFactors = FALSE)
       return(BinCat(bincat_df))
     } else {
-      warning(paste0('NAs introduced by coercion, SampleCat to ',
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
         to_class, ' not available'))
       return(NA)
     }

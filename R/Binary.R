@@ -63,10 +63,11 @@ setMethod("as.data.frame", "Binary",
 #' @rdname Binary-class
 setMethod("transform_predx", "Binary",
   function(x, to_class, ...) {
-    if (to_class == 'Binary') {
+    if (to_class == class(x)) {
       return(x)
     } else {
-      warning(paste0('NAs introduced by coercion, Binary to ', to_class, ' not available'))
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
+        to_class, ' not available'))
       return(NA)
     }
   })
