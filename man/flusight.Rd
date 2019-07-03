@@ -37,6 +37,9 @@ A \code{predx} data frame.
 \description{
 These functions are used to convert an original FluSight-formatted csv file to \code{predx} data frame.
 }
+\details{
+Note that if point forecasts (optional in the FluSight challenge) are included but are NAs, they will be removed (NA is not allowed in the Point class).
+}
 \examples{
 csv_tempfile <- tempfile('EW42-Hist-Avg-2018-10-29', fileext='.csv')
 write.csv(flusightdemo, csv_tempfile, row.names=F)

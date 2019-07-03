@@ -6,6 +6,8 @@
 #'
 #' @export
 get_cats <- function(x) {
-  if (!(is.BinCat(x) || is.SampleCat(x))) stop('function for BinCat and SampleCat objects only')
+  if (!(is.BinCat(x) || is.SampleCat(x))) {
+    stop('Function for BinCat and SampleCat objects only')
+  }
   x@predx$cat
 }

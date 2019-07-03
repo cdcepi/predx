@@ -12,6 +12,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 setClass('BinLwr', #S4 class
@@ -79,6 +80,18 @@ setMethod("as.list", "BinLwr",
 #' @rdname BinLwr-class
 setMethod("as.data.frame", "BinLwr",
   function(x, ...) { as.data.frame(x@predx) })
+
+#' @export
+#' @rdname BinLwr-class
+setMethod("transform_predx", "BinLwr",
+  function(x, to_class, ...) {
+    if (to_class == 'BinLwr') {
+      return(x)
+    } else {
+      warning(paste0('NAs introduced by coercion, BinLwr to ', to_class, ' not available'))
+      return(NA)
+    }
+  })
 
 ######################################################################
 ### methods

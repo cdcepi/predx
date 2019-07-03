@@ -7,6 +7,7 @@
 \alias{is.Sample}
 \alias{as.list,Sample-method}
 \alias{as.data.frame,Sample-method}
+\alias{transform_predx,Sample-method}
 \title{Sample class: Samples from a predictive distribution}
 \usage{
 Sample(x)
@@ -17,6 +18,8 @@ is.Sample(x)
 
 \S4method{as.data.frame}{Sample}(x, row.names = NULL, optional = FALSE,
   ...)
+
+\S4method{transform_predx}{Sample}(x, to_class, cat = NULL, ...)
 }
 \description{
 A \code{predx} class for samples from a predictive distribution.

@@ -7,6 +7,7 @@
 \alias{is.BinLwr}
 \alias{as.list,BinLwr-method}
 \alias{as.data.frame,BinLwr-method}
+\alias{transform_predx,BinLwr-method}
 \title{BinLwr class: Binned predictions with sequential numeric bins}
 \usage{
 BinLwr(x)
@@ -17,6 +18,8 @@ is.BinLwr(x)
 
 \S4method{as.data.frame}{BinLwr}(x, row.names = NULL, optional = FALSE,
   ...)
+
+\S4method{transform_predx}{BinLwr}(x, to_class, ...)
 }
 \description{
 A \code{predx} class for binned probabilistic predictions with sequential numeric bins specified by the (inclusive) lower bound of each bin.

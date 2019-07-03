@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 setClass('Binary', #S4 class
@@ -58,4 +59,14 @@ setMethod("as.list", "Binary",
 setMethod("as.data.frame", "Binary",
   function(x, ...) { data.frame(prob = x@predx) })
 
-
+#' @export
+#' @rdname Binary-class
+setMethod("transform_predx", "Binary",
+  function(x, to_class, ...) {
+    if (to_class == 'Binary') {
+      return(x)
+    } else {
+      warning(paste0('NAs introduced by coercion, Binary to ', to_class, ' not available'))
+      return(NA)
+    }
+  })

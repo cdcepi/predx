@@ -7,6 +7,7 @@
 \alias{is.Binary}
 \alias{as.list,Binary-method}
 \alias{as.data.frame,Binary-method}
+\alias{transform_predx,Binary-method}
 \title{Binary class: Binary predictions}
 \usage{
 Binary(x)
@@ -17,6 +18,8 @@ is.Binary(object)
 
 \S4method{as.data.frame}{Binary}(x, row.names = NULL, optional = FALSE,
   ...)
+
+\S4method{transform_predx}{Binary}(x, to_class, ...)
 }
 \description{
 A \code{predx} class for binary probabilistic predictions.

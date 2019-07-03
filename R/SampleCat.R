@@ -11,6 +11,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 setClass('SampleCat', #S4 class
@@ -73,6 +74,30 @@ setMethod("as.data.frame", "SampleCat",
     result <- data.frame(sample = x@predx$sample, stringsAsFactors = FALSE)
     attr(result, "cat") <- x@predx$cat
     return(result)
+  })
+
+#' @export
+#' @rdname SampleCat-class
+setMethod("transform_predx", "SampleCat",
+  function(x, to_class, cat, ...) {
+    if (to_class == class(x)) {
+      return(x)
+    } else if (to_class == 'BinCat') {
+      if (any(!(get_cats(x) %in% cat))) {
+        stop('All categories present in x must be included in the cat argument')
+      }
+      bincat_df <- data.frame(
+        cat = cat,
+        prob = sapply(cat, function(cat_i) {
+          mean(x@predx$sample == cat_i)
+        }),
+        stringsAsFactors = FALSE)
+      return(BinCat(bincat_df))
+    } else {
+      warning(paste0('NAs introduced by coercion, SampleCat to ',
+        to_class, ' not available'))
+      return(NA)
+    }
   })
 
 ######################################################################

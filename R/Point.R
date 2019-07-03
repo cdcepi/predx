@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 #'
@@ -59,6 +60,19 @@ setMethod("as.list", "Point",
 #' @rdname Point-class
 setMethod("as.data.frame", "Point",
   function(x, ...) { data.frame(point = x@predx) })
+
+#' @export
+#' @rdname Point-class
+setMethod("transform_predx", "Point",
+  function(x, to_class, ...) {
+    if (to_class == class(x)) {
+      return(x)
+    } else {
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
+        to_class, ' not available'))
+      return(NA)
+    }
+  })
 
 # methods
 setMethod("quantile", "Point", function(x) { NA })

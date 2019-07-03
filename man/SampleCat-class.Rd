@@ -7,6 +7,7 @@
 \alias{is.SampleCat}
 \alias{as.list,SampleCat-method}
 \alias{as.data.frame,SampleCat-method}
+\alias{transform_predx,SampleCat-method}
 \title{SampleCat class: Samples from a predictive distribution over categorical bins.}
 \usage{
 SampleCat(x)
@@ -17,6 +18,8 @@ is.SampleCat(x)
 
 \S4method{as.data.frame}{SampleCat}(x, row.names = NULL,
   optional = FALSE, ...)
+
+\S4method{transform_predx}{SampleCat}(x, to_class, cat, ...)
 }
 \description{
 A \code{predx} class for samples from a predictive distribution over

@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 setClass('Sample', #S4 class
@@ -52,6 +53,30 @@ setMethod("as.list", "Sample",
 #' @rdname Sample-class
 setMethod("as.data.frame", "Sample",
   function(x, ...) { data.frame(sample = x@predx) })
+
+#' @export
+#' @rdname Sample-class
+setMethod("transform_predx", "Sample",
+  function(x, to_class, cat=NULL, ...) {
+    if (to_class == class(x)) {
+      return(x)
+    } else if (to_class == 'BinLwr') {
+      bin_width <- lwr[2] - lwr[1]
+      bins <- c(lwr, lwr[length(lwr)] + bin_width)
+      bin_counts <- hist(x@predx, bins, right = FALSE, plot = FALSE)$counts
+
+      binlwr_df <- data.frame(
+        lwr = lwr,
+        prob = bin_counts / sum(bin_counts)
+      )
+      return(BinLwr(binlwr_df))
+    } else {
+      warning(paste0('NAs introduced by coercion, ', class(x), ' to ',
+        to_class, ' not available'))
+      return(NA)
+    }
+  })
+
 
 ######################################################################
 ### methods

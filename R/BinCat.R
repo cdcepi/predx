@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @include transform_predx.R
 #'
 #' @examples
 setClass('BinCat', #S4 class
@@ -76,6 +77,18 @@ setMethod("as.list", "BinCat",
 #' @rdname BinCat-class
 setMethod("as.data.frame", "BinCat",
   function(x, ...) { x@predx })
+
+#' @export
+#' @rdname BinCat-class
+setMethod("transform_predx", "BinCat",
+  function(x, to_class, ...) {
+    if (to_class == class(x)) {
+      return(x)
+    } else {
+      warning(paste0('NAs introduced by coercion, BinCat to ', to_class, ' not available'))
+      return(NA)
+    }
+  })
 
 ######################################################################
 ### methods

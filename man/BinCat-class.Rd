@@ -7,6 +7,7 @@
 \alias{is.BinCat}
 \alias{as.list,BinCat-method}
 \alias{as.data.frame,BinCat-method}
+\alias{transform_predx,BinCat-method}
 \title{BinCat class: Binned predictions with categorical bins}
 \usage{
 BinCat(x)
@@ -17,6 +18,8 @@ is.BinCat(x)
 
 \S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
   ...)
+
+\S4method{transform_predx}{BinCat}(x, to_class, ...)
 }
 \description{
 A \code{predx} class for binned probabilistic predictions with categorical bins specified by strings.

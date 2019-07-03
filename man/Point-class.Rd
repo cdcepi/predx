@@ -7,6 +7,7 @@
 \alias{is.Point}
 \alias{as.list,Point-method}
 \alias{as.data.frame,Point-method}
+\alias{transform_predx,Point-method}
 \title{Point class: Point predictions}
 \usage{
 Point(x)
@@ -17,6 +18,8 @@ is.Point(object)
 
 \S4method{as.data.frame}{Point}(x, row.names = NULL, optional = FALSE,
   ...)
+
+\S4method{transform_predx}{Point}(x, to_class, ...)
 }
 \description{
 A \code{predx} class for point predictions.
