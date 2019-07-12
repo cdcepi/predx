@@ -57,10 +57,13 @@ setMethod("as.data.frame", "Sample",
 #' @export
 #' @rdname Sample-class
 setMethod("transform_predx", "Sample",
-  function(x, to_class, cat=NULL, ...) {
+  function(x, to_class, lwr, ...) {
     if (to_class == class(x)) {
       return(x)
     } else if (to_class == 'BinLwr') {
+      if(missing(lwr)) {
+        stop('argument lwr must be specified for transformations to BinLwr class.')
+      }
       bin_width <- lwr[2] - lwr[1]
       bins <- c(lwr, lwr[length(lwr)] + bin_width)
       bin_counts <- hist(x@predx, bins, right = FALSE, plot = FALSE)$counts
