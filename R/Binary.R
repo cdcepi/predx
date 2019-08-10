@@ -10,7 +10,7 @@
 #'
 #' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 setClass('Binary', #S4 class
@@ -35,11 +35,12 @@ setValidity('Binary', function(object) {
 #' @export
 #' @rdname Binary-class
 Binary <- function(x) {
+  if (is.list(x)) x <- x$prob
   new("Binary", predx = x)
 }
 
 lapply_Binary <- function(x) {
-  lapply(x, function(x, ...) tryCatch(Binary(x$prob),
+  lapply(x, function(x, ...) tryCatch(Binary(x),
     error=function(e) identity(e)))
 }
 
@@ -51,8 +52,8 @@ is.Binary <- function(object) {
 
 #' @export
 #' @rdname Binary-class
-setMethod("as.list", "Binary",
-  function(x, ...) { list(prob = x@predx) })
+setMethod("predx_to_json", "Binary",
+  function(x) { c(prob = x@predx) })
 
 #' @export
 #' @rdname Binary-class

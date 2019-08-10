@@ -15,9 +15,9 @@ transform_predx(x, to_class, ...)
 
 \item{to_class}{character specifying \code{predx} class to convert to, e.g. "BinLwr"}
 
-\item{cat}{if class is "BinCat", character vector of categorical bin names}
+\item{cat}{if to_class is "BinCat", character vector of categorical bin names}
 
-\item{lwr}{if class is "BinLwr", numeric vector of lower bounds for bins}
+\item{lwr}{if to_class is "BinLwr", numeric vector of lower bounds for bins}
 }
 \value{
 A \code{predx} object or list of \code{predx} objects, with NAs and warning messages for failed conversions.
@@ -27,6 +27,5 @@ Transform a \code{predx} objects to a target predx class.
 }
 \details{
 This function converts a \code{predx} object or list of \code{predx}
-objects to a specified \code{predx} class.  Currently, the only supported
-transformations are from Sample to BinLwr and from SampleCat to BinCat.
+objects to another specified \code{predx} class when possible.
 }

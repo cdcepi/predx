@@ -8,6 +8,8 @@ import_csv(file = NULL)
 }
 \arguments{
 \item{file}{A csv file/path *or* a data.frame object. Either should have a \code{predx_class} column and whatever columns are needed for the included classes (e.g. point, bin, prob).}
+
+\item{colClasses}{optional. Can be specified folling \code{read.csv} to control column classes.}
 }
 \value{
 A \code{predx} data frame.

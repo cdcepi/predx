@@ -1,6 +1,7 @@
 #' Import a \code{predx}-formatted CSV file as a \code{predx} data frame
 #'
 #' @param file A csv file/path *or* a data.frame object. Either should have a \code{predx_class} column and whatever columns are needed for the included classes (e.g. point, bin, prob).
+#' @param colClasses optional. Can be specified folling \code{read.csv} to control column classes.
 #'
 #' @return A \code{predx} data frame.
 #' @export
@@ -15,7 +16,7 @@
 #' csv_tempfile <- tempfile()
 #' export_csv(predx_demo, csv_tempfile)
 #' import_csv(csv_tempfile)
-import_csv <- function(file=NULL) {
+import_csv <- function(file = NULL) {
   if (is.data.frame(file)) {
     x <- file
   } else {

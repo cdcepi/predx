@@ -42,7 +42,7 @@ test_that("Generics function", {
   this_pred <- BinLwr(data.frame(
     lwr = seq(0, 0.9, by=0.1),
     prob = rep(0.1, 10)))
-  expect_equal(names(as.list(this_pred)), c('lwr', 'prob'))
+  expect_equal(names(predx_to_json(this_pred)), c('lwr', 'prob'))
   expect_equal(dim(as.data.frame(this_pred)), c(10, 2))
 })
 

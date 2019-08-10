@@ -5,7 +5,7 @@
 \alias{SampleCat-class}
 \alias{SampleCat}
 \alias{is.SampleCat}
-\alias{as.list,SampleCat-method}
+\alias{predx_to_json,SampleCat-method}
 \alias{as.data.frame,SampleCat-method}
 \alias{transform_predx,SampleCat-method}
 \title{SampleCat class: Samples from a predictive distribution over categorical bins.}
@@ -14,7 +14,7 @@ SampleCat(x)
 
 is.SampleCat(x)
 
-\S4method{as.list}{SampleCat}(x, ...)
+\S4method{predx_to_json}{SampleCat}(x)
 
 \S4method{as.data.frame}{SampleCat}(x, row.names = NULL,
   optional = FALSE, ...)

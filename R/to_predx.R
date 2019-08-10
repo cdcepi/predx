@@ -11,14 +11,14 @@
 #' @examples
 to_predx <- function(x, class) {
   if (length(x) != length(class)) stop('requires a predx_class name for each data.frame in x')
-  if (length(x) == 1) {
-    if (class == 'Point') predx <- Point(x)
-    if (class == 'Binary') predx <- Binary(x)
-    if (class == 'BinCat') predx <- BinCat(x)
-    if (class == 'BinLwr') predx <- BinLwr(x)
-    if (class == 'Sample') predx <- Sample(x)
-    if (class == 'SampleCat') predx <- SampleCat(x)
-  } else {
+  # if (length(x) == 1) {
+  #   if (class == 'Point') predx <- Point(x)
+  #   if (class == 'Binary') predx <- Binary(x)
+  #   if (class == 'BinCat') predx <- BinCat(x)
+  #   if (class == 'BinLwr') predx <- BinLwr(x)
+  #   if (class == 'Sample') predx <- Sample(x)
+  #   if (class == 'SampleCat') predx <- SampleCat(x)
+  # } else {
     predx <- vector("list", length(x))
     predx[class == 'Point'] <- lapply_Point(x[class == 'Point'])
     predx[class == 'Binary'] <- lapply_Binary(x[class == 'Binary'])
@@ -26,7 +26,7 @@ to_predx <- function(x, class) {
     predx[class == 'BinLwr'] <- lapply_BinLwr(x[class == 'BinLwr'])
     predx[class == 'Sample'] <- lapply_Sample(x[class == 'Sample'])
     predx[class == 'SampleCat'] <- lapply_SampleCat(x[class == 'SampleCat'])
-  }
+#  }
   return(predx)
 }
 

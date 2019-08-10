@@ -27,7 +27,7 @@ import_flusight_csv <- function(file) {
   read.csv(file, stringsAsFactors=F) %>%
     dplyr::mutate(
       team = team,
-      mmwr_week = mmwr_week,
+      mmwr_week = as.numeric(mmwr_week),
       submission_date = submission_date
     ) %>%
     prep_flusight() %>%

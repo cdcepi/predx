@@ -5,7 +5,7 @@
 \alias{Point-class}
 \alias{Point}
 \alias{is.Point}
-\alias{as.list,Point-method}
+\alias{predx_to_json,Point-method}
 \alias{as.data.frame,Point-method}
 \alias{transform_predx,Point-method}
 \title{Point class: Point predictions}
@@ -14,7 +14,7 @@ Point(x)
 
 is.Point(object)
 
-\S4method{as.list}{Point}(x, ...)
+\S4method{predx_to_json}{Point}(x)
 
 \S4method{as.data.frame}{Point}(x, row.names = NULL, optional = FALSE,
   ...)

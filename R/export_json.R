@@ -19,8 +19,8 @@
 #' import_json(json_tempfile)
 export_json <- function(x, filename = NA, overwrite = F) {
   x <- as.predx_df(x)
-  # make distr a list for efficient storage
-  x$predx = lapply(x$predx, function(x) as.list(x))
+  # convert predx objects for efficient storage
+  x$predx <- predx_to_json(x$predx)
   out <- jsonlite::toJSON(x, na='string', digits=NA)
   if (!is.na(filename)) {
     if (!overwrite & file.exists(filename)) {

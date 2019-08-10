@@ -10,7 +10,7 @@
 #'
 #' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 setClass('Sample', #S4 class
@@ -46,8 +46,8 @@ is.Sample <- function(x) {
 
 #' @export
 #' @rdname Sample-class
-setMethod("as.list", "Sample",
-  function(x, ...) { list(sample = x@predx) })
+setMethod("predx_to_json", "Sample",
+  function(x) { list(sample = x@predx) })
 
 #' @export
 #' @rdname Sample-class

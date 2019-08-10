@@ -37,7 +37,7 @@ test_that("Generics function", {
   this_pred <- BinCat(data.frame(
     cat = c('a', 'b', 'c', 'd'),
     prob = rep(0.25, 4), stringsAsFactors=F))
-  expect_equal(names(as.list(this_pred)), c('cat', 'prob'))
+  expect_equal(names(predx_to_json(this_pred)), c('cat', 'prob'))
   expect_equal(dim(as.data.frame(this_pred)), c(4, 2))
 })
 

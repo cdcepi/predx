@@ -34,7 +34,7 @@ test_that("Generics function", {
   test_vec <- sample(letters[1:3], size = 10, replace = TRUE)
   test_cats <- letters[1:4]
   this_pred <- SampleCat(list(sample = test_vec, cat = test_cats))
-  expect_equal(names(as.list(this_pred)), c('cat', 'sample'))
+  expect_equal(names(predx_to_json(this_pred)), c('cat', 'sample'))
   expect_equal(dim(as.data.frame(this_pred)), c(10, 1))
   expect_equal(as.data.frame(this_pred)[['sample']], test_vec)
   expect_identical(attr(as.data.frame(this_pred), "cat"), test_cats)

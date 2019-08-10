@@ -5,7 +5,7 @@
 \alias{BinCat-class}
 \alias{BinCat}
 \alias{is.BinCat}
-\alias{as.list,BinCat-method}
+\alias{predx_to_json,BinCat-method}
 \alias{as.data.frame,BinCat-method}
 \alias{transform_predx,BinCat-method}
 \title{BinCat class: Binned predictions with categorical bins}
@@ -14,7 +14,7 @@ BinCat(x)
 
 is.BinCat(x)
 
-\S4method{as.list}{BinCat}(x, ...)
+\S4method{predx_to_json}{BinCat}(x)
 
 \S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
   ...)

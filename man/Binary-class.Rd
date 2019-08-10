@@ -5,7 +5,7 @@
 \alias{Binary-class}
 \alias{Binary}
 \alias{is.Binary}
-\alias{as.list,Binary-method}
+\alias{predx_to_json,Binary-method}
 \alias{as.data.frame,Binary-method}
 \alias{transform_predx,Binary-method}
 \title{Binary class: Binary predictions}
@@ -14,7 +14,7 @@ Binary(x)
 
 is.Binary(object)
 
-\S4method{as.list}{Binary}(x, ...)
+\S4method{predx_to_json}{Binary}(x)
 
 \S4method{as.data.frame}{Binary}(x, row.names = NULL, optional = FALSE,
   ...)

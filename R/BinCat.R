@@ -10,7 +10,7 @@
 #'
 #' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 setClass('BinCat', #S4 class
@@ -70,8 +70,8 @@ is.BinCat <- function(x) {
 
 #' @export
 #' @rdname BinCat-class
-setMethod("as.list", "BinCat",
-  function(x, ...) { list(cat=x@predx$cat, prob=x@predx$prob) })
+setMethod("predx_to_json", "BinCat",
+  function(x) { list(cat=x@predx$cat, prob=x@predx$prob) })
 
 #' @export
 #' @rdname BinCat-class

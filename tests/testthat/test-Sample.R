@@ -20,7 +20,7 @@ test_that("Sample data frame objects convert to predx", {
 
 test_that("Generics function", {
   this_pred <- Sample(seq(0, 0.9, by=0.1))
-  expect_equal(names(as.list(this_pred)), c('sample'))
+  expect_equal(names(predx_to_json(this_pred)), c('sample'))
   expect_equal(dim(as.data.frame(this_pred)), c(10, 1))
   expect_equal(as.data.frame(this_pred)[['sample']], seq(0, 0.9, by=0.1))
   expect_equal(

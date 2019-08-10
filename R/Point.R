@@ -10,7 +10,7 @@
 #'
 #' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 #'
@@ -37,11 +37,12 @@ setValidity('Point', function(object) {
 #' @export
 #' @rdname Point-class
 Point <- function(x) {
+  if (is.list(x)) x <- x$point
   new("Point", predx = x)
 }
 
 lapply_Point <- function(x) {
-  lapply(x, function(x, ...) tryCatch(Point(x$point),
+  lapply(x, function(x, ...) tryCatch(Point(x),
     error=function(e) identity(e)))
 }
 
@@ -53,8 +54,8 @@ is.Point <- function(object) {
 
 #' @export
 #' @rdname Point-class
-setMethod("as.list", "Point",
-  function(x, ...) { list(point = x@predx) })
+setMethod("predx_to_json", "Point",
+  function(x) { c(point = x@predx) })
 
 #' @export
 #' @rdname Point-class
