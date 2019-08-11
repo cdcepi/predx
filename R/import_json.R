@@ -19,22 +19,19 @@ import_json <- function(file) {
   if (!('predx_class' %in% names(x))) {
     stop('predx_class missing')
   }
-  if (!('predx' %in% names(x))) {
-    stop('predx missing')
-  }
 
   # identify and convert predx columns from import
-#  these_predx_cols <- names(x)[stringr::str_detect(names(x), 'predx')]
-#  these_predx_cols <- stringr::str_remove(these_predx_cols, 'predx')
-#  names(x) <- stringr::str_remove(names(x), 'predx')
+  these_predx_cols <- names(x)[stringr::str_detect(names(x), 'predx\\.')]
+  these_predx_cols <- stringr::str_remove(these_predx_cols, 'predx\\.')
+  names(x) <- stringr::str_remove(names(x), 'predx\\.')
 
   # convert to predx_df
   x <- dplyr::as_tibble(x)
-#  x <- tidyr::nest(x, these_predx_cols, .key='predx')
-#  x$predx <- lapply(x$predx,
-#        function(x) {
-#          lapply(x, { function(this_col) this_col[[1]] } )
-#          })
+  x <- tidyr::nest(x, these_predx_cols, .key='predx')
+  x$predx <- lapply(x$predx,
+       function(x) {
+         lapply(x, { function(x) x[[1]] } )
+         })
   x$predx <- to_predx(x$predx, x$predx_class)
 
   if (any(check_conversion_errors(x$predx))) {

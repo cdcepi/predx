@@ -55,3 +55,23 @@ test_that("Generics function", {
     test_cats
   )
 })
+
+# test_that("CSV import/export works", {
+#   fcast <- dplyr::tibble(target = 'x', predx_class = 'SampleCat',
+#     predx = list(SampleCat(list(sample = "a", cat = c("a", "b")))))
+#   csv_file <- tempfile()
+#   export_csv(fcast, csv_file)
+#   fcast_import <- import_csv(csv_file)
+#   expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+# })
+#
+# test_that("JSON import/export works", {
+#   fcast <- dplyr::tibble(target = 'x', predx_class = 'SampleCat',
+#     predx = list(SampleCat(list(sample = "a", cat = c("a", "b")))))
+#   fcast <- dplyr::tibble(target = 'x', predx_class = 'SampleCat',
+#     predx = list(SampleCat(list(sample = c("a"), cat = c("a", "b")))))
+#   json_file <- tempfile()
+#   export_json(fcast, json_file)
+#   fcast_import <- import_json(json_file)
+#   expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+# })

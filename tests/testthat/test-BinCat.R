@@ -41,3 +41,25 @@ test_that("Generics function", {
   expect_equal(dim(as.data.frame(this_pred)), c(4, 2))
 })
 
+test_that("CSV import/export works", {
+  fcast <- dplyr::tibble(target = 'x', predx_class = 'BinCat',
+    predx = list(BinCat(data.frame(cat = c("a", "b"), prob = c(0.5, 0.5)))))
+  csv_file <- tempfile()
+  export_csv(fcast, csv_file)
+  fcast_import <- import_csv(csv_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+})
+
+test_that("JSON import/export works", {
+  fcastbc <- dplyr::tibble(
+    target = c('x', 'y'),
+    predx_class = 'BinCat',
+    predx = list(
+      BinCat(data.frame(cat = c("a", "b"), prob = c(0.5, 0.5))),
+      BinCat(data.frame(cat = c("a", "b"), prob = c(0.3, 0.7)))))
+  json_file <- tempfile()
+  export_json(fcastbc, json_file)
+  fcast_import <- import_json(json_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcastbc))
+})
+

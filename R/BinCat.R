@@ -46,6 +46,7 @@ setValidity('BinCat', function(object) {
 #' @rdname BinCat-class
 BinCat <- function(x) {
   if (is.matrix(x)) x <- as.data.frame(x)
+  if (!is.character(x$cat)) x$cat <- as.character(x$cat)
   new("BinCat", predx = x)
 }
 

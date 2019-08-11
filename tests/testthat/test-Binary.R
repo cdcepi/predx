@@ -22,7 +22,7 @@ test_that("Binary data frame objects convert to predx", {
 
 test_that("Generics function", {
   this_binary <- Binary(0.5)
-  expect_equal(predx_to_json(this_binary), c(prob = 0.5))
+  expect_equal(predx_to_json(this_binary), list(prob = 0.5))
   expect_equal(as.data.frame(this_binary), data.frame(prob = 0.5))
 })
 

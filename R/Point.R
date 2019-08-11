@@ -55,7 +55,7 @@ is.Point <- function(object) {
 #' @export
 #' @rdname Point-class
 setMethod("predx_to_json", "Point",
-  function(x) { c(point = x@predx) })
+  function(x) { list(point = x@predx) })
 
 #' @export
 #' @rdname Point-class

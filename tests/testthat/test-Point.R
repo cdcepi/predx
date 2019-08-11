@@ -18,7 +18,7 @@ test_that("Point data frame objects convert to predx", {
 
 test_that("Generics function", {
   this_pred <- Point(5)
-  expect_equal(predx_to_json(this_pred), c(point = 5))
+  expect_equal(predx_to_json(this_pred), list(point = 5))
   expect_equal(as.data.frame(this_pred), data.frame(point = 5))
 })
 

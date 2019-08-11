@@ -21,7 +21,7 @@ export_json <- function(x, filename = NA, overwrite = F) {
   x <- as.predx_df(x)
   # convert predx objects for efficient storage
   x$predx <- predx_to_json(x$predx)
-  out <- jsonlite::toJSON(x, na='string', digits=NA)
+  out <- jsonlite::toJSON(x, na='string', digits=NA, auto_unbox=T)
   if (!is.na(filename)) {
     if (!overwrite & file.exists(filename)) {
       stop(paste0('"', filename, '" already exists. Use "overwrite = T" to replace.'))

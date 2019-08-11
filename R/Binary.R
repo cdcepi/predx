@@ -53,7 +53,7 @@ is.Binary <- function(object) {
 #' @export
 #' @rdname Binary-class
 setMethod("predx_to_json", "Binary",
-  function(x) { c(prob = x@predx) })
+  function(x) { list(prob = x@predx) })
 
 #' @export
 #' @rdname Binary-class
