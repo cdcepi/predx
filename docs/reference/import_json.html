@@ -144,7 +144,8 @@
 ))
 <span class='no'>json_tempfile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>()
 <span class='fu'><a href='export_json.html'>export_json</a></span>(<span class='no'>predx_demo</span>, <span class='no'>json_tempfile</span>)
-<span class='fu'>import_json</span>(<span class='no'>json_tempfile</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 4</span><span>
+<span class='fu'>import_json</span>(<span class='no'>json_tempfile</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: All elements of `...` must be named.</span>
+#&gt; <span class='warning'>Did you want `predx = c(prob)`?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 4</span><span>
 #&gt;   location target       predx_class predx   
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>  
 #&gt; </span><span style='color: #555555;'>1</span><span> Mercury  habitability Binary      </span><span style='color: #555555;'>&lt;Binary&gt;</span><span>

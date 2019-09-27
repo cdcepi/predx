@@ -35,3 +35,16 @@ In JSON and CSV representations, the bins are named \code{cat} and the probabili
 \item{\code{predx}}{A data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).}
 }}
 
+\examples{
+x <- BinCat(data.frame(
+  cat = c('a', 'b', 'c'),
+  prob = c(0, 0.3, 0.7)
+))
+x
+# create predx dataframe
+x_df <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(x, x)
+))
+}

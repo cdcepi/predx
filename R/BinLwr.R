@@ -10,7 +10,6 @@
 #'
 #' @slot predx A numeric matrix with two columns: \code{lwr} and \code{prob}.
 #'
-#' @return
 #' @export
 #' @include transform_predx.R predx_to_json.R
 #'

@@ -1,14 +1,13 @@
-#' Sample class: Samples from a predictive distribution
+#' Sample class: Samples from a pdistribution
 #'
-#' A \code{predx} class for samples from a predictive distribution.
+#' A \code{predx} class for samples from a distribution.
 #'
-#' For now, the samples must be for a quantitative variable.
+#' The samples must be for a numeric variable.
 #'
 #' In JSON and CSV representations, the samples are named \code{sample}.
 #'
 #' @slot predx A vector of samples.
 #'
-#' @return
 #' @export
 #' @include transform_predx.R predx_to_json.R
 #'
@@ -83,10 +82,17 @@ setMethod("transform_predx", "Sample",
 
 ######################################################################
 ### methods
-setMethod("quantile", "Sample", function(x, probs = seq(0, 1, 0.25), names = TRUE, type = 7, ...) {
+setMethod("quantile", "Sample", function(x, probs = seq(0, 1, 0.25),
+    names = TRUE, type = 7, ...) {
   quantile(x@predx, probs = probs, names = names, type = type)
 })
 
 setMethod("median", "Sample", function(x, ...) {
   median(x@predx, ...)
 })
+
+setMethod("mean", "Sample", function(x, ...) {
+  mean(x@predx, ...)
+})
+
+

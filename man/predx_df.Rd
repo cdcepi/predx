@@ -5,7 +5,7 @@
 \alias{validate_predx_df}
 \alias{is.predx_df}
 \alias{as.predx_df}
-\title{Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns}
+\title{Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns and created them if needed.}
 \usage{
 validate_predx_df(x, return = F)
 
@@ -13,11 +13,14 @@ is.predx_df(x)
 
 as.predx_df(x)
 }
+\arguments{
+\item{x}{A list or a tibble including a list or column named \code{predx} containing only \code{predx} objects. Not a base data.frame because the \code{predx} objects cannot be embedded, \code{as.predx_df} will embed them.}
+}
 \value{
 Error message or TRUE.
 }
 \description{
-Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns
+\code{is.predx_df} will verify that a \code{predx} data frame contains valid \code{predx_class} and \code{predx} columns. \code{as.predx_df} will create a \code{predx} data frame from a list or tibble and add the \code{predx_class} column if not found.
 }
 \examples{
 as.predx_df(list(
@@ -25,4 +28,19 @@ as.predx_df(list(
  target = 'habitability',
  predx = list(Binary(0), Binary(0), Binary(1))
 ))
+x <- as.predx_df(
+  list(
+    target = c('demoCat', 'demoBinary'),
+    date = 'tomorrow',
+    predx = list(
+      BinCat(
+        data.frame(
+          cat = c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'),
+          prob = c(0, rep(0.1, 4), 0.25, 0.15, 0.1, rep(0.05, 2))
+          )
+        ),
+      Binary(0.1)
+      )
+    )
+  )
 }

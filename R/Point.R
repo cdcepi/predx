@@ -8,7 +8,6 @@
 #'
 #' @slot predx A single numeric point prediction.
 #'
-#' @return
 #' @export
 #' @include transform_predx.R predx_to_json.R
 #'

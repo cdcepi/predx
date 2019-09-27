@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SampleCat class: Samples from a predictive distribution over categorical bins. — SampleCat-class • predx</title>
+<title>SampleCat class: Samples from a distribution of categories or classifications. — SampleCat-class • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="SampleCat class: Samples from a predictive distribution over categorical bins. — SampleCat-class" />
+<meta property="og:title" content="SampleCat class: Samples from a distribution of categories or classifications. — SampleCat-class" />
 
-<meta property="og:description" content="A predx class for samples from a predictive distribution over
-categorical bins." />
+<meta property="og:description" content="A predx class for samples from a distribution of
+categories or classifications specified as character strings." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,15 +110,15 @@ categorical bins." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>SampleCat class: Samples from a predictive distribution over categorical bins.</h1>
+    <h1>SampleCat class: Samples from a distribution of categories or classifications.</h1>
     
     <div class="hidden name"><code>SampleCat-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A <code>predx</code> class for samples from a predictive distribution over
-categorical bins.</p>
+    <p>A <code>predx</code> class for samples from a distribution of
+categories or classifications specified as character strings.</p>
     
     </div>
 
@@ -140,25 +140,23 @@ categorical bins.</p>
 
     <p>In JSON and CSV representations, the samples are named <code>sample</code>.</p>
     
-    <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
-    
-    <dl class='dl-horizontal'>
-<dt><code>predx</code></dt><dd><p>A list with two entries: <code>cat</code> (character) and <code>sample</code>
-(character).  <code>cat</code> contains all possible categorical bins and
-<code>sample</code> is a vector of samples of those bins.</p></dd>
-</dl>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>SampleCat</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='no'>letters</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+<span class='no'>x</span></div><div class='output co'>#&gt; An object of class "SampleCat"
+#&gt; Slot "predx":
+#&gt;  [1] "m" "w" "l" "e" "f" "o" "u" "d" "v" "i"
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#slots">Slots</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
