@@ -1,7 +1,8 @@
 ## Point predictions
 ### __Point__
-
 A numeric point prediction.
+
+CSV column name: 'point'
 
 Validity:
 - Not NA
@@ -16,6 +17,14 @@ Validity:
 
 ## Discrete distributions
 ### __Binary__: prob
+A numeric probability.
+
+CSV column name: 'prob'
+
+Validity:
+- Not NA
+- 0 <= __prob__ <= 1
+
 ### __Binomial__: p, n
 ### __Poisson__: mean
 ### __Negative-Binomial__: r, p
@@ -29,6 +38,7 @@ Binned distribution defined by inclusive lower bounds for each bin.
 A data.frame object with two columns:
 - __lwr__: inclusive numeric lower bounds for sequential bins (equal intervals)
 - __prob__: probabilities assigned to each bin 
+CSV column names: 'lwr', 'prob'
 
 Validity:
 - No NAs in _lwr_ or _prob_
@@ -42,7 +52,8 @@ Binned distribution with a category for each bin.
 
 A data.frame object with two columns:
 - __cat__: character strings representing each possible outcome category
-- __prob__: probabilities assigned to each bin 
+- __prob__: probabilities assigned to each bin
+CSV column names: 'cat', 'prob'
 
 Validity:
 - No NAs in _lwr_ or _prob_
@@ -52,17 +63,16 @@ Validity:
 ### __Sample__
 Numeric samples.
 
+CSV column name: 'sample'
+
 Validity:
 - No NAs
 	
 ### __SampleCat__ 
-Character string samples from categories.
+Character string samples.
 
-Two vectors:
-- __cat__: vector of character strings representing each possible outcome category
-- __sample__: vector of character string samples
+CSV column name: 'sample'
 
 Validity:
-- No NAs in _cat_ or _sample_
-- No duplications in _cat_
-- No _sample_ that is not included in _cat_ (but each _cat_ does not necessarily need to be include in _sample_)
+- No NAs
+
