@@ -118,6 +118,7 @@
 <a href="#point" class="anchor"></a><strong>Point</strong>
 </h3>
 <p>A numeric point prediction.</p>
+<p>CSV column name: <em>point</em></p>
 <p>Validity:</p>
 <ul>
 <li>Not NA</li>
@@ -150,6 +151,13 @@
 <div id="binary-prob" class="section level3">
 <h3 class="hasAnchor">
 <a href="#binary-prob" class="anchor"></a><strong>Binary</strong>: prob</h3>
+<p>A numeric probability.</p>
+<p>CSV column name: <em>prob</em></p>
+<p>Validity:</p>
+<ul>
+<li>Not NA</li>
+<li>0 &lt;= <em>prob</em> &lt;= 1</li>
+</ul>
 </div>
 <div id="binomial-p-n" class="section level3">
 <h3 class="hasAnchor">
@@ -179,10 +187,11 @@
 <p>A data.frame object with two columns:</p>
 <ul>
 <li>
-<strong>lwr</strong>: inclusive numeric lower bounds for sequential bins (equal intervals)</li>
+<em>lwr</em>: inclusive numeric lower bounds for sequential bins (equal intervals)</li>
 <li>
-<strong>prob</strong>: probabilities assigned to each bin</li>
+<em>prob</em>: probabilities assigned to each bin</li>
 </ul>
+<p>CSV column names: <em>lwr</em>, <em>prob</em></p>
 <p>Validity:</p>
 <ul>
 <li>No NAs in <em>lwr</em> or <em>prob</em>
@@ -205,6 +214,7 @@
 <li>
 <strong>prob</strong>: probabilities assigned to each bin</li>
 </ul>
+<p>CSV column names: <em>cat</em>, <em>prob</em></p>
 <p>Validity:</p>
 <ul>
 <li>No NAs in <em>lwr</em> or <em>prob</em>
@@ -218,6 +228,7 @@
 <a href="#sample" class="anchor"></a><strong>Sample</strong>
 </h3>
 <p>Numeric samples.</p>
+<p>CSV column name: <em>sample</em></p>
 <p>Validity:</p>
 <ul>
 <li>No NAs</li>
@@ -227,21 +238,11 @@
 <h3 class="hasAnchor">
 <a href="#samplecat" class="anchor"></a><strong>SampleCat</strong>
 </h3>
-<p>Character string samples from categories.</p>
-<p>Two vectors:</p>
-<ul>
-<li>
-<strong>cat</strong>: vector of character strings representing each possible outcome category</li>
-<li>
-<strong>sample</strong>: vector of character string samples</li>
-</ul>
+<p>Character string samples.</p>
+<p>CSV column name: <em>sample</em></p>
 <p>Validity:</p>
 <ul>
-<li>No NAs in <em>cat</em> or <em>sample</em>
-</li>
-<li>No duplications in <em>cat</em>
-</li>
-<li>No <em>sample</em> that is not included in <em>cat</em> (but each <em>cat</em> does not necessarily need to be include in <em>sample</em>)</li>
+<li>No NAs</li>
 </ul>
 </div>
 </div>
