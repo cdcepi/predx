@@ -24,7 +24,7 @@ import_csv <- function(file = NULL) {
   }
   these_predx_cols <- get_predx_colnames(x$predx_class)
 
-  x <- tidyr::nest(x, !! these_predx_cols, .key='predx')
+  x <- tidyr::nest(x, predx = these_predx_cols)
   x <- dplyr::mutate(x, predx = to_predx(predx, predx_class))
 
   if (any(check_conversion_errors(x$predx))) {

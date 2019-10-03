@@ -27,7 +27,7 @@ import_json <- function(file) {
 
   # convert to predx_df
   x <- dplyr::as_tibble(x)
-  x <- tidyr::nest(x, these_predx_cols, .key='predx')
+  x <- tidyr::nest(x, predx = these_predx_cols)
   x$predx <- lapply(x$predx,
        function(x) {
          lapply(x, { function(x) x[[1]] } )
