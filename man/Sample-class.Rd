@@ -19,7 +19,7 @@ is.Sample(x)
 \S4method{as.data.frame}{Sample}(x, row.names = NULL, optional = FALSE,
   ...)
 
-\S4method{transform_predx}{Sample}(x, to_class, cat = NULL, ...)
+\S4method{transform_predx}{Sample}(x, to_class, lwr, ...)
 }
 \description{
 A \code{predx} class for samples from a predictive distribution.

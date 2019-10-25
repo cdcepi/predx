@@ -20,9 +20,9 @@
 export_csv <- function(x, filename = NULL, overwrite = F) {
   x <- as.predx_df(x)
   x <- dplyr::mutate(x,
-    predx = lapply(predx, function(x) as.data.frame(x)))
+    predx = lapply(predx, function(x) as.data.frame(x) %>% dplyr::mutate_all(as.character)))
   x <- tidyr::unnest(x, predx)
-
+  
   if (!is.null(filename)) {
     if (!overwrite & file.exists(filename)) {
       stop(paste0('"', filename, '" already exists. Use "overwrite = T" to replace.'))

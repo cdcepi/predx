@@ -12,6 +12,7 @@ get_predx_colnames <- function(classes) {
     BinCat = c('cat', 'prob'),
     BinLwr = c('lwr', 'prob'),
     Point = 'point',
+    PointCat = 'point',
     Sample = 'sample',
     SampleCat = 'sample'
   )
