@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv • predx</title>
+<title>SampleCat class: Samples from a distribution of categories or classifications. — SampleCat-class • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv" />
+<meta property="og:title" content="SampleCat class: Samples from a distribution of categories or classifications. — SampleCat-class" />
 
-<meta property="og:description" content="Import a predx-formatted CSV file as a predx data frame" />
+<meta property="og:description" content="A predx class for samples from a distribution of
+categories or classifications specified as character strings." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,57 +110,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</h1>
+    <h1>SampleCat class: Samples from a distribution of categories or classifications.</h1>
     
-    <div class="hidden name"><code>import_csv.Rd</code></div>
+    <div class="hidden name"><code>SampleCat-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</p>
+    <p>A <code>predx</code> class for samples from a distribution of
+categories or classifications specified as character strings.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>import_csv</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>file</th>
-      <td><p>A csv file/path *or* a data.frame object. Either should have a <code>predx_class</code> column and whatever columns are needed for the included classes (e.g. point, bin, prob).</p></td>
-    </tr>
-    <tr>
-      <th>colClasses</th>
-      <td><p>optional. Can be specified folling <code>read.csv</code> to control column classes.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='fu'>SampleCat</span>(<span class='no'>x</span>)
 
-    <p>A <code>predx</code> data frame.</p>
+<span class='fu'>is.SampleCat</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for SampleCat</span>
+<span class='fu'><a href='predx_to_json.html'>predx_to_json</a></span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for SampleCat</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SampleCat</span>
+<span class='fu'><a href='transform_predx.html'>transform_predx</a></span>(<span class='no'>x</span>, <span class='no'>to_class</span>, <span class='no'>cat</span>, <span class='no'>...</span>)</pre>
+        
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In JSON and CSV representations, the samples are named <code>sample</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>#' predx_demo <- as.predx_df(list(
- location = c('Mercury', 'Venus', 'Earth'),
- target = 'habitability',
- predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
-))
-csv_tempfile <- tempfile()
-export_csv(predx_demo, csv_tempfile)
-import_csv(csv_tempfile)
-</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:2:43: unexpected ','</span>
-#&gt; <span class='error'>1: #' predx_demo &lt;- as.predx_df(list(</span>
-#&gt; <span class='error'>2:  location = c('Mercury', 'Venus', 'Earth'),</span>
-#&gt; <span class='error'>                                             ^</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>SampleCat</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='no'>letters</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+<span class='no'>x</span></div><div class='output co'>#&gt; An object of class "SampleCat"
+#&gt; Slot "predx":
+#&gt;  [1] "m" "w" "l" "e" "f" "o" "u" "d" "v" "i"
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

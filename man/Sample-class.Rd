@@ -5,16 +5,16 @@
 \alias{Sample-class}
 \alias{Sample}
 \alias{is.Sample}
-\alias{as.list,Sample-method}
+\alias{predx_to_json,Sample-method}
 \alias{as.data.frame,Sample-method}
 \alias{transform_predx,Sample-method}
-\title{Sample class: Samples from a predictive distribution}
+\title{Sample class: Samples from a pdistribution}
 \usage{
 Sample(x)
 
 is.Sample(x)
 
-\S4method{as.list}{Sample}(x, ...)
+\S4method{predx_to_json}{Sample}(x)
 
 \S4method{as.data.frame}{Sample}(x, row.names = NULL, optional = FALSE,
   ...)
@@ -22,10 +22,10 @@ is.Sample(x)
 \S4method{transform_predx}{Sample}(x, to_class, lwr, ...)
 }
 \description{
-A \code{predx} class for samples from a predictive distribution.
+A \code{predx} class for samples from a distribution.
 }
 \details{
-For now, the samples must be for a quantitative variable.
+The samples must be for a numeric variable.
 
 In JSON and CSV representations, the samples are named \code{sample}.
 }

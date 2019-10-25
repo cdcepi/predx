@@ -18,6 +18,24 @@ test_that("Point data frame objects convert to predx", {
 
 test_that("Generics function", {
   this_pred <- Point(5)
-  expect_equal(as.list(this_pred), list(point = 5))
+  expect_equal(predx_to_json(this_pred), list(point = 5))
   expect_equal(as.data.frame(this_pred), data.frame(point = 5))
+})
+
+test_that("CSV import/export works", {
+  fcast <- dplyr::tibble(target = 'x', predx_class = 'Point',
+    predx = list(Point(10)))
+  csv_file <- tempfile()
+  export_csv(fcast, csv_file)
+  fcast_import <- import_csv(csv_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+})
+
+test_that("JSON import/export works", {
+  fcast <- dplyr::tibble(target = 'x', predx_class = 'Point',
+    predx = list(Point(10)))
+  json_file <- tempfile()
+  export_json(fcast, json_file)
+  fcast_import <- import_json(json_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
 })

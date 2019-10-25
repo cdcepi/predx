@@ -76,7 +76,7 @@
       <h1>FluSight Vignette</h1>
                         <h4 class="author">Michael Johansson</h4>
             
-            <h4 class="date">2019-04-16</h4>
+            <h4 class="date">2019-10-02</h4>
       
       
       <div class="hidden name"><code>flusight-vignette.Rmd</code></div>
@@ -88,36 +88,36 @@
 <div id="import-flusight-forecast" class="section level2">
 <h2 class="hasAnchor">
 <a href="#import-flusight-forecast" class="anchor"></a>Import FluSight forecast</h2>
-<p>The <code>import_flusight_csv</code> function uses several helper functions to convert FluSight-specific formatted CSV forecasts. The file name should contain the MMWR epidemiological week assigned to the forecast (e.g. “EW42”) followed by a dash (“-”), the team name (e.g. “Hist_Avg”) followed by a dash (“-”), and the submission date as an ISO data (YYYY-MM-DD, e.g. “2018-10-29”).</p>
+<p>The <code>import_flusight_csv</code> function uses several helper functions to convert FluSight-specific formatted CSV forecasts. The file name should contain the MMWR epidemiological week assigned to the forecast (e.g. “EW42”) followed by a dash (“-”), the team name (e.g. “Hist_Avg”) followed by a dash (“-”), and the submission date as an ISO data (YYYY-MM-DD, e.g. “2018-10-29”).</p>
 <p>This import process creates a special, embedded “<code>predx_df</code>” data frame (a <code>tbl_df</code>, “tibble” object) with a row for every individual prediction (defined by target, location, and prediction type), a column <code>predx_class</code> that defines the class of each prediction, and a column <code>predx</code> that is a list of predx objects. In the process of importation, all predictions are validated (e.g. binned predictions must sum to 1.0) or (hopefully useful) errors messages are returned in the <code>predx</code> column.</p>
 <p>For this example, we use a submission with only national-level forecasts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)
-fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">import_flusight_csv</a></span>(<span class="st">'EW42-Hist-Avg-2018-10-29-National.csv'</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)
-<span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span>
-fcast
-<span class="co">#&gt; # A tibble: 14 x 8</span>
-<span class="co">#&gt;    location  target unit  team  mmwr_week submission_date predx_class predx</span>
-<span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span>
-<span class="co">#&gt;  1 US Natio~ 1 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt;  2 US Natio~ 1 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt;  3 US Natio~ 2 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt;  4 US Natio~ 2 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt;  5 US Natio~ 3 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt;  6 US Natio~ 3 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt;  7 US Natio~ 4 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt;  8 US Natio~ 4 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt;  9 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 10 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      BinCat      &lt;S4:~</span>
-<span class="co">#&gt; 11 US Natio~ Seaso~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 12 US Natio~ Seaso~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt; 13 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 14 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      BinCat      &lt;S4:~</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)</a>
+<a class="sourceLine" id="cb1-2" title="2">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">import_flusight_csv</a></span>(<span class="st">'EW42-Hist-Avg-2018-10-29-National.csv'</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></a>
+<a class="sourceLine" id="cb1-5" title="5">fcast</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; # A tibble: 14 x 8</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt;    location  target unit  team  mmwr_week submission_date predx_class predx</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;  1 US Natio~ 1 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;  2 US Natio~ 1 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;  3 US Natio~ 2 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;  4 US Natio~ 2 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  5 US Natio~ 3 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  6 US Natio~ 3 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  7 US Natio~ 4 wk ~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt;  8 US Natio~ 4 wk ~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt;  9 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; 10 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      BinCat      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt; 11 US Natio~ Seaso~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="co">#&gt; 12 US Natio~ Seaso~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="co">#&gt; 13 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="co">#&gt; 14 US Natio~ Seaso~ week  Hist~ 42        2018-10-29      BinCat      &lt;Bin~</span></a></code></pre></div>
 </div>
 <div id="verify-expected-predictions-are-included" class="section level2">
 <h2 class="hasAnchor">
 <a href="#verify-expected-predictions-are-included" class="anchor"></a>Verify expected predictions are included</h2>
-<p>The <code>verify_expected</code> function can be used to check that expected targets are included in the <code>predx_df</code>. For example, the national-level FluSight forecasts include forecasts for seven targets and 11 locations. The percentage forecasts (e.g. “Season peak percentage”, “1 wk ahead”) are classified as <code>BinLwr</code> predictions and the week targets (“Season onset”, “Season peak week”) are classifed as <code>BinCat</code> predictions. This set can be specified in a list with one list for each combination of required characteristics. For example, the target “Season peak percentage”, should have a prediction for each location, and each predx class as specified in <code>flusight_ilinet_expected()[[1]]</code>, below.</p>
+<p>The <code>verify_expected</code> function can be used to check that expected targets are included in the <code>predx_df</code>. For example, the national-level FluSight forecasts include forecasts for seven targets and 11 locations. The percentage forecasts (e.g. “Season peak percentage”, “1 wk ahead”) are classified as <code>BinLwr</code> predictions and the week targets (“Season onset”, “Season peak week”) are classifed as <code>BinCat</code> predictions. This set can be specified in a list with one list for each combination of required characteristics. For example, the target “Season peak percentage”, should have a prediction for each location, and each predx class as specified in <code>flusight_ilinet_expected()[[1]]</code>, below.</p>
 <pre><code>list(
   list(
     target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
@@ -136,30 +136,30 @@ fcast
 )</code></pre>
 <p>This specific expected list, available with <code>flusight_ilinet_expected</code>, is included in the predx package along with <code>flusight_state_ilinet_expected</code> (for state ILINet forecasts) and <code>flusight_hospitalization_expected</code> (for hospitalization forecasts). Other verification lists can be made in this format and all can be used with the function <code>verify_expected</code> to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument <code>return_df = TRUE</code>.</p>
 <p>For this example, we limit the expected forecasts to the national level.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">national_expected &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">target =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Season peak percentage"</span>, <span class="st">"1 wk ahead"</span>, <span class="st">"2 wk ahead"</span>, <span class="st">"3 wk ahead"</span>, <span class="st">"4 wk ahead"</span>),
-      <span class="dt">location =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"US National"</span>),
-      <span class="dt">predx_class =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Point"</span>, <span class="st">"BinLwr"</span>)
-    ),
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(
-      <span class="dt">target =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Season onset"</span>, <span class="st">"Season peak week"</span>),
-      <span class="dt">location =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"US National"</span>),
-      <span class="dt">predx_class =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Point"</span>, <span class="st">"BinCat"</span>)
-    )
-  )
-
-<span class="kw"><a href="../reference/verify_expected.html">verify_expected</a></span>(fcast, national_expected)
-<span class="co">#&gt; All expected predictions found.</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">national_expected &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb3-3" title="3">      <span class="dt">target =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Season peak percentage"</span>, <span class="st">"1 wk ahead"</span>, <span class="st">"2 wk ahead"</span>, <span class="st">"3 wk ahead"</span>, <span class="st">"4 wk ahead"</span>),</a>
+<a class="sourceLine" id="cb3-4" title="4">      <span class="dt">location =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"US National"</span>),</a>
+<a class="sourceLine" id="cb3-5" title="5">      <span class="dt">predx_class =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Point"</span>, <span class="st">"BinLwr"</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6">    ),</a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb3-8" title="8">      <span class="dt">target =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Season onset"</span>, <span class="st">"Season peak week"</span>),</a>
+<a class="sourceLine" id="cb3-9" title="9">      <span class="dt">location =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"US National"</span>),</a>
+<a class="sourceLine" id="cb3-10" title="10">      <span class="dt">predx_class =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Point"</span>, <span class="st">"BinCat"</span>)</a>
+<a class="sourceLine" id="cb3-11" title="11">    )</a>
+<a class="sourceLine" id="cb3-12" title="12">  )</a>
+<a class="sourceLine" id="cb3-13" title="13"></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="kw"><a href="../reference/verify_expected.html">verify_expected</a></span>(fcast, national_expected)</a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; All expected predictions found.</span></a></code></pre></div>
 </div>
 <div id="export-as-predx-json-reduced-size-predx-csv-or-flusight-csv" class="section level2">
 <h2 class="hasAnchor">
 <a href="#export-as-predx-json-reduced-size-predx-csv-or-flusight-csv" class="anchor"></a>Export as predx JSON (reduced size), predx CSV, or FluSight CSV</h2>
 <p>To save space and facilitate sharing, transfer, and storage of <code>predx_df</code> objects, they can be exported as JSON objects using the function <code>export_json</code>. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the first two predictions in <code>fcast</code> below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])
-<span class="co">#&gt; [{"location":"US National","target":"1 wk ahead","unit":"percent","team":"Hist-Avg","mmwr_week":"42","submission_date":"2018-10-29","predx_class":"Point","predx":{"point":[1.3]}},{"location":"US National","target":"1 wk ahead","unit":"percent","team":"Hist-Avg","mmwr_week":"42","submission_date":"2018-10-29","predx_class":"BinLwr","predx":{"lwr":[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.8,7.9,8,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10,10.1,10.2,10.3,10.4,10.5,10.6,10.7,10.8,10.9,11,11.1,11.2,11.3,11.4,11.5,11.6,11.7,11.8,11.9,12,12.1,12.2,12.3,12.4,12.5,12.6,12.7,12.8,12.9,13],"prob":[0,1.1666388623852e-017,1.46385383132117e-017,6.8045592093287e-018,3.02327144416287e-018,2.61294928844424e-018,3.77969092087992e-018,8.29760329851558e-012,2.4568991845654e-005,0.0116785404949,0.0285039127629738,0.0884106008943569,0.204968823307941,0.284619990086954,0.199478680040742,0.0529871304492426,0.0107502427678402,0.0228725805968266,0.0172427873617089,0.000722069388890097,0.000646487092286736,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286734,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00662649269593905]}}]</span>
-json_tempfile =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()
-<span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast, <span class="dt">filename =</span> json_tempfile, <span class="dt">overwrite =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; [{"location":"US National","target":"1 wk ahead","unit":"percent","team":"Hist-Avg","mmwr_week":"42","submission_date":"2018-10-29","predx_class":"Point","predx":{"point":[1.3]}},{"location":"US National","target":"1 wk ahead","unit":"percent","team":"Hist-Avg","mmwr_week":"42","submission_date":"2018-10-29","predx_class":"BinLwr","predx":{"lwr":[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.8,7.9,8,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10,10.1,10.2,10.3,10.4,10.5,10.6,10.7,10.8,10.9,11,11.1,11.2,11.3,11.4,11.5,11.6,11.7,11.8,11.9,12,12.1,12.2,12.3,12.4,12.5,12.6,12.7,12.8,12.9,13],"prob":[0,1.1666388623852e-017,1.46385383132117e-017,6.8045592093287e-018,3.02327144416287e-018,2.61294928844424e-018,3.77969092087992e-018,8.29760329851558e-012,2.4568991845654e-005,0.0116785404949,0.0285039127629738,0.0884106008943569,0.204968823307941,0.284619990086954,0.199478680040742,0.0529871304492426,0.0107502427678402,0.0228725805968266,0.0172427873617089,0.000722069388890097,0.000646487092286736,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286735,0.000646487092286734,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.000646487092286737,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00064648709228674,0.00662649269593905]}}]</span></a>
+<a class="sourceLine" id="cb4-3" title="3">json_tempfile =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast, <span class="dt">filename =</span> json_tempfile, <span class="dt">overwrite =</span> T)</a></code></pre></div>
 <p>Alternatively, <code>predx_df</code> objects can be exported as predx CSV files or FluSight-formatted CSV files (those used for submissions on the FluSight website). These CSV formats differ in several ways:</p>
 <ol style="list-style-type: decimal">
 <li>The <code>predx</code> CSV contains additional columns for MMWR epidemic week, team, and submission date. In the FluSight CSV these are included in the file name only.</li>
@@ -167,82 +167,82 @@ json_tempfile =<span class="st"> </span><span class="kw"><a href="https://www.rd
 <li>The FluSight CSV will allow upload on the EPI webpage.</li>
 </ol>
 <p>These differences are the results of making <code>predx</code> JSON and CSV formats more generic than the specific FluSight implementation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">csv_tempfile &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()
-<span class="kw"><a href="../reference/export_csv.html">export_csv</a></span>(fcast, <span class="dt">filename =</span> csv_tempfile, <span class="dt">overwrite =</span> T)
-<span class="kw"><a href="../reference/flusight.html">export_flusight_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])
-<span class="co">#&gt; # A tibble: 132 x 7</span>
-<span class="co">#&gt;    location   target   type  unit   bin_start_incl bin_end_notincl    value</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US Nation~ 1 wk ah~ Point perce~           NA             NA    1.30e+ 0</span>
-<span class="co">#&gt;  2 US Nation~ 1 wk ah~ Bin   perce~            0              0.1  0.      </span>
-<span class="co">#&gt;  3 US Nation~ 1 wk ah~ Bin   perce~            0.1            0.2  1.17e-17</span>
-<span class="co">#&gt;  4 US Nation~ 1 wk ah~ Bin   perce~            0.2            0.3  1.46e-17</span>
-<span class="co">#&gt;  5 US Nation~ 1 wk ah~ Bin   perce~            0.3            0.4  6.80e-18</span>
-<span class="co">#&gt;  6 US Nation~ 1 wk ah~ Bin   perce~            0.4            0.5  3.02e-18</span>
-<span class="co">#&gt;  7 US Nation~ 1 wk ah~ Bin   perce~            0.5            0.6  2.61e-18</span>
-<span class="co">#&gt;  8 US Nation~ 1 wk ah~ Bin   perce~            0.6            0.7  3.78e-18</span>
-<span class="co">#&gt;  9 US Nation~ 1 wk ah~ Bin   perce~            0.7            0.80 8.30e-12</span>
-<span class="co">#&gt; 10 US Nation~ 1 wk ah~ Bin   perce~            0.8            0.9  2.46e- 5</span>
-<span class="co">#&gt; # ... with 122 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">csv_tempfile &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="../reference/export_csv.html">export_csv</a></span>(fcast, <span class="dt">filename =</span> csv_tempfile, <span class="dt">overwrite =</span> T)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="../reference/flusight.html">export_flusight_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 132 x 7</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;    location   target   type  unit   bin_start_incl bin_end_notincl    value</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  1 US Nation~ 1 wk ah~ Point perce~           NA             NA    1.30e+ 0</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  2 US Nation~ 1 wk ah~ Bin   perce~            0              0.1  0.      </span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  3 US Nation~ 1 wk ah~ Bin   perce~            0.1            0.2  1.17e-17</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  4 US Nation~ 1 wk ah~ Bin   perce~            0.2            0.3  1.46e-17</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  5 US Nation~ 1 wk ah~ Bin   perce~            0.3            0.4  6.80e-18</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  6 US Nation~ 1 wk ah~ Bin   perce~            0.4            0.5  3.02e-18</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  7 US Nation~ 1 wk ah~ Bin   perce~            0.5            0.6  2.61e-18</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  8 US Nation~ 1 wk ah~ Bin   perce~            0.6            0.7  3.78e-18</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  9 US Nation~ 1 wk ah~ Bin   perce~            0.7            0.80 8.30e-12</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 10 US Nation~ 1 wk ah~ Bin   perce~            0.8            0.9  2.46e- 5</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 122 more rows</span></a></code></pre></div>
 </div>
 <div id="import-predx-json-or-predx-csv" class="section level2">
 <h2 class="hasAnchor">
 <a href="#import-predx-json-or-predx-csv" class="anchor"></a>Import predx JSON or predx CSV</h2>
 <p>In addition to importing CSV files in the FluSight format (as described at the beginning of this vignette), <code>predx</code> can be used to import <code>predx</code> JSON or <code>predx</code> CSV files.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_json.html">import_json</a></span>(json_tempfile)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast)
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   location  target  unit  team  mmwr_week submission_date predx_class predx</span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span>
-<span class="co">#&gt; 1 US Natio~ 1 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 2 US Natio~ 1 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt; 3 US Natio~ 2 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 4 US Natio~ 2 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt; 5 US Natio~ 3 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 6 US Natio~ 3 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;S4:~</span>
-fcast_csv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_csv.html">import_csv</a></span>(csv_tempfile)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_csv)
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   location  target  unit  team  mmwr_week submission_date predx_class predx</span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span>
-<span class="co">#&gt; 1 US Natio~ 1 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 2 US Natio~ 1 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt; 3 US Natio~ 2 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 4 US Natio~ 2 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;S4:~</span>
-<span class="co">#&gt; 5 US Natio~ 3 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;S4:~</span>
-<span class="co">#&gt; 6 US Natio~ 3 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;S4:~</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_json.html">import_json</a></span>(json_tempfile)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;   location  target  unit  team  mmwr_week submission_date predx_class predx</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; 1 US Natio~ 1 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 2 US Natio~ 1 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 3 US Natio~ 2 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; 4 US Natio~ 2 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; 5 US Natio~ 3 wk a~ perc~ Hist~ 42        2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt; 6 US Natio~ 3 wk a~ perc~ Hist~ 42        2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-12" title="12">fcast_csv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_csv.html">import_csv</a></span>(csv_tempfile)</a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_csv)</a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;   location  target  unit  team  mmwr_week submission_date predx_class predx</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;       &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; 1 US Natio~ 1 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt; 2 US Natio~ 1 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; 3 US Natio~ 2 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 4 US Natio~ 2 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 5 US Natio~ 3 wk a~ perc~ Hist~        42 2018-10-29      Point       &lt;Poi~</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 6 US Natio~ 3 wk a~ perc~ Hist~        42 2018-10-29      BinLwr      &lt;Bin~</span></a></code></pre></div>
 </div>
 <div id="use-with-the-flusight-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use-with-the-flusight-package" class="anchor"></a>Use with the FluSight package</h2>
 <p>The <code>FluSight</code> package <a href="">https://github.com/jarad/FluSight</a> includes numerous functions to work with forecasts, such as scoring and visualization. <code>predx</code> FluSight forecast can be converted to the format used by the <code>FluSight</code> package using <code>to_flusight_pkg_format</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fcast_flusight &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">to_flusight_pkg_format</a></span>(fcast)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_flusight)
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   location target type  unit  bin_start_incl bin_end_notincl    value</span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;              &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 US Nati~ 1 wk ~ Point perc~ &lt;NA&gt;           &lt;NA&gt;            1.30e+ 0</span>
-<span class="co">#&gt; 2 US Nati~ 1 wk ~ Bin   perc~ 0.0            0.1             0.      </span>
-<span class="co">#&gt; 3 US Nati~ 1 wk ~ Bin   perc~ 0.1            0.2             1.17e-17</span>
-<span class="co">#&gt; 4 US Nati~ 1 wk ~ Bin   perc~ 0.2            0.3             1.46e-17</span>
-<span class="co">#&gt; 5 US Nati~ 1 wk ~ Bin   perc~ 0.3            0.4             6.80e-18</span>
-<span class="co">#&gt; 6 US Nati~ 1 wk ~ Bin   perc~ 0.4            0.5             3.02e-18</span>
-<span class="co">#&gt; # ... with 1 more variable: forecast_week &lt;dbl&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">fcast_flusight &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flusight.html">to_flusight_pkg_format</a></span>(fcast)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_flusight)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt;   location target type  unit  bin_start_incl bin_end_notincl    value</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;              &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; 1 US Nati~ 1 wk ~ Point perc~ &lt;NA&gt;           &lt;NA&gt;            1.30e+ 0</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt; 2 US Nati~ 1 wk ~ Bin   perc~ 0.0            0.1             0.      </span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt; 3 US Nati~ 1 wk ~ Bin   perc~ 0.1            0.2             1.17e-17</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt; 4 US Nati~ 1 wk ~ Bin   perc~ 0.2            0.3             1.46e-17</span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt; 5 US Nati~ 1 wk ~ Bin   perc~ 0.3            0.4             6.80e-18</span></a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="co">#&gt; 6 US Nati~ 1 wk ~ Bin   perc~ 0.4            0.5             3.02e-18</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="co">#&gt; # ... with 1 more variable: forecast_week &lt;dbl&gt;</span></a></code></pre></div>
 <p>This can then be used for scoring. Note that in this example, <code>fcast</code> only contains national level forecasts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(FluSight)
-truth_<span class="dv">1819</span> &lt;-<span class="st"> </span>FluSight<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/FluSight/topics/create_truth">create_truth</a></span>(<span class="dt">year =</span> <span class="dv">2018</span>)
-truth_<span class="dv">1819</span> &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(truth_<span class="dv">1819</span>, location <span class="op">==</span><span class="st"> 'US National'</span>)
-FluSight<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/FluSight/topics/score_entry">score_entry</a></span>(fcast_flusight, truth_<span class="dv">1819</span>)
-<span class="co">#&gt; # A tibble: 7 x 4</span>
-<span class="co">#&gt;   location    target                 score forecast_week</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                  &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 US National Season onset           -2.41            42</span>
-<span class="co">#&gt; 2 US National Season peak week       -2.11            42</span>
-<span class="co">#&gt; 3 US National Season peak percentage -3.96            42</span>
-<span class="co">#&gt; 4 US National 1 wk ahead             -4.53            42</span>
-<span class="co">#&gt; 5 US National 2 wk ahead             -3.16            42</span>
-<span class="co">#&gt; 6 US National 3 wk ahead             -3.71            42</span>
-<span class="co">#&gt; 7 US National 4 wk ahead             -2.99            42</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(FluSight)</a>
+<a class="sourceLine" id="cb8-2" title="2">truth_<span class="dv">1819</span> &lt;-<span class="st"> </span>FluSight<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/FluSight/topics/create_truth">create_truth</a></span>(<span class="dt">year =</span> <span class="dv">2018</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3">truth_<span class="dv">1819</span> &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(truth_<span class="dv">1819</span>, location <span class="op">==</span><span class="st"> 'US National'</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4">FluSight<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/FluSight/topics/score_entry">score_entry</a></span>(fcast_flusight, truth_<span class="dv">1819</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt; # A tibble: 7 x 4</span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;   location    target                 score forecast_week</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                  &lt;dbl&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt; 1 US National Season onset           -2.41            42</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt; 2 US National Season peak week       -2.11            42</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt; 3 US National Season peak percentage -3.96            42</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt; 4 US National 1 wk ahead             -4.53            42</span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt; 5 US National 2 wk ahead             -3.16            42</span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt; 6 US National 3 wk ahead             -3.71            42</span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 7 US National 4 wk ahead             -2.99            42</span></a></code></pre></div>
 </div>
   </div>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns — predx_df • predx</title>
+<title>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns and created them if needed. — predx_df • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns — predx_df" />
+<meta property="og:title" content="Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns and created them if needed. — predx_df" />
 
-<meta property="og:description" content="Tools to check the predx data frames contain valid predx_class and predx columns" />
+<meta property="og:description" content="is.predx_df will verify that a predx data frame contains valid predx_class and predx columns. as.predx_df will create a predx data frame from a list or tibble and add the predx_class column if not found." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,14 +109,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns</h1>
+    <h1>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns and created them if needed.</h1>
     
     <div class="hidden name"><code>predx_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns</p>
+    <p><code>is.predx_df</code> will verify that a <code>predx</code> data frame contains valid <code>predx_class</code> and <code>predx</code> columns. <code>as.predx_df</code> will create a <code>predx</code> data frame from a list or tibble and add the <code>predx_class</code> column if not found.</p>
     
     </div>
 
@@ -125,7 +125,16 @@
 <span class='fu'>is.predx_df</span>(<span class='no'>x</span>)
 
 <span class='fu'>as.predx_df</span>(<span class='no'>x</span>)</pre>
-        
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A list or a tibble including a list or column named <code>predx</code> containing only <code>predx</code> objects. Not a base data.frame because the <code>predx</code> objects cannot be embedded, <code>as.predx_df</code> will embed them.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Error message or TRUE.</p>
@@ -137,15 +146,30 @@
  <span class='kw'>target</span> <span class='kw'>=</span> <span class='st'>'habitability'</span>,
  <span class='kw'>predx</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='Binary-class.html'>Binary</a></span>(<span class='fl'>0</span>), <span class='fu'><a href='Binary-class.html'>Binary</a></span>(<span class='fl'>0</span>), <span class='fu'><a href='Binary-class.html'>Binary</a></span>(<span class='fl'>1</span>))
 ))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 4</span><span>
-#&gt;   location target       predx        predx_class
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'>1</span><span> Mercury  habitability </span><span style='color: #555555;'>&lt;S4: Binary&gt;</span><span> Binary     
-#&gt; </span><span style='color: #555555;'>2</span><span> Venus    habitability </span><span style='color: #555555;'>&lt;S4: Binary&gt;</span><span> Binary     
-#&gt; </span><span style='color: #555555;'>3</span><span> Earth    habitability </span><span style='color: #555555;'>&lt;S4: Binary&gt;</span><span> Binary     </div></span></pre>
+#&gt;   location target       predx    predx_class
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'>1</span><span> Mercury  habitability </span><span style='color: #555555;'>&lt;Binary&gt;</span><span> Binary     
+#&gt; </span><span style='color: #555555;'>2</span><span> Venus    habitability </span><span style='color: #555555;'>&lt;Binary&gt;</span><span> Binary     
+#&gt; </span><span style='color: #555555;'>3</span><span> Earth    habitability </span><span style='color: #555555;'>&lt;Binary&gt;</span><span> Binary     </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.predx_df</span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>target</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'demoCat'</span>, <span class='st'>'demoBinary'</span>),
+    <span class='kw'>date</span> <span class='kw'>=</span> <span class='st'>'tomorrow'</span>,
+    <span class='kw'>predx</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+      <span class='fu'><a href='BinCat-class.html'>BinCat</a></span>(
+        <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
+          <span class='kw'>cat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'a'</span>, <span class='st'>'b'</span>, <span class='st'>'c'</span>, <span class='st'>'d'</span>, <span class='st'>'e'</span>, <span class='st'>'f'</span>, <span class='st'>'g'</span>, <span class='st'>'h'</span>, <span class='st'>'i'</span>, <span class='st'>'j'</span>),
+          <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.1</span>, <span class='fl'>4</span>), <span class='fl'>0.25</span>, <span class='fl'>0.15</span>, <span class='fl'>0.1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0.05</span>, <span class='fl'>2</span>))
+          )
+        ),
+      <span class='fu'><a href='Binary-class.html'>Binary</a></span>(<span class='fl'>0.1</span>)
+      )
+    )
+  )</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
       

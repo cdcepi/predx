@@ -139,19 +139,19 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="Binary-class.html">Binary()</a></code> <code><a href="Binary-class.html">is.Binary()</a></code> <code><a href="Binary-class.html">as.list(<i>&lt;Binary&gt;</i>)</a></code> <code><a href="Binary-class.html">as.data.frame(<i>&lt;Binary&gt;</i>)</a></code> </p>
+          <p><code><a href="Binary-class.html">Binary()</a></code> <code><a href="Binary-class.html">is.Binary()</a></code> <code><a href="Binary-class.html">predx_to_json(<i>&lt;Binary&gt;</i>)</a></code> <code><a href="Binary-class.html">as.data.frame(<i>&lt;Binary&gt;</i>)</a></code> <code><a href="Binary-class.html">transform_predx(<i>&lt;Binary&gt;</i>)</a></code> </p>
         </td>
         <td><p>Binary class: Binary predictions</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="BinCat-class.html">BinCat()</a></code> <code><a href="BinCat-class.html">is.BinCat()</a></code> <code><a href="BinCat-class.html">as.list(<i>&lt;BinCat&gt;</i>)</a></code> <code><a href="BinCat-class.html">as.data.frame(<i>&lt;BinCat&gt;</i>)</a></code> <code><a href="BinCat-class.html">get_cats()</a></code> </p>
+          <p><code><a href="BinCat-class.html">BinCat()</a></code> <code><a href="BinCat-class.html">is.BinCat()</a></code> <code><a href="BinCat-class.html">predx_to_json(<i>&lt;BinCat&gt;</i>)</a></code> <code><a href="BinCat-class.html">as.data.frame(<i>&lt;BinCat&gt;</i>)</a></code> <code><a href="BinCat-class.html">transform_predx(<i>&lt;BinCat&gt;</i>)</a></code> </p>
         </td>
         <td><p>BinCat class: Binned predictions with categorical bins</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="BinLwr-class.html">BinLwr()</a></code> <code><a href="BinLwr-class.html">is.BinLwr()</a></code> <code><a href="BinLwr-class.html">as.list(<i>&lt;BinLwr&gt;</i>)</a></code> <code><a href="BinLwr-class.html">as.data.frame(<i>&lt;BinLwr&gt;</i>)</a></code> </p>
+          <p><code><a href="BinLwr-class.html">BinLwr()</a></code> <code><a href="BinLwr-class.html">is.BinLwr()</a></code> <code><a href="BinLwr-class.html">predx_to_json(<i>&lt;BinLwr&gt;</i>)</a></code> <code><a href="BinLwr-class.html">as.data.frame(<i>&lt;BinLwr&gt;</i>)</a></code> <code><a href="BinLwr-class.html">transform_predx(<i>&lt;BinLwr&gt;</i>)</a></code> </p>
         </td>
         <td><p>BinLwr class: Binned predictions with sequential numeric bins</p></td>
       </tr><tr>
@@ -171,7 +171,7 @@
         <td>
           <p><code><a href="check_no_NAs.html">check_no_NAs()</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Check for NA entries</p></td>
       </tr><tr>
         
         <td>
@@ -235,6 +235,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="get_cats.html">get_cats()</a></code> </p>
+        </td>
+        <td><p>Get vector of categories for a BinCat or SampleCat class predx object</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="get_predx_colnames.html">get_predx_colnames()</a></code> </p>
         </td>
         <td><p>Internal function returns the names of columns used for conversion to predx objects</p></td>
@@ -253,7 +259,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="Point-class.html">Point()</a></code> <code><a href="Point-class.html">is.Point()</a></code> <code><a href="Point-class.html">as.list(<i>&lt;Point&gt;</i>)</a></code> <code><a href="Point-class.html">as.data.frame(<i>&lt;Point&gt;</i>)</a></code> </p>
+          <p><code><a href="Point-class.html">Point()</a></code> <code><a href="Point-class.html">is.Point()</a></code> <code><a href="Point-class.html">predx_to_json(<i>&lt;Point&gt;</i>)</a></code> <code><a href="Point-class.html">as.data.frame(<i>&lt;Point&gt;</i>)</a></code> <code><a href="Point-class.html">transform_predx(<i>&lt;Point&gt;</i>)</a></code> </p>
         </td>
         <td><p>Point class: Point predictions</p></td>
       </tr><tr>
@@ -261,13 +267,37 @@
         <td>
           <p><code><a href="predx_df.html">validate_predx_df()</a></code> <code><a href="predx_df.html">is.predx_df()</a></code> <code><a href="predx_df.html">as.predx_df()</a></code> </p>
         </td>
-        <td><p>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns</p></td>
+        <td><p>Tools to check the <code>predx</code> data frames contain valid <code>predx_class</code> and <code>predx</code> columns and created them if needed.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="predx_to_json.html">predx_to_json()</a></code> </p>
+        </td>
+        <td><p>Internal code to convert <code>predx</code> to JSON friendly representation.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Sample-class.html">Sample()</a></code> <code><a href="Sample-class.html">is.Sample()</a></code> <code><a href="Sample-class.html">predx_to_json(<i>&lt;Sample&gt;</i>)</a></code> <code><a href="Sample-class.html">as.data.frame(<i>&lt;Sample&gt;</i>)</a></code> <code><a href="Sample-class.html">transform_predx(<i>&lt;Sample&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample class: Samples from a pdistribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SampleCat-class.html">SampleCat()</a></code> <code><a href="SampleCat-class.html">is.SampleCat()</a></code> <code><a href="SampleCat-class.html">predx_to_json(<i>&lt;SampleCat&gt;</i>)</a></code> <code><a href="SampleCat-class.html">as.data.frame(<i>&lt;SampleCat&gt;</i>)</a></code> <code><a href="SampleCat-class.html">transform_predx(<i>&lt;SampleCat&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>SampleCat class: Samples from a distribution of categories or classifications.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="to_predx.html">to_predx()</a></code> </p>
         </td>
         <td><p>Helper function for creating lists of <code>predx</code> objects (e.g. a column in a data frame containing a variety of <code>predx</code> objects)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="transform_predx.html">transform_predx()</a></code> </p>
+        </td>
+        <td><p>Transform a <code>predx</code> objects to a target predx class.</p></td>
       </tr><tr>
         
         <td>

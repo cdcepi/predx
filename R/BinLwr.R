@@ -10,9 +10,8 @@
 #'
 #' @slot predx A numeric matrix with two columns: \code{lwr} and \code{prob}.
 #'
-#' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 setClass('BinLwr', #S4 class
@@ -73,8 +72,8 @@ is.BinLwr <- function(x) {
 
 #' @export
 #' @rdname BinLwr-class
-setMethod("as.list", "BinLwr",
-  function(x, ...) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })
+setMethod("predx_to_json", "BinLwr",
+  function(x) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })
 
 #' @export
 #' @rdname BinLwr-class

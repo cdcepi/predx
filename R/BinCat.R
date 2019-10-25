@@ -8,11 +8,21 @@
 #'
 #' @slot predx A data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).
 #'
-#' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
+#' x <- BinCat(data.frame(
+#'   cat = c('a', 'b', 'c'),
+#'   prob = c(0, 0.3, 0.7)
+#' ))
+#' x
+#' # create predx dataframe
+#' x_df <- as.predx_df(list(
+#'  location = c('Mercury', 'Venus', 'Earth'),
+#'  target = 'habitability',
+#'  predx = list(x, x)
+#' ))
 setClass('BinCat', #S4 class
   slots = c(predx = 'data.frame')
 )
@@ -46,6 +56,7 @@ setValidity('BinCat', function(object) {
 #' @rdname BinCat-class
 BinCat <- function(x) {
   if (is.matrix(x)) x <- as.data.frame(x)
+  if (!is.character(x$cat)) x$cat <- as.character(x$cat)
   new("BinCat", predx = x)
 }
 
@@ -70,8 +81,8 @@ is.BinCat <- function(x) {
 
 #' @export
 #' @rdname BinCat-class
-setMethod("as.list", "BinCat",
-  function(x, ...) { list(cat=x@predx$cat, prob=x@predx$prob) })
+setMethod("predx_to_json", "BinCat",
+  function(x) { list(cat=x@predx$cat, prob=x@predx$prob) })
 
 #' @export
 #' @rdname BinCat-class

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv • predx</title>
+<title>Get vector of categories for a BinCat or SampleCat class predx object — get_cats • predx</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame — import_csv" />
+<meta property="og:title" content="Get vector of categories for a BinCat or SampleCat class predx object — get_cats" />
 
-<meta property="og:description" content="Import a predx-formatted CSV file as a predx data frame" />
+<meta property="og:description" content="Get vector of categories for a BinCat or SampleCat class predx object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,50 +109,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</h1>
+    <h1>Get vector of categories for a BinCat or SampleCat class predx object</h1>
     
-    <div class="hidden name"><code>import_csv.Rd</code></div>
+    <div class="hidden name"><code>get_cats.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import a <code>predx</code>-formatted CSV file as a <code>predx</code> data frame</p>
+    <p>Get vector of categories for a BinCat or SampleCat class predx object</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>import_csv</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_cats</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>A csv file/path *or* a data.frame object. Either should have a <code>predx_class</code> column and whatever columns are needed for the included classes (e.g. point, bin, prob).</p></td>
-    </tr>
-    <tr>
-      <th>colClasses</th>
-      <td><p>optional. Can be specified folling <code>read.csv</code> to control column classes.</p></td>
+      <th>x</th>
+      <td><p>an object of class BinCat or SampleCat</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>predx</code> data frame.</p>
+    <p>character vector of categories</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>#' predx_demo <- as.predx_df(list(
- location = c('Mercury', 'Venus', 'Earth'),
- target = 'habitability',
- predx = list(Binary(1e-4), Binary(1e-4), Binary(1))
-))
-csv_tempfile <- tempfile()
-export_csv(predx_demo, csv_tempfile)
-import_csv(csv_tempfile)
-</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:2:43: unexpected ','</span>
-#&gt; <span class='error'>1: #' predx_demo &lt;- as.predx_df(list(</span>
-#&gt; <span class='error'>2:  location = c('Mercury', 'Venus', 'Earth'),</span>
-#&gt; <span class='error'>                                             ^</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,9 +143,7 @@ import_csv(csv_tempfile)
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

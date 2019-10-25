@@ -5,7 +5,7 @@
 \alias{BinCat-class}
 \alias{BinCat}
 \alias{is.BinCat}
-\alias{as.list,BinCat-method}
+\alias{predx_to_json,BinCat-method}
 \alias{as.data.frame,BinCat-method}
 \alias{transform_predx,BinCat-method}
 \title{BinCat class: Binned predictions with categorical bins}
@@ -14,7 +14,7 @@ BinCat(x)
 
 is.BinCat(x)
 
-\S4method{as.list}{BinCat}(x, ...)
+\S4method{predx_to_json}{BinCat}(x)
 
 \S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
   ...)
@@ -35,3 +35,16 @@ In JSON and CSV representations, the bins are named \code{cat} and the probabili
 \item{\code{predx}}{A data.frame with two columns: \code{cat} (character) and \code{prob} (numeric).}
 }}
 
+\examples{
+x <- BinCat(data.frame(
+  cat = c('a', 'b', 'c'),
+  prob = c(0, 0.3, 0.7)
+))
+x
+# create predx dataframe
+x_df <- as.predx_df(list(
+ location = c('Mercury', 'Venus', 'Earth'),
+ target = 'habitability',
+ predx = list(x, x)
+))
+}

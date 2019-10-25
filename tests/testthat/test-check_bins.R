@@ -1,4 +1,4 @@
-context("Verification of forecast bin specification")
+context("Verification of forecast bin specifications")
 
 test_that("check_probs_bins_length_match detects mismatches", {
   expect_equal(check_probs_bins_length_match(5:10, 1:2),

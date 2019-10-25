@@ -5,7 +5,7 @@
 \alias{BinLwr-class}
 \alias{BinLwr}
 \alias{is.BinLwr}
-\alias{as.list,BinLwr-method}
+\alias{predx_to_json,BinLwr-method}
 \alias{as.data.frame,BinLwr-method}
 \alias{transform_predx,BinLwr-method}
 \title{BinLwr class: Binned predictions with sequential numeric bins}
@@ -14,7 +14,7 @@ BinLwr(x)
 
 is.BinLwr(x)
 
-\S4method{as.list}{BinLwr}(x, ...)
+\S4method{predx_to_json}{BinLwr}(x)
 
 \S4method{as.data.frame}{BinLwr}(x, row.names = NULL, optional = FALSE,
   ...)

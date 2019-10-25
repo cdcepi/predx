@@ -20,7 +20,7 @@ test_that("Sample data frame objects convert to predx", {
 
 test_that("Generics function", {
   this_pred <- Sample(seq(0, 0.9, by=0.1))
-  expect_equal(names(as.list(this_pred)), c('sample'))
+  expect_equal(names(predx_to_json(this_pred)), c('sample'))
   expect_equal(dim(as.data.frame(this_pred)), c(10, 1))
   expect_equal(as.data.frame(this_pred)[['sample']], seq(0, 0.9, by=0.1))
   expect_equal(
@@ -31,4 +31,26 @@ test_that("Generics function", {
     median(this_pred, probs = c(0.1, 0.4)),
     median(seq(0, 0.9, by=0.1), probs = c(0.1, 0.4))
   )
+})
+
+test_that("CSV import/export works", {
+  fcast <- dplyr::tibble(
+    target = c('x', 'y'),
+    predx_class = 'Sample',
+    predx = list(Sample(c(1, 10)), Sample(c(5, 4))))
+  csv_file <- tempfile()
+  export_csv(fcast, csv_file)
+  fcast_import <- import_csv(csv_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+})
+
+test_that("JSON import/export works", {
+  fcast <- dplyr::tibble(
+    target = c('x', 'y'),
+    predx_class = 'Sample',
+    predx = list(Sample(c(1, 10)), Sample(c(5, 4))))
+  json_file <- tempfile()
+  export_json(fcast, json_file)
+  fcast_import <- import_json(json_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
 })

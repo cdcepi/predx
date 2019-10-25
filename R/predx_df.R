@@ -1,4 +1,8 @@
-#' Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns
+#' Tools to check the \code{predx} data frames contain valid \code{predx_class} and \code{predx} columns and created them if needed.
+#'
+#' \code{is.predx_df} will verify that a \code{predx} data frame contains valid \code{predx_class} and \code{predx} columns. \code{as.predx_df} will create a \code{predx} data frame from a list or tibble and add the \code{predx_class} column if not found.
+#'
+#' @param x A list or a tibble including a list or column named \code{predx} containing only \code{predx} objects. Not a base data.frame because the \code{predx} objects cannot be embedded, \code{as.predx_df} will embed them.
 #'
 #' @return Error message or TRUE.
 #' @export
@@ -10,6 +14,21 @@
 #'  target = 'habitability',
 #'  predx = list(Binary(0), Binary(0), Binary(1))
 #' ))
+#' x <- as.predx_df(
+#'   list(
+#'     target = c('demoCat', 'demoBinary'),
+#'     date = 'tomorrow',
+#'     predx = list(
+#'       BinCat(
+#'         data.frame(
+#'           cat = c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'),
+#'           prob = c(0, rep(0.1, 4), 0.25, 0.15, 0.1, rep(0.05, 2))
+#'           )
+#'         ),
+#'       Binary(0.1)
+#'       )
+#'     )
+#'   )
 #' @name predx_df
 validate_predx_df <- function(x, return=F) {
   ### structure checks

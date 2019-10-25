@@ -18,6 +18,7 @@ Imports:
   stringr,
   jsonlite
 Collate: 
+    'predx_to_json.R'
     'transform_predx.R'
     'BinCat.R'
     'BinLwr.R'

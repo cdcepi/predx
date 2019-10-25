@@ -76,7 +76,7 @@
       <h1>Aedes Vignette</h1>
                         <h4 class="author">Michael Johansson</h4>
             
-            <h4 class="date">2019-04-16</h4>
+            <h4 class="date">2019-10-02</h4>
       
       
       <div class="hidden name"><code>aedes-vignette.Rmd</code></div>
@@ -92,26 +92,26 @@
 <p>First, the forecaster should create their forecast in the CSV format specified for the Aedes Forecast Challenge by the CDC Epidemic Prediction Initiative (provided as a template at <a href="https://predict.cdc.gov">predict.cdc.gov</a>). Forecasts matching this template can be imported using the <code>import_aedes_csv</code> function. This function imports the CSV and converts it to a special, embedded “<code>predx_df</code>” data frame (a <code>tbl_df</code>, “tibble” object) with a row for every individual prediction (defined by target, location, and prediction type), a column <code>predx_class</code> that defines the class of each prediction, and a column <code>predx</code> that is a list of predx objects. In the process of importation, all predictions are validated (e.g.probabilities can’t be negative). If conversion fails, (hopefully useful) errors messages are returned in the <code>predx</code> column.</p>
 <p>This function ingests a CSV file, converts the columns to those needed to create a <code>predx</code> object, and creates a <code>predx_df</code> object (throwing error messages if conversion fails).</p>
 <p>If the forecast will be stored in a different format, it may be helpful to include additional variables in the <code>predx_df</code> (e.g. submission date, month forecasted). These can be included as additional columns by providing a list to the optional argument <code>add_vars</code> as shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)
-fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/aedes.html">import_aedes_csv</a></span>(<span class="st">'aedes_null_forecast.csv'</span>, 
-  <span class="dt">add_vars=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">due_date=</span><span class="st">'2019-03-31'</span>, <span class="dt">month=</span><span class="st">'April'</span>, <span class="dt">team=</span><span class="st">'null'</span>))
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)
-<span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span>
-fcast
-<span class="co">#&gt; # A tibble: 190 x 9</span>
-<span class="co">#&gt;    location    target   type  unit  due_date month team  predx_class predx </span>
-<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;list&gt;</span>
-<span class="co">#&gt;  1 California~ Ae. aeg~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  2 California~ Ae. alb~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  3 California~ Ae. aeg~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  4 California~ Ae. alb~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  5 California~ Ae. aeg~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  6 California~ Ae. alb~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  7 California~ Ae. aeg~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  8 California~ Ae. alb~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt;  9 California~ Ae. aeg~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 10 California~ Ae. alb~ bina~ pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; # ... with 180 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(predx)</a>
+<a class="sourceLine" id="cb1-2" title="2">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/aedes.html">import_aedes_csv</a></span>(<span class="st">'aedes_null_forecast.csv'</span>, </a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="dt">add_vars=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">due_date=</span><span class="st">'2019-03-31'</span>, <span class="dt">month=</span><span class="st">'April'</span>, <span class="dt">team=</span><span class="st">'null'</span>))</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(fcast)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></a>
+<a class="sourceLine" id="cb1-6" title="6">fcast</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; # A tibble: 190 x 9</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt;    location    target   type   unit  due_date month team  predx_class predx</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;  1 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;  2 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;  3 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  4 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  5 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  6 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt;  7 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt;  8 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt;  9 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt; 10 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="co">#&gt; # ... with 180 more rows</span></a></code></pre></div>
 </div>
 <div id="verify-expected-predictions-are-included" class="section level2">
 <h2 class="hasAnchor">
@@ -155,60 +155,60 @@ fcast
   )
 )</code></pre>
 <p>This specific expected list, <code>aedes_expected</code>, is included in the <code>predx</code> package. Other verification lists can be made in this format and all can be used with the function <code>verify_expected</code> to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument <code>return_df = TRUE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/verify_expected.html">verify_expected</a></span>(fcast, <span class="kw"><a href="../reference/aedes.html">aedes_expected</a></span>())
-<span class="co">#&gt; All expected predictions found.</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="../reference/verify_expected.html">verify_expected</a></span>(fcast, <span class="kw"><a href="../reference/aedes.html">aedes_expected</a></span>())</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; All expected predictions found.</span></a></code></pre></div>
 </div>
 <div id="export-as-predx-json-reduced-size-or-predx-csv" class="section level2">
 <h2 class="hasAnchor">
 <a href="#export-as-predx-json-reduced-size-or-predx-csv" class="anchor"></a>Export as <code>predx</code> JSON (reduced size) or <code>predx</code> CSV</h2>
 <p>To save space and facilitate sharing, transfer, and storage of <code>predx_df</code> objects, they can be exported as JSON objects using the function <code>export_json</code>. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the first two predictions in <code>fcast</code> below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])
-<span class="co">#&gt; [{"location":"California-Alameda","target":"Ae. aegypti","type":"binary","unit":"present","due_date":"2019-03-31","month":"April","team":"null","predx_class":"Binary","predx":{"prob":[0.5]}},{"location":"California-Alameda","target":"Ae. albopictus","type":"binary","unit":"present","due_date":"2019-03-31","month":"April","team":"null","predx_class":"Binary","predx":{"prob":[0.5]}}]</span>
-json_tempfile =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()
-<span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast, <span class="dt">filename =</span> json_tempfile, <span class="dt">overwrite =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; [{"location":"California-Alameda","target":"Ae. aegypti","type":"binary","unit":"present","due_date":"2019-03-31","month":"April","team":"null","predx_class":"Binary","predx":{"prob":[0.5]}},{"location":"California-Alameda","target":"Ae. albopictus","type":"binary","unit":"present","due_date":"2019-03-31","month":"April","team":"null","predx_class":"Binary","predx":{"prob":[0.5]}}]</span></a>
+<a class="sourceLine" id="cb4-3" title="3">json_tempfile =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw"><a href="../reference/export_json.html">export_json</a></span>(fcast, <span class="dt">filename =</span> json_tempfile, <span class="dt">overwrite =</span> T)</a></code></pre></div>
 <p>Alternatively, <code>predx_df</code> objects can be exported as predx CSV files. This CSV formats differs slightly from the Aedes Forecasting Challenge template because it may contains additional columns (e.g. predx_class) and it does not contain the required column ‘value’. The similar function, <code>export_aedes_csv</code> adds the value column so that the CSV can be uploaded to the Epidemic Prediction Initiative website (the extra columns are kept, but not interpreted by the website).</p>
 <p>It may be helpful to generate forecasts in the <code>predx_df</code> format. Any forecasts generated in that format can be exported to the Aedes Forecasting Challenge submission format using <code>export_aedes_csv</code> (provided they include the required columns “type” and “unit” and have been verified using <code>verify_expected</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/export_csv.html">export_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])
-<span class="co">#&gt; # A tibble: 2 x 9</span>
-<span class="co">#&gt;   location     target    type  unit  due_date month team  predx_class  prob</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 California-~ Ae. aegy~ bina~ pres~ 2019-03~ April null  Binary        0.5</span>
-<span class="co">#&gt; 2 California-~ Ae. albo~ bina~ pres~ 2019-03~ April null  Binary        0.5</span>
-<span class="kw"><a href="../reference/aedes.html">export_aedes_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])
-<span class="co">#&gt; # A tibble: 2 x 10</span>
-<span class="co">#&gt;   location  target type  unit  due_date month team  predx_class value  prob</span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5   0.5</span>
-<span class="co">#&gt; 2 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5   0.5</span>
-csv_tempfile &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()
-<span class="kw"><a href="../reference/aedes.html">export_aedes_csv</a></span>(fcast, <span class="dt">filename =</span> csv_tempfile, <span class="dt">overwrite =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="../reference/export_csv.html">export_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; # A tibble: 2 x 9</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt;   location     target    type  unit  due_date month team  predx_class  prob</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; 1 California-~ Ae. aegy~ bina~ pres~ 2019-03~ April null  Binary        0.5</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; 2 California-~ Ae. albo~ bina~ pres~ 2019-03~ April null  Binary        0.5</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="kw"><a href="../reference/aedes.html">export_aedes_csv</a></span>(fcast[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; # A tibble: 2 x 10</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;   location  target type  unit  due_date month team  predx_class value  prob</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; 1 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5   0.5</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; 2 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5   0.5</span></a>
+<a class="sourceLine" id="cb5-13" title="13">csv_tempfile &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>()</a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="kw"><a href="../reference/aedes.html">export_aedes_csv</a></span>(fcast, <span class="dt">filename =</span> csv_tempfile, <span class="dt">overwrite =</span> T)</a></code></pre></div>
 </div>
 <div id="import-predx-json-or-predx-csv" class="section level2">
 <h2 class="hasAnchor">
 <a href="#import-predx-json-or-predx-csv" class="anchor"></a>Import <code>predx</code> JSON or <code>predx</code> CSV</h2>
 <p>In addition to importing CSV files in the Aedes Forecasting Challenge format (as described at the beginning of this vignette), <code>predx</code> can be used to import <code>predx</code> JSON or <code>predx</code> CSV files.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_json.html">import_json</a></span>(json_tempfile)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast)
-<span class="co">#&gt; # A tibble: 6 x 9</span>
-<span class="co">#&gt;   location    target   type   unit  due_date month team  predx_class predx </span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;list&gt;</span>
-<span class="co">#&gt; 1 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 2 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 3 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 4 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 5 California~ Ae. aeg~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-<span class="co">#&gt; 6 California~ Ae. alb~ binary pres~ 2019-03~ April null  Binary      &lt;S4: ~</span>
-fcast_csv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_csv.html">import_csv</a></span>(csv_tempfile)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_csv)
-<span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   location  target type  unit  due_date month team  predx_class value predx</span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span>
-<span class="co">#&gt; 2 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span>
-<span class="co">#&gt; 3 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span>
-<span class="co">#&gt; 4 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span>
-<span class="co">#&gt; 5 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span>
-<span class="co">#&gt; 6 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;S4:~</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">fcast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_json.html">import_json</a></span>(json_tempfile)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; # A tibble: 6 x 9</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;   location    target    type   unit  due_date month team  predx_class predx</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; 1 California~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 2 California~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 3 California~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; 4 California~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; 5 California~ Ae. aegy~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt; 6 California~ Ae. albo~ binary pres~ 2019-03~ April null  Binary      &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-12" title="12">fcast_csv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/import_csv.html">import_csv</a></span>(csv_tempfile)</a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(fcast_csv)</a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt; # A tibble: 6 x 10</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;   location  target type  unit  due_date month team  predx_class value predx</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; 1 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt; 2 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; 3 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 4 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 5 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 6 Californ~ Ae. a~ bina~ pres~ 2019-03~ April null  Binary        0.5 &lt;Bin~</span></a></code></pre></div>
 </div>
   </div>
 

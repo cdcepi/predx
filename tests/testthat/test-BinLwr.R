@@ -42,7 +42,33 @@ test_that("Generics function", {
   this_pred <- BinLwr(data.frame(
     lwr = seq(0, 0.9, by=0.1),
     prob = rep(0.1, 10)))
-  expect_equal(names(as.list(this_pred)), c('lwr', 'prob'))
+  expect_equal(names(predx_to_json(this_pred)), c('lwr', 'prob'))
   expect_equal(dim(as.data.frame(this_pred)), c(10, 2))
+})
+
+test_that("CSV import/export works", {
+  fcast <- dplyr::tibble(
+    target = c('x', 'y'),
+    predx_class = 'BinLwr',
+    predx = list(
+      BinLwr(data.frame(lwr = c(1, 2), prob = c(0.5, 0.5))),
+      BinLwr(data.frame(lwr = c(-5, -4), prob = c(0.3, 0.7)))))
+  csv_file <- tempfile()
+  export_csv(fcast, csv_file)
+  fcast_import <- import_csv(csv_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
+})
+
+test_that("JSON import/export works", {
+  fcast <- dplyr::tibble(
+    target = c('x', 'y'),
+    predx_class = 'BinLwr',
+    predx = list(
+      BinLwr(data.frame(lwr = c(1, 2), prob = c(0.5, 0.5))),
+      BinLwr(data.frame(lwr = c(-5, -4), prob = c(0.3, 0.7)))))
+  json_file <- tempfile()
+  export_json(fcast, json_file)
+  fcast_import <- import_json(json_file)
+  expect_equal(as.data.frame(fcast_import), as.data.frame(fcast))
 })
 

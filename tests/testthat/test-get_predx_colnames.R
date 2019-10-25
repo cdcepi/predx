@@ -6,4 +6,5 @@ test_that("get_predx_colnames extracts all cols", {
   expect_true(all(get_predx_colnames(c('BinCat', 'BinLwr', 'Binary')) %in%
     c('prob', 'cat', 'lwr')))
   expect_equal(get_predx_colnames('Sample'), 'sample')
+  expect_equal(get_predx_colnames('SampleCat'), 'sample')
 })

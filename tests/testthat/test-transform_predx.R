@@ -33,13 +33,12 @@ test_that("transform_predx fails for Sample to BinLwr with unequal binwidths", {
   expect_error(transform_predx(test_sample, to_class = "BinLwr", lwr = lwr))
 })
 
-
-
 test_that("transform_predx works for SampleCat to BinCat", {
   test_vec <- c("a", "b", "b", "c", "a", "a")
   test_cats <- letters[1:4]
-  test_samplecat <- SampleCat(list(sample = test_vec, cat = test_cats))
-  test_bincat <- transform_predx(test_samplecat, to_class = "BinCat", cat = test_cats)
+  test_samplecat <- SampleCat(test_vec)
+  test_bincat <- transform_predx(test_samplecat,
+    to_class = "BinCat", cat = test_cats)
 
   expected <- data.frame(
     cat = letters[1:4],
@@ -51,25 +50,24 @@ test_that("transform_predx works for SampleCat to BinCat", {
   expect_equal(as.data.frame(test_bincat), expected)
 })
 
-test_that("transform_predx fails for SampleCat to BinCat if categories don't match", {
+test_that("transform_predx fails for SampleCat to BinCat if categories not included", {
   test_vec <- c("a", "b", "b", "c", "a", "a")
-  test_cats <- letters[1:4]
-  test_samplecat <- SampleCat(list(sample = test_vec, cat = test_cats))
-  expect_error(transform_predx(test_samplecat, to_class = "BinCat", cat = letters[1:3]))
+  test_samplecat <- SampleCat(test_vec)
+  expect_error(transform_predx(test_samplecat,
+    to_class = "BinCat", cat = letters[1:2]))
 })
 
-
-
 test_that("transform_predx works on lists", {
-  test_cats <- letters[1:4]
   test_vec <- c("a", "b", "b", "c", "a", "a")
-  test_samplecat <- SampleCat(list(sample = test_vec, cat = test_cats))
+  test_samplecat <- SampleCat(test_vec)
 
   test_vec <- c("a", "b", "b", "c", "a", "a", "d")
-  test_samplecat2 <- SampleCat(list(sample = test_vec, cat = test_cats))
+  test_samplecat2 <- SampleCat(test_vec)
+
+  test_cats <- letters[1:4]
 
   test_bincat <- data.frame(
-      cat = letters[1:4],
+      cat = test_cats,
       prob = (3:0)/6,
       stringsAsFactors = FALSE
     ) %>%

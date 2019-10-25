@@ -5,16 +5,16 @@
 \alias{SampleCat-class}
 \alias{SampleCat}
 \alias{is.SampleCat}
-\alias{as.list,SampleCat-method}
+\alias{predx_to_json,SampleCat-method}
 \alias{as.data.frame,SampleCat-method}
 \alias{transform_predx,SampleCat-method}
-\title{SampleCat class: Samples from a predictive distribution over categorical bins.}
+\title{SampleCat class: Samples from a distribution of categories or classifications.}
 \usage{
 SampleCat(x)
 
 is.SampleCat(x)
 
-\S4method{as.list}{SampleCat}(x, ...)
+\S4method{predx_to_json}{SampleCat}(x)
 
 \S4method{as.data.frame}{SampleCat}(x, row.names = NULL,
   optional = FALSE, ...)
@@ -22,17 +22,14 @@ is.SampleCat(x)
 \S4method{transform_predx}{SampleCat}(x, to_class, cat, ...)
 }
 \description{
-A \code{predx} class for samples from a predictive distribution over
-categorical bins.
+A \code{predx} class for samples from a distribution of
+categories or classifications specified as character strings.
 }
 \details{
 In JSON and CSV representations, the samples are named \code{sample}.
 }
-\section{Slots}{
+\examples{
+x <- SampleCat(sample(letters, size = 10))
+x
 
-\describe{
-\item{\code{predx}}{A list with two entries: \code{cat} (character) and \code{sample}
-(character).  \code{cat} contains all possible categorical bins and
-\code{sample} is a vector of samples of those bins.}
-}}
-
+}
