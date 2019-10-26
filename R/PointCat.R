@@ -60,7 +60,7 @@ setMethod("as.list", "PointCat",
 #' @export
 #' @rdname PointCat-class
 setMethod("as.data.frame", "PointCat",
-  function(x, ...) { data.frame(point = x@predx) })
+  function(x, ...) { data.frame(point = x@predx, stringsAsFactors = FALSE) })
 
 #' @export
 #' @rdname PointCat-class
