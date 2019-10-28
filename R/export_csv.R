@@ -19,19 +19,7 @@
 #' import_csv(csv_tempfile)
 export_csv <- function(x, filename = NULL, overwrite = F) {
   x <- as.predx_df(x)
-  x <- dplyr::mutate(x,
-    predx = lapply(predx,
-      function(x) {
-        x <- as.data.frame(x)
-        if("sample" %in% colnames(x) && is.numeric(x$sample)) {
-          x$sample <- format(x$sample)
-        }
-        if("point" %in% colnames(x) && is.numeric(x$point)) {
-          x$point <- format(x$point)
-        }
-        return(x)
-      })
-    )
+  x <- dplyr::mutate(x, predx = lapply(predx, as.data.frame))
   x <- tidyr::unnest(x, predx)
 
   if (!is.null(filename)) {
