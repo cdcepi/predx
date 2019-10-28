@@ -24,6 +24,7 @@ Collate:
     'BinLwr.R'
     'Binary.R'
     'Point.R'
+    'PointCat.R'
     'Sample.R'
     'SampleCat.R'
     'aedes.R'
