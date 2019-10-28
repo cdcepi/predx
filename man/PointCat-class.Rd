@@ -5,7 +5,6 @@
 \alias{PointCat-class}
 \alias{PointCat}
 \alias{is.PointCat}
-\alias{as.list,PointCat-method}
 \alias{as.data.frame,PointCat-method}
 \alias{transform_predx,PointCat-method}
 \title{PointCat class: Point predictions for categorical variables}
@@ -13,8 +12,6 @@
 PointCat(x)
 
 is.PointCat(object)
-
-\S4method{as.list}{PointCat}(x, ...)
 
 \S4method{as.data.frame}{PointCat}(x, row.names = NULL,
   optional = FALSE, ...)

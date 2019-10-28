@@ -7,6 +7,13 @@ CSV column name: _point_
 Validity:
 - Not NA
 	
+### __PointCat__
+A character string point prediction, e.g. associated with SampleCat or BinCat.
+
+CSV column name: _point_
+
+Validity:
+- Not NA
 
 ## Continuous distributions
 ### __Normal__: mean, sd

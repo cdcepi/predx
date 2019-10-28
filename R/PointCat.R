@@ -11,7 +11,7 @@
 #'
 #' @return
 #' @export
-#' @include transform_predx.R
+#' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
 #'
@@ -53,9 +53,9 @@ is.PointCat <- function(object) {
 }
 
 #' @export
-#' @rdname PointCat-class
-setMethod("as.list", "PointCat",
-  function(x, ...) { list(point = x@predx) })
+#' @rdname Point-class
+setMethod("predx_to_json", "PointCat",
+  function(x) { list(point = x@predx) })
 
 #' @export
 #' @rdname PointCat-class
