@@ -49,7 +49,7 @@ Validity:
 - The sum of `prob` is 1.0
 
 ### __Sample__
-Numeric samples for continous outcomes between `lower` and `upper`.
+Numeric samples for continous outcomes between (and including) `lower` and `upper`.
 
 CSV column name: _sample_
 
@@ -65,23 +65,22 @@ Parametric predictions are represented internally as a data.frame with 2 columns
 - `parameter_name` with the parameter name (from the set describe below)
 - `parameter_value` the corresponding numeric parameter
 
-The following distributions are parameters are currently supported:
+The following distributions and parameters are currently supported:
 __Normal__: `mean`, `sd` (Support: real numbers)
 __Log-normal__: `meanlog`, `sdlog` (Support: positive real numbers)
 __Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: positive real numbers)
 __Beta__: `shape1`, `shape2` (Support: real numbers in [0, 1])
 
 Validity:
-- The supplied parameters names (`parameter_names`) must exactly match those of the specified parametric distribution
-- `parameter_values` must be numeric
-- `parameter_values` cannot be NA
-- `parameter_values` must be appropriate for the specified parametric distribution (e.g. `0 < shape`) 
+- The supplied parameter names (`parameter_name`) must exactly match those of the specified parametric distribution
+- The parameter values (`parameter_value`) must be numeric and not include NA
+- The parameter values (`parameter_value`) must be appropriate for the specified parametric distribution (e.g. `0 < shape`) 
 - `lower` and `upper` must not be user specified or must be equivalent to those of the specified parametric distribution
 
 
+----------------------------------------------------------------------------------------------------------------------------
 
-
-
+----------------------------------------------------------------------------------------------------------------------------
 
 ## Discrete
 Quantitative discrete numeric forecasts.
@@ -121,10 +120,10 @@ Validity:
 All dates are formated in ISO standard format: `YYYY-MM-DD`. Forecasts may be specific to a time period, such as a week, month, or year. Those should be consistently defined in the context of the forecast as they are not defined explicitly in the `predx` object.
 
 Times are formatted in ISO standard 24 hour format: 
-`YYYY-MM-DDTHH:MM:SS+HH:MM`, where the final HH:MM is the adjustment compared to Coordinated Universal Time (UTC). If the final `:MM` is `:00`, it may be dropped.
+`YYYY-MM-DDTHH:MM:SS+HH:MM`, where the final HH:MM is the adjustment for the time zone compared to Coordinated Universal Time (UTC). If the final `:MM` in the time zone is `:00`, it may be dropped.
 Examples:
 - 2020-12-18T13:20:37+00:00 is 13:20:37 (1:20 PM with 37 seconds) on 12 December 2020 in UTC (Greenwich Mean Time)
-- 2025-01-03T02:00:00-04:00 is 2:00 (2:00 AM) on 3 January 2025 in UTC-04 (Eastern Standard Time). 
+- 2025-01-03T02:00:00-05:00 or 2025-01-03T02:00:00-05 is 2:00 (2:00 AM) on 3 January 2025 in UTC-05 (Eastern Standard Time). 
 
 ### __Point__
 A prediction of the most likely date.
