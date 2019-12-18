@@ -66,16 +66,16 @@ Parametric predictions are represented internally as a data.frame with 2 columns
 - `parameter_value` the corresponding numeric parameter
 
 The following distributions and parameters are currently supported:
-__Normal__: `mean`, `sd` (Support: real numbers)
-__Log-normal__: `meanlog`, `sdlog` (Support: positive real numbers)
-__Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: positive real numbers)
-__Beta__: `shape1`, `shape2` (Support: real numbers in [0, 1])
+- __Normal__: `mean`, `sd` (Support: real numbers)
+- __Log-normal__: `meanlog`, `sdlog` (Support: positive real numbers)
+- __Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: positive real numbers)
+- __Beta__: `shape1`, `shape2` (Support: real numbers in [0, 1])
 
 Validity:
 - The supplied parameter names (`parameter_name`) must exactly match those of the specified parametric distribution
 - The parameter values (`parameter_value`) must be numeric and not include NA
-- The parameter values (`parameter_value`) must be appropriate for the specified parametric distribution (e.g. `0 < shape`) 
-- `lower` and `upper` must not be user specified or must be equivalent to those of the specified parametric distribution
+- The parameter values (`parameter_value`) must be appropriate for the specified parametric distribution (e.g. `shape > 0`) 
+- `lower` and `upper` must not be user specified (or must be equivalent to those of the specified parametric distribution)
 
 
 ----------------------------------------------------------------------------------------------------------------------------
