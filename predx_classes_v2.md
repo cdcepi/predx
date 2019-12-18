@@ -11,7 +11,17 @@ Validity:
 - Not NA
 - `lower <= point <= upper`
 
-### __Bin__
+### __Samples__
+Numeric samples for continous outcomes between (and including) `lower` and `upper`.
+
+CSV column name: _sample_
+
+Validity:
+- Numeric
+- No NAs
+- `lower <= sample <= upper`
+
+### __Binned__
 Predictions specified as a set of probabilities corresponding to a discrete set of bins across a range of possible numeric outcomes defined by `lower` and `upper`. The specific bins may be specified by a bin __interval__ (generates equally sized bins) or a vector of specific __bins__ defined by the lower bounds of each bin. Either version assumes the lower bound is inclusive and upper bound not inclusive, except for the final bin ending at `upper`. For example, for observable values in `x`, the bins include the probability that observation `x` is greater than or equal to the bin-specific lower bound and less than the bin-specific upper bound: `bin_lwr <= x < bin_upr`, except for at the `upper` bound, where `bin_lwr <= x <= upper`.
 
 __Interval__-defined binned predictions
@@ -47,16 +57,6 @@ Validity:
 - `max(lwr) < upper`
 - A probability is specified for each bin (`length(prob) == length(lwr)`)
 - The sum of `prob` is 1.0
-
-### __Sample__
-Numeric samples for continous outcomes between (and including) `lower` and `upper`.
-
-CSV column name: _sample_
-
-Validity:
-- Numeric
-- No NAs
-- `lower <= sample <= upper`
 
 ### __Parametric__
 Predictions characterized by parametric distributions defined according to base R. Distribution truncation has not been configure, so `upper` and `lower` should not be specified and default to those for the respective distribution.
