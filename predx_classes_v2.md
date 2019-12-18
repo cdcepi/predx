@@ -9,15 +9,14 @@ CSV column name: _point_
 Validity:
 - Numeric
 - Not NA
+- `lower <= point <= upper`
 
 ### __Bin__
-Binned predictions with `lower` and `upper` bounds. The bins may be specified by a bin __interval__ (generates equally sized bins) or a vector of specific __bins__. Either version assumes the lower bound is inclusive and upper bound not inclusive (e.g. a particular bin includes the probability that observation `x` is greater than or equal to the bin-specific lower bound and less than the bin-specific upper bound: `bin_lwr <= x < bin_upr`).
+Predictions specified as a set of probabilities corresponding to a discrete set of bins across a range of possible numeric outcomes defined by `lower` and `upper`. The specific bins may be specified by a bin __interval__ (generates equally sized bins) or a vector of specific __bins__ defined by the lower bounds of each bin. Either version assumes the lower bound is inclusive and upper bound not inclusive, except for the final bin ending at `upper`. For example, for observable values in `x`, the bins include the probability that observation `x` is greater than or equal to the bin-specific lower bound and less than the bin-specific upper bound: `bin_lwr <= x < bin_upr`, except for at the `upper` bound, where `bin_lwr <= x <= upper`.
 
 __Interval__-defined binned predictions
 
-Bins are defined by bounds and intervals. For example, `Continous(prob = probs, type='Bin', lower = 0, upper = 100, interval = 1)` requires 101 probabilities (`probs`) that cover bins from `0 <= probs[1] < 1` to `99 <= probs[101] < 100`. 
-
-_TODO: Add inclusive options?_
+Bins are defined by bounds and intervals. For example, `Continous(prob = probs, type='Bin', lower = 0, upper = 100, interval = 1)` requires 101 probabilities (`probs`) that cover the bins `0 <= probs[1] < 1`, `1 <= probs[2] < 2`, ... `98 <= probs[1] < 99`, `99 <= probs[101] <= 100`. 
 
 Interval-defined binned predictions are represented internally as a list of:
 - `lower`: the lower bound of the range of possible predictions
@@ -29,12 +28,12 @@ Validity:
 - All inputs are numeric
 - No NAs
 - `lower != -Inf` and `upper != Inf`
-- Number of probabilities supplied must match the number of bins defined by `lower`, `upper`, and `interval`
+- A probability is specified for each bin defined by `lower`, `upper`, and `interval`
 - The sum of `prob` is 1.0
 
 __Bin__-defined binned predictions
 
-Bins are defined explicitly. For example, `Continous(prob = probs, type='Bin', lwr = lwr_bounds)` defines the bins by their lower bounds (`lwr`) and accepts an equal number of probabilities (`probs`), which are associated in order with those bins.
+Bins are defined explicitly by their lower bounds. For example, `Continous(prob = probs, type='Bin', lwr = lwr_bounds)` defines the bins by their lower bounds (`lwr`) and accepts an equal number of probabilities (`probs`), which are associated in order with those bins.
 
 Bin-defined binned predictions are represented internally as a data.frame with two columns:
 - `lwr`: inclusive numeric lower bounds for sequential bins (equal intervals)
@@ -43,56 +42,44 @@ Bin-defined binned predictions are represented internally as a data.frame with t
 Validity:
 - All inputs are numeric
 - No NAs
-- `lower != -Inf` and `upper != Inf`
+- `lower != -Inf`
 - `lwr[1] == lower`
+- `max(lwr) < upper`
 - A probability is specified for each bin (`length(prob) == length(lwr)`)
 - The sum of `prob` is 1.0
 
-### Parametric
-
-
-
-
-
-CSV column name: _point_
-
-Validity:
-- Numeric
-- Not NA
-- `lower != -Inf` and `upper != Inf`
-- If`bins`
-
-
-CSV column names: _lwr_, _prob_
-
-Validity:
-- No NAs in _lwr_ or _prob_
-- Probabilities are positive
-- Probabilities sum to 1.0
-- Bins are in ascending order
-- Bin sizes are uniform
-
-
-
-
-
 ### __Sample__
-A numeric point prediction.
+Numeric samples for continous outcomes between `lower` and `upper`.
 
-CSV column name: _point_
+CSV column name: _sample_
 
 Validity:
 - Numeric
-- Not NA
+- No NAs
+- `lower <= sample <= upper`
 
 ### __Parametric__
-A numeric point prediction.
+Predictions characterized by parametric distributions defined according to base R. Distribution truncation has not been configure, so `upper` and `lower` should not be specified and default to those for the respective distribution.
 
-CSV column name: _point_
+Parametric predictions are represented internally as a data.frame with 2 columns:
+- `parameter_name` with the parameter name (from the set describe below)
+- `parameter_value` the corresponding numeric parameter
+
+The following distributions are parameters are currently supported:
+__Normal__: `mean`, `sd` (Support: real numbers)
+__Log-normal__: `meanlog`, `sdlog` (Support: positive real numbers)
+__Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: positive real numbers)
+__Beta__: `shape1`, `shape2` (Support: real numbers in [0, 1])
 
 Validity:
-- Numeric
-- Not NA
+- The supplied parameters names (`parameter_names`) must exactly match those of the specified parametric distribution
+- `parameter_values` must be numeric
+- `parameter_values` cannot be NA
+- `parameter_values` must be appropriate for the specified parametric distribution (e.g. `0 < shape`) 
+- `lower` and `upper` must not be user specified or must be equivalent to those of the specified parametric distribution
+
+
+
 
 
 
