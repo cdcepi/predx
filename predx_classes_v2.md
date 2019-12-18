@@ -1,5 +1,5 @@
 ## Continuous
-Numerical predictions with continuous real numbers. For all continuous predictions, minima and maxima may be defined as `lower` (default: `-Inf`) and `upper` (default: `Inf`).
+Numerical predictions with continuous real numbers. For all continuous predictions, minima and maxima are defined as `lower` and `upper` (defaults: `lower = -Inf, upper = Inf`).
 
 ### __Point__
 A numeric point prediction.
@@ -66,16 +66,16 @@ Parametric predictions are represented internally as a data.frame with 2 columns
 - `parameter_value` the corresponding numeric parameter
 
 The following distributions and parameters are currently supported:
-- __Normal__: `mean`, `sd` (Support: real numbers)
-- __Log-normal__: `meanlog`, `sdlog` (Support: positive real numbers)
-- __Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: positive real numbers)
-- __Beta__: `shape1`, `shape2` (Support: real numbers in [0, 1])
+- __Normal__: `mean`, `sd` (Support: `lower = -Inf, upper = Inf`)
+- __Log-normal__: `meanlog`, `sdlog` (Support: `lower = 0, upper = Inf`)
+- __Gamma__: `shape`, `rate` (or `shape`, `scale`) (Support: `lower = 0, upper = Inf`)
+- __Beta__: `shape1`, `shape2` (Support: `lower = 0, upper = 1`)
 
 Validity:
 - The supplied parameter names (`parameter_name`) must exactly match those of the specified parametric distribution
 - The parameter values (`parameter_value`) must be numeric and not include NA
 - The parameter values (`parameter_value`) must be appropriate for the specified parametric distribution (e.g. `shape > 0`) 
-- `lower` and `upper` must not be user specified (or must be equivalent to those of the specified parametric distribution)
+- `lower` and `upper` must be equivalent to those of the specified parametric distribution
 
 
 ----------------------------------------------------------------------------------------------------------------------------
