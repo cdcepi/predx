@@ -33,25 +33,58 @@ fcast
 
 ## Verify expected predictions are included
 
-The `verify_expected` function can be used to check that expected targets are included in the `predx_df`. For example, the national-level FluSight forecasts include forecasts for seven targets and 11 locations. The percentage forecasts (e.g. "Season peak percentage", "1 wk ahead") are classified as `BinLwr` predictions and the week targets ("Season onset", "Season peak week") are classifed as `BinCat` predictions. This set can be specified in a list with one list for each combination of required characteristics. For example, the target "Season peak percentage", should have a prediction for each location, and each predx class as specified in `flusight_ilinet_expected()[[1]]`, below.
+The `verify_expected` function can be used to check that expected targets are included in the `predx_df`. For example, the national-level FluSight forecasts include forecasts for seven targets and 11 locations. The percentage forecasts (e.g. "Season peak percentage", "1 wk ahead") are classified as `BinLwr` predictions and the week targets ("Season onset", "Season peak week") are classifed as `BinCat` predictions. This set can be specified in a list with one list for each combination of required characteristics. For example, the target "Season peak percentage", should have a prediction for each location and each predx bin as specified in the first element of `flusight_ilinet_expected()`, below.
 
 ```
 list(
   list(
-    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
+    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", 
+      "3 wk ahead", "4 wk ahead"),
     location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
-      "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
-      "HHS Region 8", "HHS Region 9", "US National"),
-    predx_class = c("Point", "BinLwr")
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = "BinLwr",
+    lwr = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 
+      1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 
+      2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 
+      3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 
+      5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 
+      6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 
+      7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 
+      9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 
+      10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3, 
+      11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4, 
+      12.5, 12.6, 12.7, 12.8, 12.9, 13)
   ),
   list(
-    target = c("Season onset", "Season peak week"),
+    target = "Season peak week",
     location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
-      "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
-      "HHS Region 8", "HHS Region 9", "US National"),
-    predx_class = c("Point", "BinCat")
-  )
-)
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = "BinCat",
+    cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49", 
+      "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+    ),
+  list(
+    target = "Season onset",
+    location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = "BinCat",
+    cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49", 
+      "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", 
+      "none")
+    ),
+  list(
+    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", 
+      "3 wk ahead", "4 wk ahead", "Season onset", "Season peak week"),
+    location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+    predx_class = "Point"
+    )
 ```
 
 This specific expected list, available with `flusight_ilinet_expected`, is included in the predx package along with `flusight_state_ilinet_expected` (for state ILINet forecasts) and `flusight_hospitalization_expected` (for hospitalization forecasts). Other verification lists can be made in this format and all can be used with the function `verify_expected` to validate that all expected predictions are included. The function prints missing and additional predictions, but those can also be returned as a data frame by including the argument `return_df = TRUE`.
@@ -60,27 +93,59 @@ For this example, we limit the expected forecasts to the national level.
 
 ```{r}
 national_expected <- list(
-    list(
-      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
-      location = c("US National"),
-      predx_class = c("Point", "BinLwr")
+  list(
+    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", 
+      "3 wk ahead", "4 wk ahead"),
+    location = "US National",
+    predx_class = "BinLwr",
+    lwr = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 
+      1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 
+      2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 
+      3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 
+      5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 
+      6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 
+      7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 
+      9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 
+      10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3, 
+      11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4, 
+      12.5, 12.6, 12.7, 12.8, 12.9, 13)
+  ),
+  list(
+    target = "Season peak week",
+    location = "US National",
+    predx_class = "BinCat",
+    cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49", 
+      "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
     ),
-    list(
-      target = c("Season onset", "Season peak week"),
-      location = c("US National"),
-      predx_class = c("Point", "BinCat")
+  list(
+    target = "Season onset",
+    location = "US National",
+    predx_class = "BinCat",
+    cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49", 
+      "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", 
+      "none")
+    ),
+  list(
+    target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", 
+      "3 wk ahead", "4 wk ahead", "Season onset", "Season peak week"),
+    location = "US National",
+    predx_class = "Point"
     )
-  )
+)
 
 verify_expected(fcast, national_expected)
 ```
 
 ## Export as predx JSON (reduced size), predx CSV, or FluSight CSV
 
-To save space and facilitate sharing, transfer, and storage of `predx_df` objects, they can be exported as JSON objects using the function `export_json`. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the first two predictions in `fcast` below.
+To save space and facilitate sharing, transfer, and storage of `predx_df` objects, they can be exported as JSON objects using the function `export_json`. A file name can be supplied as an argument to store this as a file instead of returning an object as shown for the peak week predictions in `fcast` below.
 
 ```{r}
-export_json(fcast[1:2, ])
+peak_week_json <- export_json(fcast[13:14, ])
+peak_week_json
+jsonlite::prettify(peak_week_json)
 json_tempfile = tempfile()
 export_json(fcast, filename = json_tempfile, overwrite = T)
 ```

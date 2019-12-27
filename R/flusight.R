@@ -129,19 +129,53 @@ prep_flusight <- function(x) {
 flusight_ilinet_expected <- function() {
   list(
     list(
-      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
+      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead",
+        "3 wk ahead", "4 wk ahead"),
       location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
         "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
         "HHS Region 8", "HHS Region 9", "US National"),
-      predx_class = c("Point", "BinLwr")
+      predx_class = "BinLwr",
+      lwr = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2,
+        1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5,
+        2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8,
+        3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1,
+        5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4,
+        6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7,
+        7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9,
+        9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2,
+        10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3,
+        11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4,
+        12.5, 12.6, 12.7, 12.8, 12.9, 13)
     ),
     list(
-      target = c("Season onset", "Season peak week"),
+      target = "Season peak week",
       location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
         "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
         "HHS Region 8", "HHS Region 9", "US National"),
-      predx_class = c("Point", "BinCat")
-    )
+      predx_class = "BinCat",
+      cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+        "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+      ),
+    list(
+      target = "Season onset",
+      location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+      predx_class = "BinCat",
+      cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+        "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+        "none")
+      ),
+    list(
+      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead",
+        "3 wk ahead", "4 wk ahead", "Season onset", "Season peak week"),
+      location = c("HHS Region 1", "HHS Region 10", "HHS Region 2", "HHS Region 3",
+        "HHS Region 4", "HHS Region 5", "HHS Region 6", "HHS Region 7",
+        "HHS Region 8", "HHS Region 9", "US National"),
+      predx_class = "Point"
+      )
   )
 }
 
@@ -162,7 +196,18 @@ flusight_state_ilinet_expected <- function() {
           "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands",
           "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
           ),
-      predx_class = c("Point", "BinLwr")
+      predx_class = "BinLwr",
+      lwr = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2,
+        1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5,
+        2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8,
+        3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1,
+        5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4,
+        6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7,
+        7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9,
+        9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2,
+        10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3,
+        11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4,
+        12.5, 12.6, 12.7, 12.8, 12.9, 13)
     ),
     list(
       target = c("Season peak week"),
@@ -177,24 +222,63 @@ flusight_state_ilinet_expected <- function() {
           "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands",
           "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
           ),
-      predx_class = c("Point", "BinCat")
-    )
+      predx_class = c("BinCat"),
+      cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+        "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+    ),
+    list(
+      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead",
+        "3 wk ahead", "4 wk ahead", "Season peak week"),
+      location = c("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+          "Connecticut", "Delaware", "District of Columbia", "Georgia",
+          "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
+          "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+          "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
+          "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
+          "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
+          "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina",
+          "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands",
+          "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+          ),
+      predx_class = "Point"
+      )
   )
 }
 
 #' @export
 #' @rdname flusight
 flusight_hospitalization_expected <- function() {
-    list(
+  list(
     list(
       target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead", "4 wk ahead"),
       location = c("Overall", "0-4 yr", "5-17 yr", "18-49 yr", "50-64 yr", "65+ yr"),
-      predx_class = c("Point", "BinLwr")
+      predx_class = "BinLwr",
+      lwr = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2,
+        1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5,
+        2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8,
+        3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1,
+        5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4,
+        6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7,
+        7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9,
+        9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2,
+        10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3,
+        11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4,
+        12.5, 12.6, 12.7, 12.8, 12.9, 13)
     ),
     list(
       target = c("Season peak week"),
       location = c("Overall", "0-4 yr", "5-17 yr", "18-49 yr", "50-64 yr", "65+ yr"),
-      predx_class = c("Point", "BinCat")
+      predx_class = "BinCat",
+      cat = c("40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+        "50", "51", "52", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+    ),
+    list(
+      target = c("Season peak percentage", "1 wk ahead", "2 wk ahead", "3 wk ahead",
+        "4 wk ahead", "Season peak week"),
+      location = c("Overall", "0-4 yr", "5-17 yr", "18-49 yr", "50-64 yr", "65+ yr"),
+      predx_class = "Point"
     )
   )
 }
