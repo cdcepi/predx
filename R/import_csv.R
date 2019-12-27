@@ -8,7 +8,7 @@
 #' @include get_predx_colnames.R to_predx.R
 #'
 #' @examples
-#' #' predx_demo <- as.predx_df(list(
+#' predx_demo <- as.predx_df(list(
 #'  location = c('Mercury', 'Venus', 'Earth'),
 #'  target = 'habitability',
 #'  predx = list(Binary(1e-4), Binary(1e-4), Binary(1))

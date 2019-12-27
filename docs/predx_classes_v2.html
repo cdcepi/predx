@@ -117,9 +117,10 @@
     </div>
 
 
-<div id="point-predictions" class="section level2">
+<div id="continuous" class="section level2">
 <h2 class="hasAnchor">
-<a href="#point-predictions" class="anchor"></a>Point predictions</h2>
+<a href="#continuous" class="anchor"></a>Continuous</h2>
+<p>Numerical predictions with continuous real numbers. For all continuous predictions, minima and maxima are defined as <code>lower</code> and <code>upper</code> (defaults: <code>lower = -Inf, upper = Inf</code>).</p>
 <div id="point" class="section level3">
 <h3 class="hasAnchor">
 <a href="#point" class="anchor"></a><strong>Point</strong>
@@ -128,9 +129,201 @@
 <p>CSV column name: <em>point</em></p>
 <p>Validity:</p>
 <ul>
+<li>Numeric</li>
+<li>Not NA</li>
+<li><code>lower &lt;= point &lt;= upper</code></li>
+</ul>
+</div>
+<div id="samples" class="section level3">
+<h3 class="hasAnchor">
+<a href="#samples" class="anchor"></a><strong>Samples</strong>
+</h3>
+<p>Numeric samples for continous outcomes between (and including) <code>lower</code> and <code>upper</code>.</p>
+<p>CSV column name: <em>sample</em></p>
+<p>Validity:</p>
+<ul>
+<li>Numeric</li>
+<li>No NAs</li>
+<li><code>lower &lt;= sample &lt;= upper</code></li>
+</ul>
+</div>
+<div id="binned" class="section level3">
+<h3 class="hasAnchor">
+<a href="#binned" class="anchor"></a><strong>Binned</strong>
+</h3>
+<p>Predictions specified as a set of probabilities corresponding to a discrete set of bins across a range of possible numeric outcomes defined by <code>lower</code> and <code>upper</code>. The specific bins may be specified by a bin <strong>interval</strong> (generates equally sized bins) or a vector of specific <strong>bins</strong> defined by the lower bounds of each bin. Either version assumes the lower bound is inclusive and upper bound not inclusive, except for the final bin ending at <code>upper</code>. For example, for observable values in <code>x</code>, the bins include the probability that observation <code>x</code> is greater than or equal to the bin-specific lower bound and less than the bin-specific upper bound: <code>bin_lwr &lt;= x &lt; bin_upr</code>, except for at the <code>upper</code> bound, where <code>bin_lwr &lt;= x &lt;= upper</code>.</p>
+<p><strong>Interval</strong>-defined binned predictions</p>
+<p>Bins are defined by bounds and intervals. For example, <code>Continous(prob = probs, type='Bin', lower = 0, upper = 100, interval = 1)</code> requires 101 probabilities (<code>probs</code>) that cover the bins <code>0 &lt;= probs[1] &lt; 1</code>, <code>1 &lt;= probs[2] &lt; 2</code>, … <code>98 &lt;= probs[1] &lt; 99</code>, <code>99 &lt;= probs[101] &lt;= 100</code>.</p>
+<p>Interval-defined binned predictions are represented internally as a list of:</p>
+<ul>
+<li>
+<code>lower</code>: the lower bound of the range of possible predictions</li>
+<li>
+<code>upper</code>: the upper bound of the range of possible predictions</li>
+<li>
+<code>interval</code>: the span of each bin</li>
+<li>
+<code>prob</code>: the ordered probabilities assigned to each bin</li>
+</ul>
+<p>Validity:</p>
+<ul>
+<li>All inputs are numeric</li>
+<li>No NAs</li>
+<li>
+<code>lower != -Inf</code> and <code>upper != Inf</code>
+</li>
+<li>A probability is specified for each bin defined by <code>lower</code>, <code>upper</code>, and <code>interval</code>
+</li>
+<li>The sum of <code>prob</code> is 1.0</li>
+</ul>
+<p><strong>Bin</strong>-defined binned predictions</p>
+<p>Bins are defined explicitly by their lower bounds. For example, <code>Continous(prob = probs, type='Bin', lwr = lwr_bounds)</code> defines the bins by their lower bounds (<code>lwr</code>) and accepts an equal number of probabilities (<code>probs</code>), which are associated in order with those bins.</p>
+<p>Bin-defined binned predictions are represented internally as a data.frame with two columns:</p>
+<ul>
+<li>
+<code>lwr</code>: inclusive numeric lower bounds for sequential bins (equal intervals)</li>
+<li>
+<code>prob</code>: probabilities assigned to each bin</li>
+</ul>
+<p>Validity:</p>
+<ul>
+<li>All inputs are numeric</li>
+<li>No NAs</li>
+<li><code>lower != -Inf</code></li>
+<li><code>lwr[1] == lower</code></li>
+<li><code>max(lwr) &lt; upper</code></li>
+<li>A probability is specified for each bin (<code>length(prob) == length(lwr)</code>)</li>
+<li>The sum of <code>prob</code> is 1.0</li>
+</ul>
+</div>
+<div id="parametric" class="section level3">
+<h3 class="hasAnchor">
+<a href="#parametric" class="anchor"></a><strong>Parametric</strong>
+</h3>
+<p>Predictions characterized by parametric distributions defined according to base R. Distribution truncation has not been configure, so <code>upper</code> and <code>lower</code> should not be specified and default to those for the respective distribution.</p>
+<p>Parametric predictions are represented internally as a data.frame with 2 columns:</p>
+<ul>
+<li>
+<code>parameter_name</code> with the parameter name (from the set describe below)</li>
+<li>
+<code>parameter_value</code> the corresponding numeric parameter</li>
+</ul>
+<p>The following distributions and parameters are currently supported:</p>
+<ul>
+<li>
+<strong>Normal</strong>: <code>mean</code>, <code>sd</code> (Support: <code>lower = -Inf, upper = Inf</code>)</li>
+<li>
+<strong>Log-normal</strong>: <code>meanlog</code>, <code>sdlog</code> (Support: <code>lower = 0, upper = Inf</code>)</li>
+<li>
+<strong>Gamma</strong>: <code>shape</code>, <code>rate</code> (or <code>shape</code>, <code>scale</code>) (Support: <code>lower = 0, upper = Inf</code>)</li>
+<li>
+<strong>Beta</strong>: <code>shape1</code>, <code>shape2</code> (Support: <code>lower = 0, upper = 1</code>)</li>
+</ul>
+<p>Validity:</p>
+<ul>
+<li>The supplied parameter names (<code>parameter_name</code>) must exactly match those of the specified parametric distribution</li>
+<li>The parameter values (<code>parameter_value</code>) must be numeric and not include NA</li>
+<li>The parameter values (<code>parameter_value</code>) must be appropriate for the specified parametric distribution (e.g. <code>shape &gt; 0</code>)</li>
+<li>
+<code>lower</code> and <code>upper</code> must be equivalent to those of the specified parametric distribution</li>
+</ul>
+<hr>
+<hr>
+</div>
+</div>
+<div id="discrete" class="section level2">
+<h2 class="hasAnchor">
+<a href="#discrete" class="anchor"></a>Discrete</h2>
+<p>Quantitative discrete numeric forecasts.</p>
+<div id="point-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#point-1" class="anchor"></a><strong>Point</strong>
+</h4>
+<p>A numeric point prediction.</p>
+<p>CSV column name: <em>point</em></p>
+<p>Validity:</p>
+<ul>
+<li>Numeric</li>
 <li>Not NA</li>
 </ul>
 </div>
+</div>
+<div id="categorical" class="section level2">
+<h2 class="hasAnchor">
+<a href="#categorical" class="anchor"></a>Categorical</h2>
+<div id="point-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#point-2" class="anchor"></a><strong>Point</strong>
+</h3>
+<p>A prediction of the most likely categorical outcome.</p>
+<p>CSV column name: <em>point</em></p>
+<p>Validity:</p>
+<ul>
+<li>String</li>
+<li>Not NA</li>
+</ul>
+</div>
+</div>
+<div id="binary" class="section level2">
+<h2 class="hasAnchor">
+<a href="#binary" class="anchor"></a>Binary</h2>
+<div id="point-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#point-3" class="anchor"></a><strong>Point</strong>
+</h3>
+<p>A prediction of the most likely categorical outcome.</p>
+<p>CSV column name: <em>point</em></p>
+<p>Validity:</p>
+<ul>
+<li>Numeric</li>
+<li>Not NA</li>
+<li>0 &lt;= value &lt;= 1</li>
+</ul>
+</div>
+</div>
+<div id="dates--times" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dates--times" class="anchor"></a>Dates &amp; Times</h2>
+<p>All dates are formated in ISO standard format: <code>YYYY-MM-DD</code>. Forecasts may be specific to a time period, such as a week, month, or year. Those should be consistently defined in the context of the forecast as they are not defined explicitly in the <code>predx</code> object.</p>
+<p>Times are formatted in ISO standard 24 hour format: <code>YYYY-MM-DDTHH:MM:SS+HH:MM</code>, where the final HH:MM is the adjustment for the time zone compared to Coordinated Universal Time (UTC). If the final <code>:MM</code> in the time zone is <code>:00</code>, it may be dropped. Examples:</p>
+<ul>
+<li>2020-12-18T13:20:37+00:00 is 13:20:37 (1:20 PM with 37 seconds) on 12 December 2020 in UTC (Greenwich Mean Time)</li>
+<li>2025-01-03T02:00:00-05:00 or 2025-01-03T02:00:00-05 is 2:00 (2:00 AM) on 3 January 2025 in UTC-05 (Eastern Standard Time).</li>
+</ul>
+<div id="point-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#point-4" class="anchor"></a><strong>Point</strong>
+</h3>
+<p>A prediction of the most likely date.</p>
+<p>CSV column name: <em>point</em></p>
+<p>Validity:</p>
+<ul>
+<li>ISO date or time (described above)</li>
+<li>Not NA</li>
+</ul>
+</div>
+</div>
+<div id="time" class="section level2">
+<h2 class="hasAnchor">
+<a href="#time" class="anchor"></a>Time</h2>
+<p>All dates are formated in</p>
+<div id="point-5" class="section level3">
+<h3 class="hasAnchor">
+<a href="#point-5" class="anchor"></a><strong>Point</strong>
+</h3>
+<p>A prediction of the most likely categorical outcome.</p>
+<p>CSV column name: <em>point</em></p>
+<p>Validity:</p>
+<ul>
+<li>Numeric</li>
+<li>Not NA</li>
+<li>0 &lt;= value &lt;= 1</li>
+</ul>
+</div>
+</div>
+<div id="point-predictions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#point-predictions" class="anchor"></a>Point predictions</h2>
 <div id="pointcat" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pointcat" class="anchor"></a><strong>PointCat</strong>
