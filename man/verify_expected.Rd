@@ -4,8 +4,7 @@
 \alias{verify_expected}
 \title{Verify inclusion of expected predictions}
 \usage{
-verify_expected(x, expected_list, return_df = FALSE,
-  print_output = !return_df)
+verify_expected(x, expected_list, return_df = FALSE, print_output = !return_df)
 }
 \arguments{
 \item{x}{predx_df}

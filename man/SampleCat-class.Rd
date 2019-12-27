@@ -16,8 +16,7 @@ is.SampleCat(x)
 
 \S4method{predx_to_json}{SampleCat}(x)
 
-\S4method{as.data.frame}{SampleCat}(x, row.names = NULL,
-  optional = FALSE, ...)
+\S4method{as.data.frame}{SampleCat}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{SampleCat}(x, to_class, cat, ...)
 }

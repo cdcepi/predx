@@ -7,7 +7,7 @@
 get_cats(x)
 }
 \arguments{
-\item{x}{an object of class BinCat or SampleCat}
+\item{x}{an object of class BinCat or SampleCat OR a list of those objects}
 }
 \value{
 character vector of categories

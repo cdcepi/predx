@@ -4,8 +4,7 @@
 \alias{check_probs_sum_to_one}
 \title{Check that probabilities sum to 1 (or approximately 1)}
 \usage{
-check_probs_sum_to_one(probs, msg = T,
-  tolerance = .Machine$double.eps^0.5)
+check_probs_sum_to_one(probs, msg = T, tolerance = .Machine$double.eps^0.5)
 }
 \arguments{
 \item{probs}{vector of probabilities for a single forecast}

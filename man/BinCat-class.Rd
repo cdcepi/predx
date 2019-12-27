@@ -16,8 +16,7 @@ is.BinCat(x)
 
 \S4method{predx_to_json}{BinCat}(x)
 
-\S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE,
-  ...)
+\S4method{as.data.frame}{BinCat}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{BinCat}(x, to_class, ...)
 }

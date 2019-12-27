@@ -17,8 +17,7 @@ is.Point(object)
 
 \S4method{predx_to_json}{Point}(x)
 
-\S4method{as.data.frame}{Point}(x, row.names = NULL, optional = FALSE,
-  ...)
+\S4method{as.data.frame}{Point}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{Point}(x, to_class, ...)
 

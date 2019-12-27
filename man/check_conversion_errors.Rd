@@ -12,6 +12,9 @@ collect_error(x)
 \arguments{
 \item{x}{list of predx objects.}
 }
+\value{
+
+}
 \description{
 Title
 }

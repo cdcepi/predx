@@ -16,8 +16,7 @@ is.Sample(x)
 
 \S4method{predx_to_json}{Sample}(x)
 
-\S4method{as.data.frame}{Sample}(x, row.names = NULL, optional = FALSE,
-  ...)
+\S4method{as.data.frame}{Sample}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{Sample}(x, to_class, lwr, ...)
 }

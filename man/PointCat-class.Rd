@@ -13,10 +13,12 @@ PointCat(x)
 
 is.PointCat(object)
 
-\S4method{as.data.frame}{PointCat}(x, row.names = NULL,
-  optional = FALSE, ...)
+\S4method{as.data.frame}{PointCat}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{PointCat}(x, to_class, ...)
+}
+\value{
+
 }
 \description{
 A \code{predx} class for point predictions for categorical variables.

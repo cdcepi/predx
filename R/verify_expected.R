@@ -50,8 +50,28 @@ verify_expected <- function(x, expected_list, return_df = FALSE,
   if (!is.predx_df(x)) stop("x is not a predx_df")
   if (!is.list(expected_list)) stop("expected_list is not a list")
 
-  all_exp <- dplyr::bind_rows(lapply(expected_list, expand.grid, stringsAsFactors = F))
-  # check missing predictions
+  all_exp <- dplyr::bind_rows(lapply(expected_list,
+    expand.grid, stringsAsFactors = F))
+  to_unnest <- character()
+  if ('cat' %in% names(all_exp)) {
+    x$cat <- NA
+    x$cat[x$predx_class %in% c('BinCat', 'SampleCat')] <-
+      get_cats(x$predx[x$predx_class %in% c('BinCat', 'SampleCat')])
+    all_exp$cat[!(all_exp$predx_class %in% c('BinCat', 'SampleCat'))] <- NA
+    to_unnest <- c(to_unnest, 'cat')
+  }
+  if ('lwr' %in% names(all_exp)) {
+    x$lwr <- NA
+    x$lwr[x$predx_class == 'BinLwr'] <-
+      lapply(x$predx[x$predx_class == 'BinLwr'],
+        function(x) x@predx[ , 'lwr'])
+    all_exp$lwr[all_exp$predx_class != 'BinLwr'] <- NA
+    to_unnest <- c(to_unnest, 'lwr')
+  }
+
+  all_exp <- unnest(all_exp, cols=to_unnest)
+  x <- unnest(x, cols=to_unnest)
+
   missing_predx <- dplyr::setdiff(all_exp, x[, names(all_exp)])
   if (nrow(missing_predx) > 0 & print_output) {
     print("The following predictions are missing:")

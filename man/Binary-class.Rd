@@ -16,8 +16,7 @@ is.Binary(object)
 
 \S4method{predx_to_json}{Binary}(x)
 
-\S4method{as.data.frame}{Binary}(x, row.names = NULL, optional = FALSE,
-  ...)
+\S4method{as.data.frame}{Binary}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{Binary}(x, to_class, ...)
 }

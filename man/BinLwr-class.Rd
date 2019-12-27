@@ -16,8 +16,7 @@ is.BinLwr(x)
 
 \S4method{predx_to_json}{BinLwr}(x)
 
-\S4method{as.data.frame}{BinLwr}(x, row.names = NULL, optional = FALSE,
-  ...)
+\S4method{as.data.frame}{BinLwr}(x, row.names = NULL, optional = FALSE, ...)
 
 \S4method{transform_predx}{BinLwr}(x, to_class, ...)
 }
