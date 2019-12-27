@@ -99,22 +99,20 @@ setMethod("transform_predx", "BinLwr",
 #  mean(x@lwr[sum(cumsum(x@prob) < 0.5) + 1:2])
 #})
 
-#setMethod("median", "BinLwr", function(x) { NA })
-
 setMethod("median", "BinLwr", function(x) {
-  mean(x@predx[[1]][sum(cumsum(x@predx[[2]]) < 0.5) + 1:2])
+  mean(x@predx[ , 'lwr'][sum(cumsum(x@predx[ , 'prob']) < 0.5) + 1:2])
 })
 
 setGeneric("bin_width", function(x)
   { standardGeneric("bin_width") })
 setMethod("bin_width", "BinLwr", function(x) {
-  x@predx$lwr[2] - x@predx$lwr[1]
+  x@predx[2, 'lwr'] - x@predx[1, 'lwr']
   })
 
 setGeneric("bin_range", function(x)
   { standardGeneric("bin_range") })
 setMethod("bin_range", "BinLwr", function(x) {
-  c(min(x@pred$lwr), max(x@pred$lwr) + bin_width(x))
+  c(min(x@predx[ , 'lwr']), max(x@predx[ , 'lwr']) + bin_width(x))
   })
 
 
