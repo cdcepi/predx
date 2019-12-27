@@ -69,8 +69,8 @@ verify_expected <- function(x, expected_list, return_df = FALSE,
     to_unnest <- c(to_unnest, 'lwr')
   }
 
-  all_exp <- unnest(all_exp, cols=to_unnest)
-  x <- unnest(x, cols=to_unnest)
+  all_exp <- tidyr::unnest(all_exp, cols=to_unnest)
+  x <- tidyr::unnest(x, cols=to_unnest)
 
   missing_predx <- dplyr::setdiff(all_exp, x[, names(all_exp)])
   if (nrow(missing_predx) > 0 & print_output) {
