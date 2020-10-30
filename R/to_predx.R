@@ -10,7 +10,9 @@
 #'
 #' @examples
 to_predx <- function(x, class) {
-  if (length(x) != length(class)) stop('requires a predx_class name for each data.frame in x')
+  if (length(x) != length(class)) {
+    stop('requires a predx_class name for each data.frame in x')
+  }
 
   predx <- vector("list", length(x))
   predx[class == 'Point'] <- lapply_Point(x[class == 'Point'])
@@ -20,11 +22,17 @@ to_predx <- function(x, class) {
   predx[class == 'BinLwr'] <- lapply_BinLwr(x[class == 'BinLwr'])
   predx[class == 'Sample'] <- lapply_Sample(x[class == 'Sample'])
   predx[class == 'SampleCat'] <- lapply_SampleCat(x[class == 'SampleCat'])
+  predx[class == 'Quant'] <- lapply_Quant(x[class == 'Quant'])
+
+  if (any(is.null(unlist(predx)))) {
+    stop('at least one specified predx class was not found')
+  }
 
   return(predx)
 }
 
 #' @export
 is.predx <- function(x) {
-  class(x) %in% c('Point', 'PointCat', 'Binary', 'BinCat', 'BinLwr', 'Sample', 'SampleCat')
+  class(x) %in% c('Point', 'PointCat', 'Binary', 'BinCat',
+    'BinLwr', 'Sample', 'SampleCat', 'Quant')
 }

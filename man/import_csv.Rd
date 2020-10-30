@@ -18,7 +18,7 @@ A \code{predx} data frame.
 Import a \code{predx}-formatted CSV file as a \code{predx} data frame
 }
 \examples{
-#' predx_demo <- as.predx_df(list(
+predx_demo <- as.predx_df(list(
  location = c('Mercury', 'Venus', 'Earth'),
  target = 'habitability',
  predx = list(Binary(1e-4), Binary(1e-4), Binary(1))

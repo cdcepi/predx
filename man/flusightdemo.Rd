@@ -4,7 +4,9 @@
 \name{flusightdemo}
 \alias{flusightdemo}
 \title{Example FluSight forecast}
-\format{A data frame input from the original submission CSV.}
+\format{
+A data frame input from the original submission CSV.
+}
 \source{
 https://github.com/cdcepi/FluSight-forecasts/tree/master/2018-2019/Hist-Avg
 }

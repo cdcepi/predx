@@ -43,8 +43,8 @@ setValidity('BinCat', function(object) {
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
       if (!any(duplicated(object@predx$cat))) TRUE else "duplicated 'cat', all must be unique",
-      check_probs_gt0(object@predx$prob),
-      check_probs_lt1(object@predx$prob),
+      check_gte0(object@predx[ , 'prob'], 'probs'),
+      check_lte1(object@predx[ , 'prob'], 'probs'),
       check_probs_sum_to_one(object@predx$prob)
     )
   }

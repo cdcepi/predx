@@ -11,7 +11,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Imports:
   dplyr,
   tidyr,
@@ -25,13 +25,16 @@ Collate:
     'Binary.R'
     'Point.R'
     'PointCat.R'
+    'Quant.R'
     'Sample.R'
     'SampleCat.R'
     'aedes.R'
     'aedesdemo-data.R'
+    'check_ascend.R'
     'check_bins_ascend.R'
+    'check_gte0.R'
+    'check_lte1.R'
     'check_no_NAs.R'
-    'check_probs_bins_length_match.R'
     'check_probs_gt0.R'
     'check_probs_lt1.R'
     'check_probs_sum_to_one.R'

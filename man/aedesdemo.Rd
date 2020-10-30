@@ -4,7 +4,9 @@
 \name{aedesdemo}
 \alias{aedesdemo}
 \title{Example Aedes forecast}
-\format{A data frame input from the original submission CSV with additional columns for due_date, month, and team.}
+\format{
+A data frame input from the original submission CSV with additional columns for due_date, month, and team.
+}
 \usage{
 data(aedesdemo)
 }

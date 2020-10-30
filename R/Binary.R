@@ -22,8 +22,8 @@ setValidity('Binary', function(object) {
   ### content checks
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
-      check_probs_gt0(object@predx),
-      check_probs_lt1(object@predx),
+      check_gte0(object@predx, 'prob'),
+      check_lte1(object@predx, 'prob'),
       check_single_value(object@predx)
     )
   }

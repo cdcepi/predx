@@ -14,7 +14,8 @@ get_predx_colnames <- function(classes) {
     Point = 'point',
     PointCat = 'point',
     Sample = 'sample',
-    SampleCat = 'sample'
+    SampleCat = 'sample',
+    Quant = c('quant', 'value')
   )
   these_colnames <- all_colnames[unique(classes)]
   unique(unlist(these_colnames))

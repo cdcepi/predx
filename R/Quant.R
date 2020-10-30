@@ -1,4 +1,4 @@
-#' BinLwr class: Binned predictions with sequential numeric bins
+#' Quant class: Predictions specified as a set of quantiles
 #'
 #' A \code{predx} class for binned probabilistic predictions with sequential numeric bins specified by the (inclusive) lower bound of each bin.
 #'
@@ -14,29 +14,28 @@
 #' @include transform_predx.R predx_to_json.R
 #'
 #' @examples
-setClass('BinLwr', #S4 class
+setClass('Quant', #S4 class
   slots = c(predx = 'matrix')
 )
 
-setValidity('BinLwr', function(object) {
+setValidity('Quant', function(object) {
   ### structure checks
   collect_tests <- c(
     check_no_NAs(object@predx),
     if (is.numeric(object@predx)) TRUE else "requires numeric matrix",
     if (ncol(object@predx) == 2) TRUE else "requires 2 columns",
-    if (colnames(object@predx)[1] == 'lwr') TRUE
-      else "First colname should be 'lwr'",
-    if (colnames(object@predx)[2] == 'prob') TRUE
-      else "Second colname should be 'prob'"
+    if (colnames(object@predx)[1] == 'quant') TRUE
+      else "First colname should be 'quant'",
+    if (colnames(object@predx)[2] == 'value') TRUE
+      else "Second colname should be 'value'"
     )
   ### content checks
   if (all(collect_tests == TRUE)) {
     collect_tests <- c(collect_tests,
-      check_gte0(object@predx[ , 'prob'], 'probs'),
-      check_lte1(object@predx[ , 'prob'], 'probs'),
-      check_probs_sum_to_one(object@predx[ , 'prob']),
-      check_bins_ascend(object@predx[ , 'lwr']),
-      check_uniform_bin_size(object@predx[ , 'lwr'])
+      check_gte0(object@predx[ , 'quant'], 'quantiles'),
+      check_lte1(object@predx[ , 'quant'], 'quantiles'),
+      check_ascend(object@predx[ , 'quant'], 'quantiles'),
+      check_ascend(object@predx[ , 'value'], 'values', strict=F)
     )
   }
   if (all(collect_tests == TRUE)) TRUE
@@ -44,45 +43,45 @@ setValidity('BinLwr', function(object) {
 })
 
 #' @export
-#' @rdname BinLwr-class
-BinLwr <- function(x) {
-  if (is.list(x)) x <- cbind(lwr=x$lwr, prob=x$prob)
+#' @rdname Quant-class
+Quant <- function(x) {
+  if (is.list(x)) x <- cbind(quant=x$quant, value=x$value)
   if (is.character(x)) x <- apply(x, 2, as.numeric)
-  x <- x[order(x[ , 'lwr']), ]
-  new("BinLwr", predx = x)
+  x <- x[order(x[ , 'quant']), ]
+  new("Quant", predx = x)
 }
 
-lapply_BinLwr <- function(x) {
+lapply_Quant <- function(x) {
   if (length(x) > 0) {
     if (is.list(x[[1]])) { # list or data.frame
-      lapply(x, function(x, ...) tryCatch(BinLwr(cbind(lwr=x$lwr, prob=x$prob)),
+      lapply(x, function(x, ...) tryCatch(Quant(cbind(quant=x$quant, value=x$value)),
         error=function(e) identity(e)))
     } else { # matrix
-      lapply(x, function(x, ...) tryCatch(BinLwr(x[ , c('lwr', 'prob')]),
+      lapply(x, function(x, ...) tryCatch(Quant(x[ , c('quant', 'value')]),
         error=function(e) identity(e)))
     }
   }
 }
 
 #' @export
-#' @rdname BinLwr-class
-is.BinLwr <- function(x) {
-  class(x) == 'BinLwr'
+#' @rdname Quant-class
+is.Quant <- function(x) {
+  class(x) == 'Quant'
 }
 
 #' @export
-#' @rdname BinLwr-class
-setMethod("predx_to_json", "BinLwr",
-  function(x) { list(lwr=x@predx[ , 'lwr'], prob=x@predx[ , 'prob']) })
+#' @rdname Quant-class
+setMethod("predx_to_json", "Quant",
+  function(x) { list(quant=x@predx[ , 'quant'], value=x@predx[ , 'value']) })
 
 #' @export
-#' @rdname BinLwr-class
-setMethod("as.data.frame", "BinLwr",
+#' @rdname Quant-class
+setMethod("as.data.frame", "Quant",
   function(x, ...) { as.data.frame(x@predx) })
 
 #' @export
-#' @rdname BinLwr-class
-setMethod("transform_predx", "BinLwr",
+#' @rdname Quant-class
+setMethod("transform_predx", "Quant",
   function(x, to_class, ...) {
     if (to_class == class(x)) {
       return(x)
@@ -95,24 +94,14 @@ setMethod("transform_predx", "BinLwr",
 
 ######################################################################
 ### methods
-#setMethod("quantile", "BinLwr", function(x, p, side) {
-#  mean(x@lwr[sum(cumsum(x@prob) < 0.5) + 1:2])
-#})
-
-setMethod("median", "BinLwr", function(x) {
-  mean(x@predx[ , 'lwr'][sum(cumsum(x@predx[ , 'prob']) < 0.5) + 1:2])
+setMethod("quantile", "Quant", function(x, p) {
+  if (any(x@predx[ , 'quant'] == p)) x@predx[ , 'value'][x@predx[ , 'quant'] == p]
+  else NA
 })
 
-setGeneric("bin_width", function(x)
-  { standardGeneric("bin_width") })
-setMethod("bin_width", "BinLwr", function(x) {
-  x@predx[2, 'lwr'] - x@predx[1, 'lwr']
-  })
+setMethod("median", "Quant", function(x) {
+  quantile(x, 0.5)
+})
 
-setGeneric("bin_range", function(x)
-  { standardGeneric("bin_range") })
-setMethod("bin_range", "BinLwr", function(x) {
-  c(min(x@predx[ , 'lwr']), max(x@predx[ , 'lwr']) + bin_width(x))
-  })
 
 

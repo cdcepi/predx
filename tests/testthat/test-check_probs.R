@@ -1,11 +1,5 @@
 context("Verification of probability specifications")
 
-test_that("check_probs_gt0 detects negatives", {
-  expect_equal(check_probs_gt0(seq(-1, 1, by = 0.5)),
-    "there are negative probabilities")
-  expect_true(check_probs_gt0(seq(0, 1, by = 0.5)))
-})
-
 test_that("check_probs_sum_to_one detects > 1", {
   expect_equal(check_probs_sum_to_one(seq(0, 1, by = 0.5)),
     "the probabilities do not sum to 1.0")
