@@ -61,8 +61,10 @@ is.predx_df <- function(x) {
 #' @export
 #' @rdname predx_df
 as.predx_df <- function(x) {
-  if (is.list(x)) x <- dplyr::as_tibble(x)
-  if (!('predx_class' %in% names(x))) x$predx_class <- sapply(x$predx, class)
-  validate_predx_df(x)
+  if (!is.predx_df(x)) {
+    if (is.list(x)) x <- dplyr::as_tibble(x)
+    if (!('predx_class' %in% names(x))) x$predx_class <- sapply(x$predx, class)
+    validate_predx_df(x)
+  }
   return(x)
 }
